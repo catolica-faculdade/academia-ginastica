@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\johann.ruth\\Desktop\\academia-ginastica\\AcademiaGinastica\\AcademiaGinastica.csproj": {}
+    "C:\\Users\\jdflo\\Gustavo\\catolica\\engenharia_software\\2_semestre\\poo\\academia-ginastica\\AcademiaGinastica\\AcademiaGinastica.csproj": {}
   },
   "projects": {
-    "C:\\Users\\johann.ruth\\Desktop\\academia-ginastica\\AcademiaGinastica\\AcademiaGinastica.csproj": {
+    "C:\\Users\\jdflo\\Gustavo\\catolica\\engenharia_software\\2_semestre\\poo\\academia-ginastica\\AcademiaGinastica\\AcademiaGinastica.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\johann.ruth\\Desktop\\academia-ginastica\\AcademiaGinastica\\AcademiaGinastica.csproj",
+        "projectUniqueName": "C:\\Users\\jdflo\\Gustavo\\catolica\\engenharia_software\\2_semestre\\poo\\academia-ginastica\\AcademiaGinastica\\AcademiaGinastica.csproj",
         "projectName": "AcademiaGinastica",
-        "projectPath": "C:\\Users\\johann.ruth\\Desktop\\academia-ginastica\\AcademiaGinastica\\AcademiaGinastica.csproj",
-        "packagesPath": "C:\\Users\\johann.ruth\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\johann.ruth\\Desktop\\academia-ginastica\\AcademiaGinastica\\obj\\",
+        "projectPath": "C:\\Users\\jdflo\\Gustavo\\catolica\\engenharia_software\\2_semestre\\poo\\academia-ginastica\\AcademiaGinastica\\AcademiaGinastica.csproj",
+        "packagesPath": "C:\\Users\\jdflo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jdflo\\Gustavo\\catolica\\engenharia_software\\2_semestre\\poo\\academia-ginastica\\AcademiaGinastica\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\johann.ruth\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\jdflo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -66,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
