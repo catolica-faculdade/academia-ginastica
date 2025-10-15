@@ -1,4 +1,4 @@
-﻿Usuario user = new Usuario();
+﻿Usuario user = new Usuario("teste");
 
 while (true)
 {
