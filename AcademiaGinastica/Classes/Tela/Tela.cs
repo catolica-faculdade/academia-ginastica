@@ -141,4 +141,9 @@ public class Tela
         resp = Console.ReadLine();
         return resp;
     }
+
+    public void Home(int col, int lin)
+    {
+    }
+
 }

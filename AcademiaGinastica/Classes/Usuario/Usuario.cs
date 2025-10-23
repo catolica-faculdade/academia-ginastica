@@ -11,20 +11,40 @@ public class Usuario
     }
 
     public void Login(){
-        tela.PrepararTela("LOGIN");
-        tela.Perguntar(17, 15, "Nome de usuario: ");
-        this.nome = Console.ReadLine();
-        tela.Perguntar(17, 17, "Senha do usuario: ");
-        this.senha = Console.ReadLine();
+        bool entrou = false;
+        while (!entrou){
+            tela.PrepararTela("LOGIN");
+            this.nome = tela.Perguntar(17, 15, "Nome de usuario: ");
+            this.senha = tela.Perguntar(17, 17, "Senha do usuario: ");
 
-        //this.tela.Home();
+            //provisório
+            if(nome == "admin" && senha == "admin"){
+                entrou = true;
+            } else {
+                tela.Perguntar(17, 15, "Dados incorretos, deseja tentar novamente? [1] - Sim [1] - Nao: ");
+                if(novamente == 2){
+                    return;
+                }
+            }
+        }
+        tela.Home();
     }
 
     public void Cadastrar(){
-        tela.PrepararTela("CADASTRAR");
-        tela.Perguntar(17, 15, "Nome de usuario: ");
-        this.nome = Console.ReadLine();
-        tela.Perguntar(17, 17, "Senha do usuario: ");
-        this.senha = Console.ReadLine();
+        bool dadosCorretos = false;
+        while(dadosCorretos){
+            tela.PrepararTela("CADASTRAR");
+            tela.Perguntar(17, 15, "Nome de usuario: ");
+            this.nome = Console.ReadLine();
+            tela.Perguntar(17, 17, "Senha do usuario: ");
+            this.senha = Console.ReadLine();
+
+            if(this.nome != "" || this.senha != ""){
+                dadosCorretos = true;
+            } else{
+                tela.MostrarMensagem(10, 10, "Dados invalidos, tente novamente");
+            }
+        }
+        tela.Home();
     }
 }
