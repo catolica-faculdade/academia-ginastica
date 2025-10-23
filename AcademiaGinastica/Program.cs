@@ -11,7 +11,6 @@ while (true)
 {
     tela.PrepararTela("Academia de Ginástica");
     opcao = tela.MostrarMenu(opcoes, 2, 2);
-    Console.ReadKey();
 
     switch (opcao)
     {
@@ -19,7 +18,7 @@ while (true)
             usuario.Login();
             break;
         case "2":
-            usuario.Cadastrar();
+            usuario.  ();
             break;
         case "0":
             break;

@@ -21,13 +21,14 @@ public class Usuario
             if(nome == "admin" && senha == "admin"){
                 entrou = true;
             } else {
-                tela.Perguntar(17, 15, "Dados incorretos, deseja tentar novamente? [1] - Sim [1] - Nao: ");
-                if(novamente == 2){
+                tela.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
+                var novamente = tela.Perguntar(17, 20, "[1] - Sim [2] - Nao: ");
+                if(novamente == "2"){
                     return;
                 }
             }
         }
-        tela.Home();
+        tela.Home(10, 10);
     }
 
     public void Cadastrar(){
@@ -42,9 +43,9 @@ public class Usuario
             if(this.nome != "" || this.senha != ""){
                 dadosCorretos = true;
             } else{
-                tela.MostrarMensagem(10, 10, "Dados invalidos, tente novamente");
+                tela.MostrarMensagem(17, 19, "Dados invalidos, tente novamente");
             }
         }
-        tela.Home();
+        tela.Home(10, 10);
     }
 }
