@@ -33,12 +33,10 @@ public class Usuario
 
     public void Cadastrar(){
         bool dadosCorretos = false;
-        while(dadosCorretos){
+        while(!dadosCorretos){
             tela.PrepararTela("CADASTRAR");
-            tela.Perguntar(17, 15, "Nome de usuario: ");
-            this.nome = Console.ReadLine();
-            tela.Perguntar(17, 17, "Senha do usuario: ");
-            this.senha = Console.ReadLine();
+            this.nome = tela.Perguntar(17, 15, "Nome de usuario: ");
+            this.senha = tela.Perguntar(17, 17, "Senha do usuario: ");
 
             if(this.nome != "" || this.senha != ""){
                 dadosCorretos = true;
