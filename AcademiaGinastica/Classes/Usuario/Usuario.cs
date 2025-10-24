@@ -7,7 +7,7 @@ public class Usuario
 
     public Usuario()
     {
-        this.tela = new Tela(46, 9, 15, 12); 
+        this.tela = new Tela(46, 12, 15, 12); 
     }
 
     public void Login(){
@@ -22,7 +22,7 @@ public class Usuario
                 entrou = true;
             } else {
                 tela.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
-                var novamente = tela.Perguntar(17, 20, "[1] - Sim [2] - Nao: ");
+                var novamente = tela.Perguntar(17, 20, "[1] - Sim \n [2] - Nao: ");
                 if(novamente == "2"){
                     return;
                 }
@@ -38,10 +38,16 @@ public class Usuario
             this.nome = tela.Perguntar(17, 15, "Nome de usuario: ");
             this.senha = tela.PerguntarSenha(17, 17, "Senha do usuario: ");
 
-            if(this.nome != "" || this.senha != ""){
+            if(this.nome != "" && this.senha != ""){
                 dadosCorretos = true;
             } else{
-                tela.MostrarMensagem(17, 19, "Dados invalidos, tente novamente");
+                tela.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
+                tela.MostrarMensagem(17, 20, "[1] - Sim");
+                tela.MostrarMensagem(17, 21, "[2] - Nao");
+                var novamente = tela.Perguntar(17, 22, "");
+                if(novamente == "2"){
+                    return;
+                }
             }
         }
 
