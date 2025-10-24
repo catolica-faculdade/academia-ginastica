@@ -36,7 +36,7 @@ public class Usuario
         while(!dadosCorretos){
             tela.PrepararTela("CADASTRAR");
             this.nome = tela.Perguntar(17, 15, "Nome de usuario: ");
-            this.senha = tela.Perguntar(17, 17, "Senha do usuario: ");
+            this.senha = tela.PerguntarSenha(17, 17, "Senha do usuario: ");
 
             if(this.nome != "" || this.senha != ""){
                 dadosCorretos = true;
@@ -44,6 +44,8 @@ public class Usuario
                 tela.MostrarMensagem(17, 19, "Dados invalidos, tente novamente");
             }
         }
+
         tela.Home(10, 10);
     }
+
 }
