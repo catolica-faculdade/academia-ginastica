@@ -142,6 +142,30 @@ public class Tela
         return resp;
     }
 
+    public string PerguntarSenha(int col, int lin, string texto){
+        Console.SetCursorPosition(col, lin);
+        Console.Write(texto);
+        string senha = "";
+
+        ConsoleKeyInfo tecla;
+
+        do
+        {
+            tecla = Console.ReadKey(true);
+            if (tecla.Key != ConsoleKey.Backspace && tecla.Key != ConsoleKey.Enter)
+            {
+                senha += tecla.KeyChar;
+                Console.Write("*");
+            }
+            else if (tecla.Key == ConsoleKey.Backspace && senha.Length > 0)
+            {
+                senha = senha.Substring(0, senha.Length - 1);
+                Console.Write("\b \b");
+            }
+        } while (tecla.Key != ConsoleKey.Enter);
+        return senha;
+    }
+
     public void Home(int col, int lin)
     {
     }
