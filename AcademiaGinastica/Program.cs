@@ -1,4 +1,4 @@
-﻿Tela tela = new Tela(80,25);
+﻿Tela tela = new Tela(90,25);
 Usuario usuario = new Usuario();
 
 string opcao;
