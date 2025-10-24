@@ -18,7 +18,7 @@ while (true)
             usuario.Login();
             break;
         case "2":
-            usuario.  ();
+            usuario.Cadastrar();
             break;
         case "0":
             break;
