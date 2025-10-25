@@ -28,3 +28,18 @@ C:\Users\scmco\Desktop\outros\academia-ginastica\AcademiaGinastica\bin\Debug\net
 C:\Users\scmco\Desktop\outros\academia-ginastica\AcademiaGinastica\bin\Debug\net9.0\AcademiaGinastica.pdb
 C:\Users\scmco\Desktop\outros\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.genruntimeconfig.cache
 C:\Users\scmco\Desktop\outros\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\ref\AcademiaGinastica.dll
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\bin\Debug\net9.0\AcademiaGinastica.exe
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\bin\Debug\net9.0\AcademiaGinastica.deps.json
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\bin\Debug\net9.0\AcademiaGinastica.runtimeconfig.json
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\bin\Debug\net9.0\AcademiaGinastica.dll
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\bin\Debug\net9.0\AcademiaGinastica.pdb
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.AssemblyInfoInputs.cache
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.AssemblyInfo.cs
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.csproj.CoreCompileInputs.cache
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.sourcelink.json
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.dll
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\refint\AcademiaGinastica.dll
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.pdb
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\AcademiaGinastica.genruntimeconfig.cache
+C:\Users\Pichau\OneDrive\Área de Trabalho\Projetos\faculdade\academia-ginastica\AcademiaGinastica\obj\Debug\net9.0\ref\AcademiaGinastica.dll

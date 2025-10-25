@@ -22,7 +22,9 @@ public class Usuario
                 entrou = true;
             } else {
                 tela.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
-                var novamente = tela.Perguntar(17, 20, "[1] - Sim \n [2] - Nao: ");
+                tela.MostrarMensagem(17, 20, "[1] - Sim");
+                tela.MostrarMensagem(17, 21, "[2] - Nao");
+                var novamente = tela.Perguntar(17, 22, "");
                 if(novamente == "2"){
                     return;
                 }
