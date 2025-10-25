@@ -1,6 +1,8 @@
 public class Aula
 {
-    private string materia;
+    private int id;
+    private string modalidade;
+    private int vagas;
 
     public Aula(string materia)
     {

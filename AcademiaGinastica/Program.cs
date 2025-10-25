@@ -4,7 +4,7 @@ Usuario usuario = new Usuario();
 string opcao;
 List<string> opcoes = new List<string>();
 opcoes.Add("1 - Entrar      ");
-opcoes.Add("2 - Cadastrar-se");
+//opcoes.Add("2 - Cadastrar-se");
 opcoes.Add("0 - Sair        ");
 
 while (true)
@@ -18,7 +18,7 @@ while (true)
             usuario.Login();
             break;
         case "2":
-            usuario.Cadastrar();
+            //usuario.Cadastrar();
             break;
         case "0":
             break;
