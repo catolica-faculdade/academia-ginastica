@@ -133,7 +133,7 @@ public class Tela
         Console.SetCursorPosition(col, lin);
         Console.Write(msg);
     }
-    public string Perguntar(int col, int lin, string pergunta)
+    static public string Perguntar(int col, int lin, string pergunta)
     {
         string resp = "";
         Console.SetCursorPosition(col, lin);
@@ -164,6 +164,59 @@ public class Tela
             }
         } while (tecla.Key != ConsoleKey.Enter);
         return senha;
+    }
+
+    public void Login(){
+        bool entrou = false;
+        while (!entrou){
+            this.PrepararTela("LOGIN");
+            var nome = Perguntar(17, 15, "Nome de usuario: ");
+            var senha = Perguntar(17, 17, "Senha do usuario: ");
+
+            //provisório
+            if (nome != "" && senha != "")
+            {
+                Usuario usuario = Usuario.Logar(nome, senha);
+            }
+            else
+            {
+                this.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
+                this.MostrarMensagem(17, 20, "[1] - Sim");
+                this.MostrarMensagem(17, 21, "[2] - Nao");
+                var novamente = Perguntar(17, 22, "");
+                if (novamente == "2")
+                {
+                    return;
+                }
+            }
+        }
+        this.Home(10, 10);
+    }
+
+    public void Cadastrar(){
+        bool dadosCorretos = false;
+        var nome = "";
+        var senha = "";
+
+        while(!dadosCorretos){
+            this.PrepararTela("CADASTRAR");
+            nome = Perguntar(17, 15, "Nome de usuario: ");
+            senha = this.PerguntarSenha(17, 17, "Senha do usuario: ");
+
+            if(nome != "" && senha != ""){
+                dadosCorretos = true;
+            } else{
+                this.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
+                this.MostrarMensagem(17, 20, "[1] - Sim");
+                this.MostrarMensagem(17, 21, "[2] - Nao");
+                var novamente = Perguntar(17, 22, "");
+                if(novamente == "2"){
+                    return;
+                }
+            }
+        }
+
+        this.Home(10, 10);
     }
 
     public void Home(int col, int lin)
