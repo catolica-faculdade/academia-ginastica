@@ -1,6 +1,7 @@
 public class Agenda
 {
     private int id;
+    private Cliente cliente;
     private List<Aula> aulas;
 
     public Agenda()
