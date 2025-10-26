@@ -4,8 +4,13 @@ public class Auditoria : Funcionario
     {
 
     }
+
+    public void VerificarPagamentos()
+    {
+
+    }
     
-    public void GerarPagamentos()
+    public void VerificarPagamentoPorCliente()
     {
         
     }

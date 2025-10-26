@@ -1,0 +1,1 @@
+public enum Cargo{ admin, atendente, auditoria, gerente, instrutor}

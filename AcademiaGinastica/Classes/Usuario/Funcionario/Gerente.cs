@@ -4,8 +4,12 @@ public class Gerente : Funcionario
     {
 
     }
-    
-    public void GerarDemandas()
+
+    public void GerarListaModalidade()
+    {
+
+    }
+    public void AgendarAula()
     {
         
     }
