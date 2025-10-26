@@ -1,8 +1,11 @@
 public class Aula
 {
     private int id;
-    private string modalidade;
-    public DateTime horario;
+    private string nome;
+    private Modalidade modalidade;
+    private Instrutor instrutor;
+    public DateTime horarioInicio;
+    public DateTime horarioFim;
     public List<Cliente> clientes;
     private int lotacao;
 

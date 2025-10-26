@@ -4,8 +4,13 @@ public class Administrador : Funcionario
     {
 
     }
-    
+
     public void GerarRelatorio()
+    {
+
+    }
+    
+    public void GerarRelatorioPorCliente()
     {
         
     }

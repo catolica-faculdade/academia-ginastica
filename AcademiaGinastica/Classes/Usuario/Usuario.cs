@@ -1,9 +1,11 @@
 public class Usuario
 {
     private int id;
-    private string nome;
+    private string nomeCompleto;
+    private string CPF;
+    private string email;
     private string senha;
-    private string tipoUsuario;
+    private string telefone;
     private Tela tela;
 
     public Usuario(string nome, string senha, string tipoUsuario)
