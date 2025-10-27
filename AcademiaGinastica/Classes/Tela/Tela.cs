@@ -247,15 +247,22 @@ public class Tela
             switch (opcao)
             {
                 case "1":
+                    tela.CadastrarUsuario();
                     break;
                 case "2":
+                    tela.CadastrarAula();
                     break;
                 case "3":
+                    tela.VerificarAgendas();
                     break;
                 case "4":
+                    tela.VerificarClientes();
                     break;
                 case "5":
+                    tela.VerificarFuncionarios();
                     break;
+                case "0":
+                    return;
                 default:
                     tela.MostrarMensagem(10, 10, "Escolha inválida, digite 1 (Entrar) ou 2 (Cadastrar-se)");
                     break;
@@ -266,6 +273,27 @@ public class Tela
                 return;
             }
         }
+    }
+
+    public void CadastrarUsuario()
+    {
+
+    }
+    public void CadastrarAula()
+    {
+
+    }
+    public void VerificarAgendas()
+    {
+
+    }
+    public void VerificarClientes()
+    {
+        
+    }
+    public void VerificarFuncionarios()
+    {
+        
     }
 
 }
