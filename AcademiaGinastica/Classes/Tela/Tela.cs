@@ -10,6 +10,7 @@ public class Tela
     private int altura;
     private int colunaInicial;
     private int linhaInicial;
+    private Usuario usuarioLogado;
 
     //
     // métodos
@@ -179,7 +180,7 @@ public class Tela
             //provisório
             if (nome != "" && senha != "")
             {
-                Usuario usuario = Usuario.Logar(nome, senha);
+                this.usuarioLogado = Usuario.Logar(nome, senha);
             }
             else
             {
