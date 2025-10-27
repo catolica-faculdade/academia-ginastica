@@ -305,7 +305,7 @@ public class Tela
                 case "6":
                     break;
                 default:
-                    MostrarMensagem(10, 10, "Escolha inválida, digite 1 (Entrar) ou 2 (Cadastrar-se)");
+                    MostrarMensagem(10, 10, "Escolha inválida, digite novamente");
                     break;
             }
             if (opcao == "0")
