@@ -1,4 +1,4 @@
-public class UsuarioCRUD
+public class UsuarioController
 {
     private List<Usuario> usuarios;
     private Usuario usuario;
@@ -6,7 +6,7 @@ public class UsuarioCRUD
     private List<string> dados = new List<string>();
     private Tela tela;
 
-    public UsuarioCRUD()
+    public UsuarioController()
     {
         this.usuarios = new List<Usuario>();
         this.usuario = new Usuario();
