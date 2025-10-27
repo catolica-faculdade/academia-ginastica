@@ -230,7 +230,6 @@ public class Tela
 
     public void Home(int col, int lin)
     {
-        Tela tela = new Tela(90, 25);
         string opcao;
         List<string> opcoes = new List<string>();
         opcoes.Add("1 - Cadastrar novo Usuario  ");
@@ -241,30 +240,28 @@ public class Tela
         opcoes.Add("0 - Voltar                  ");
         while (true)
         {
-            tela.PrepararTela("MENU");
-            opcao = tela.MostrarMenu(opcoes, 2, 2);
+            PrepararTela("MENU");
+            opcao = MostrarMenu(opcoes, 2, 2);
 
             switch (opcao)
             {
                 case "1":
-                    tela.CadastrarUsuario();
+                    CadastrarUsuario();
                     break;
                 case "2":
-                    tela.CadastrarAula();
+                    CadastrarAula();
                     break;
                 case "3":
-                    tela.VerificarAgendas();
+                    VerificarAgendas();
                     break;
                 case "4":
-                    tela.VerificarClientes();
+                    VerificarClientes();
                     break;
                 case "5":
-                    tela.VerificarFuncionarios();
+                    VerificarFuncionarios();
                     break;
-                case "0":
-                    return;
                 default:
-                    tela.MostrarMensagem(10, 10, "Escolha inválida, digite 1 (Entrar) ou 2 (Cadastrar-se)");
+                    MostrarMensagem(10, 10, "Escolha inválida, digite 1 (Entrar) ou 2 (Cadastrar-se)");
                     break;
             }
             if (opcao == "0")
@@ -277,11 +274,49 @@ public class Tela
 
     public void CadastrarUsuario()
     {
+        string opcao;
+        List<string> opcoes = new List<string>();
+        opcoes.Add("[1] - Cliente       ");
+        opcoes.Add("[2] - Administrador ");
+        opcoes.Add("[3] - Atendente     ");
+        opcoes.Add("[4] - Auditoria     ");
+        opcoes.Add("[5] - Gerente       ");
+        opcoes.Add("[6] - Instrutor     ");
+        opcoes.Add("[0] - Voltar        ");
 
+        while (true)
+        {
+            PrepararTela("CADASTRO DE USUARIOS");
+            MostrarMensagem(2, 2, "Selecione a categoria do novo usuario:");
+            opcao = MostrarMenu(opcoes, 2, 4);
+
+            switch (opcao)
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                case "6":
+                    break;
+                default:
+                    MostrarMensagem(10, 10, "Escolha inválida, digite 1 (Entrar) ou 2 (Cadastrar-se)");
+                    break;
+            }
+            if (opcao == "0")
+            {
+                Console.Clear();
+                return;
+            }
+        }
     }
     public void CadastrarAula()
     {
-
     }
     public void VerificarAgendas()
     {
