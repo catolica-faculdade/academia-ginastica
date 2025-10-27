@@ -260,6 +260,9 @@ public class Tela
                 case "5":
                     VerificarFuncionarios();
                     break;
+                case "0":
+                    VerificarFuncionarios();
+                    break;
                 default:
                     MostrarMensagem(10, 10, "Escolha inválida, digite 1 (Entrar) ou 2 (Cadastrar-se)");
                     break;
@@ -304,6 +307,8 @@ public class Tela
                     break;
                 case "6":
                     break;
+                case "0":
+                    break;
                 default:
                     MostrarMensagem(10, 10, "Escolha inválida, digite novamente");
                     break;
@@ -324,11 +329,11 @@ public class Tela
     }
     public void VerificarClientes()
     {
-        
+
     }
     public void VerificarFuncionarios()
     {
-        
+
     }
 
 }
