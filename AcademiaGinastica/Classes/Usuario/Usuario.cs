@@ -1,6 +1,5 @@
 public class Usuario
 {
-    private int id;
     private string nomeCompleto;
     private string CPF;
     private string email;
@@ -8,16 +7,16 @@ public class Usuario
     private string telefone;
     private Tela tela;
 
-    public Usuario(string nome, string senha)
+    public Usuario(string nomeCompleto, string CPF, string email, string senha, string telefone)
     {
-        this.nomeCompleto = nome;
+        this.nomeCompleto = nomeCompleto;
         this.senha = senha;
         this.tela = new Tela(46, 12, 15, 12); 
     }
 
-    static public Usuario Logar(string nome, string senha)
+    static public Usuario Logar(string nomeCompleto, string CPF, string email, string senha, string telefone)
     {
-        Usuario usuario = new Usuario(nome, senha);
+        Usuario usuario = new Usuario(nomeCompleto, CPF, email, senha, telefone);
         return usuario;
     }
 

@@ -1,11 +1,25 @@
 public class Cliente : Usuario
 {
-    private string metodoPagamento;
-    private Modalidade modalidadeFavorita;
-    private string status;
-    public Cliente(int id, string nome, string cpf, string email, string senha, string telefone, string enderecoCompleto, Cargo cargo)
-    {
+    private string? metodoPagamento;
+    private Modalidade? modalidadeFavorita;
+    private string? status;
+    private string enderecoCompleto;
+    private Cargo cargo;
 
+    public Cliente(
+        int id,
+        string nomeCompleto,
+        string cpf,
+        string email,
+        string senha,
+        string telefone,
+        string enderecoCompleto,
+        Cargo cargo
+    ) 
+        : base(nomeCompleto, cpf, email, senha, telefone) 
+    {
+        this.enderecoCompleto = enderecoCompleto;
+        this.cargo = cargo;
     }
 
     public void RegistrarPresenca()
@@ -17,6 +31,7 @@ public class Cliente : Usuario
     {
 
     }
+
     public void DesmarcarAula(Aula aula)
     {
 
