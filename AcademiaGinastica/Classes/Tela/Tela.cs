@@ -142,7 +142,8 @@ public class Tela
         return resp;
     }
 
-    public string PerguntarSenha(int col, int lin, string texto){
+    public string PerguntarSenha(int col, int lin, string texto)
+    {
         Console.SetCursorPosition(col, lin);
         Console.Write(texto);
         string senha = "";
@@ -166,9 +167,11 @@ public class Tela
         return senha;
     }
 
-    public void Login(){
+    public void Login()
+    {
         bool entrou = false;
-        while (!entrou){
+        while (!entrou)
+        {
             this.PrepararTela("LOGIN");
             var nome = Perguntar(17, 15, "Nome de usuario: ");
             var senha = Perguntar(17, 17, "Senha do usuario: ");
@@ -193,24 +196,30 @@ public class Tela
         this.Home(10, 10);
     }
 
-    public void Cadastrar(){
+    public void Cadastrar()
+    {
         bool dadosCorretos = false;
         var nome = "";
         var senha = "";
 
-        while(!dadosCorretos){
+        while (!dadosCorretos)
+        {
             this.PrepararTela("CADASTRAR");
             nome = Perguntar(17, 15, "Nome de usuario: ");
             senha = this.PerguntarSenha(17, 17, "Senha do usuario: ");
 
-            if(nome != "" && senha != ""){
+            if (nome != "" && senha != "")
+            {
                 dadosCorretos = true;
-            } else{
+            }
+            else
+            {
                 this.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
                 this.MostrarMensagem(17, 20, "[1] - Sim");
                 this.MostrarMensagem(17, 21, "[2] - Nao");
                 var novamente = Perguntar(17, 22, "");
-                if(novamente == "2"){
+                if (novamente == "2")
+                {
                     return;
                 }
             }
@@ -221,6 +230,42 @@ public class Tela
 
     public void Home(int col, int lin)
     {
+        Tela tela = new Tela(90, 25);
+        string opcao;
+        List<string> opcoes = new List<string>();
+        opcoes.Add("1 - Cadastrar novo Usuario  ");
+        opcoes.Add("2 - Cadastrar nova Aula     ");
+        opcoes.Add("3 - Verificar Agendas       ");
+        opcoes.Add("4 - Verificar Clientes      ");
+        opcoes.Add("5 - Verificar Funcionarios  ");
+        opcoes.Add("0 - Voltar                  ");
+        while (true)
+        {
+            tela.PrepararTela("MENU");
+            opcao = tela.MostrarMenu(opcoes, 2, 2);
+
+            switch (opcao)
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                default:
+                    tela.MostrarMensagem(10, 10, "Escolha inválida, digite 1 (Entrar) ou 2 (Cadastrar-se)");
+                    break;
+            }
+            if (opcao == "0")
+            {
+                Console.Clear();
+                return;
+            }
+        }
     }
 
 }

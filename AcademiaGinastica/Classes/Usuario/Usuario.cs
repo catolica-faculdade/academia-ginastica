@@ -14,9 +14,9 @@ public class Usuario
         this.tela = new Tela(46, 12, 15, 12); 
     }
 
-    static public Usuario Logar(string nomeCompleto, string CPF, string email, string senha, string telefone)
+    static public Usuario Logar(string nome, string senha)
     {
-        Usuario usuario = new Usuario(nomeCompleto, CPF, email, senha, telefone);
+        Usuario usuario = new Usuario("","","","","");
         return usuario;
     }
 
