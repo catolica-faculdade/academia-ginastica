@@ -1,0 +1,1 @@
+//fazer aqui as funções para quando iniciar o sistema já ter dados
