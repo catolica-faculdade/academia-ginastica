@@ -4,8 +4,6 @@ public class Cliente : Usuario
     private Modalidade? modalidadeFavorita;
     private string? status;
     private string enderecoCompleto;
-    private Cargo cargo;
-
     public Cliente(
         string nomeCompleto,
         string cpf,
@@ -13,8 +11,8 @@ public class Cliente : Usuario
         string senha,
         string telefone,
         string enderecoCompleto
-    ) 
-        : base(nomeCompleto, cpf, email, senha, telefone) 
+    )
+        : base(nomeCompleto, cpf, email, senha, telefone)
     {
         this.enderecoCompleto = enderecoCompleto;
     }
