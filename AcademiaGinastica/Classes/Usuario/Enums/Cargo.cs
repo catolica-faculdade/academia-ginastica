@@ -1,1 +1,1 @@
-public enum Cargo{cliente, admin, atendente, auditoria, gerente, instrutor}
+public enum Cargo{admin, atendente, auditoria, gerente, instrutor}

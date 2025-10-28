@@ -1,6 +1,7 @@
 public class Funcionario : Usuario
 {
     private decimal salario;
+    private Cargo cargo;
     public Funcionario(
         string nomeCompleto,
         string cpf,

@@ -143,7 +143,7 @@ public class Tela
         return resp;
     }
 
-    public string PerguntarSenha(int col, int lin, string texto)
+    static public string PerguntarSenha(int col, int lin, string texto)
     {
         Console.SetCursorPosition(col, lin);
         Console.Write(texto);
@@ -181,6 +181,7 @@ public class Tela
             if (nome != "" && senha != "")
             {
                 this.usuarioLogado = Usuario.Logar(nome, senha);
+                entrou = true;
             }
             else
             {
@@ -207,7 +208,7 @@ public class Tela
         {
             this.PrepararTela("CADASTRAR");
             nome = Perguntar(17, 15, "Nome de usuario: ");
-            senha = this.PerguntarSenha(17, 17, "Senha do usuario: ");
+            senha = PerguntarSenha(17, 17, "Senha do usuario: ");
 
             if (nome != "" && senha != "")
             {
@@ -294,30 +295,18 @@ public class Tela
             MostrarMensagem(2, 2, "Selecione a categoria do novo usuario:");
             opcao = MostrarMenu(opcoes, 2, 4);
 
-            switch (opcao)
-            {
-                case "1":
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                case "4":
-                    break;
-                case "5":
-                    break;
-                case "6":
-                    break;
-                case "0":
-                    break;
-                default:
-                    MostrarMensagem(10, 10, "Escolha inválida, digite novamente");
-                    break;
-            }
+
             if (opcao == "0")
             {
                 Console.Clear();
                 return;
+            }
+            else
+            {
+                Tela tela = new Tela(46, 20);
+                tela.PrepararTela("CADASTRO DE USUARIO");
+                Usuario.Cadastrar(opcao);
+                
             }
         }
     }

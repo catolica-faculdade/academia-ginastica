@@ -5,8 +5,7 @@ public class Usuario
     private string email;
     private string senha;
     private string telefone;
-    private Cargo cargo;
-    private Tela tela;
+    private Tela? tela;
 
     public Usuario(string nomeCompleto, string CPF, string email, string senha, string telefone)
     {
@@ -22,7 +21,21 @@ public class Usuario
 
     static public Usuario Logar(string nome, string senha)
     {
-        Usuario usuario = new Usuario("","","","","");
+        Usuario usuario = new Usuario("", "", "", "", "");
+        return usuario;
+    }
+
+
+    static public string[] Cadastrar(string tipoCargo)
+    {
+
+        string nomeCompleto = Tela.Perguntar(2, 2, "Digite o nome completo do usuario");
+        string CPF = Tela.Perguntar(2, 2, "Digite o CPF do usuario");
+        string email = Tela.Perguntar(2, 2, "Digite o email do usuario");
+        string senha = Tela.PerguntarSenha(2, 2, "Digite a senha do usuario");
+
+        string[] usuario = [nomeCompleto, CPF, email, senha];
+
         return usuario;
     }
 
