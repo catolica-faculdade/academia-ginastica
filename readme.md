@@ -14,3 +14,11 @@ Entregas:
 - Caso de uso, Classe em diagrama e XML
 - Arquivo word com requisitos, caso de uso, e diagrama de classe, telas e fluxo principal/alternativo
 - ZIP com o app e dois arquivos (XML diagrama de caso de uso e XML diagrama de classe)
+
+requisitos estrutura:
+
+identificacao
+modulo
+prioridade
+complexidade
+épico
