@@ -22,3 +22,7 @@ modulo
 prioridade
 complexidade
 épico
+
+regra de negócio (requisito) estrutura:
+
+perguntas: como, o quê, para quê
