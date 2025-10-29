@@ -1,15 +1,15 @@
-public class UsuarioController
+public class FuncionarioController
 {
-    public List<Usuario> usuarios;
-    private Usuario usuario;
+    public List<Funcionario> funcionarios;
+    private Funcionario funcionario;
     private int posicao;
     private List<string> dados = new List<string>();
     private Tela tela;
 
-    public UsuarioController()
+    public FuncionarioController()
     {
-        this.usuarios = new List<Usuario>();
-        this.usuario = new Usuario();
+        this.funcionarios = new List<Funcionario>();
+        this.funcionario = new Funcionario();
         this.posicao = -1;
         this.dados.Add("Nome completo   :");
         this.dados.Add("CPF             :");
@@ -36,22 +36,10 @@ public class UsuarioController
             decimal.TryParse(salarioStr, out salario);
         }
 
-        Usuario novoUsuario = null;
+        Funcionario novoUsuario = null;
 
         switch (tipoCargo)
         {
-            case "1":
-                novoUsuario = new Cliente()
-                {
-                    nomeCompleto = nomeCompleto,
-                    CPF = CPF,
-                    email = email,
-                    telefone = telefone,
-                    enderecoCompleto = enderecoCompleto,
-                    senha = senha,
-                };
-                break;
-
             case "2":
                 novoUsuario = new Administrador()
                 {
@@ -127,13 +115,13 @@ public class UsuarioController
                 return false;
         }
 
-        this.usuarios.Add(novoUsuario);
+        this.funcionarios.Add(novoUsuario);
         return true;
     }
-    public void ListarUsuarios()
+    public void ListarFuncionarios()
     {
 
-        if (this.usuarios.Count == 0)
+        if (this.funcionarios.Count == 0)
         {
             Console.Write("Não há usuários cadastrados.");
             Console.ReadKey();
@@ -141,12 +129,32 @@ public class UsuarioController
         }
         this.tela.MostrarMensagem(3, 3, "USUARIOS : ");
 
-        for (int i = 0; i < usuarios.Count; i++)
+        for (int i = 0; i < funcionarios.Count; i++)
         {
-            this.tela.MostrarMensagem(4, 5 + i * 2, $"{i + 1}. {usuarios[i].nomeCompleto}");
+            this.tela.MostrarMensagem(4, 5 + i * 2, $"{i + 1}. {funcionarios[i].nomeCompleto}");
+            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].CPF);
+            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].telefone);
+            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].email);
+            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].enderecoCompleto);
         }
 
         Console.ReadKey();
     }
+    public void VerFuncionario(int i)
+    {
+        this.funcionario = funcionarios[i];
+        this.tela.MostrarMensagem(4, 5, $"{i + 1}. {funcionarios[i].nomeCompleto}");
+        this.tela.MostrarMensagem(4, 6, funcionarios[i].CPF);
+        this.tela.MostrarMensagem(4, 7, funcionarios[i].telefone);
+        this.tela.MostrarMensagem(4, 8, funcionarios[i].email);
+        this.tela.MostrarMensagem(4, 9, funcionarios[i].enderecoCompleto);
+    }
+    public void ApagarFuncionario()
+    {
+        
+    }
+    public void AlterarFuncionario()
+    {
 
+    }
 }
