@@ -16,6 +16,7 @@ public class FuncionarioController
         this.dados.Add("Email           :");
         this.dados.Add("Telefone        :");
         this.dados.Add("Cargo           :");
+        this.dados.Add("Salario         :");
 
         this.tela = new Tela();
     }
@@ -136,6 +137,8 @@ public class FuncionarioController
             this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].telefone);
             this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].email);
             this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].enderecoCompleto);
+            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].cargo.ToString());
+            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].salario.ToString());
         }
 
         Console.ReadKey();
@@ -148,10 +151,12 @@ public class FuncionarioController
         this.tela.MostrarMensagem(4, 7, funcionarios[i].telefone);
         this.tela.MostrarMensagem(4, 8, funcionarios[i].email);
         this.tela.MostrarMensagem(4, 9, funcionarios[i].enderecoCompleto);
+        this.tela.MostrarMensagem(4, 10, funcionarios[i].cargo.ToString());
+        this.tela.MostrarMensagem(4, 11, funcionarios[i].salario.ToString());
     }
-    public void ApagarFuncionario()
+    public void ApagarFuncionario(int id)
     {
-        
+        this.funcionarios.RemoveAt(id-1);
     }
     public void AlterarFuncionario()
     {

@@ -81,9 +81,9 @@ public class ClienteController
         this.tela.MostrarMensagem(4, 8, clientes[i].email);
         this.tela.MostrarMensagem(4, 9, clientes[i].enderecoCompleto);
     }
-    public void ApagarCliente()
+    public void ApagarCliente(int id)
     {
-        
+        this.clientes.RemoveAt(id-1);
     }
     public void AlterarCliente()
     {
