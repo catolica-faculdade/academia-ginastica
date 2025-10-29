@@ -15,6 +15,7 @@ public class Tela
     //
     // métodos
     //
+    public Tela(){}
     public Tela(int largura, int altura)
     {
         this.largura = largura;
@@ -169,7 +170,7 @@ public class Tela
         return senha;
     }
 
-    public void Login()
+    public bool Login()
     {
         bool entrou = false;
         while (!entrou)
@@ -182,7 +183,6 @@ public class Tela
             //provisório
             if (nome != "" && senha != "")
             {
-                this.usuarioLogado = Usuario.Logar(nome, senha);
                 entrou = true;
             }
             else
@@ -193,11 +193,11 @@ public class Tela
                 var novamente = Perguntar(17, 22, "");
                 if (novamente == "2")
                 {
-                    return;
+                    return true;
                 }
             }
         }
-        this.Home();
+        return entrou;
     }
 
     public void Cadastrar()
@@ -232,7 +232,7 @@ public class Tela
         this.Home();
     }
 
-    public void Home()
+    public string Home()
     {
         string opcao;
         List<string> opcoes = new List<string>();
@@ -243,52 +243,20 @@ public class Tela
         opcoes.Add("[3] - Verificar Agendas       ");
         opcoes.Add("[4] - Verificar Clientes      ");
         opcoes.Add("[5] - Verificar Funcionarios  ");
-        opcoes.Add("[0] - Voltar                  ");
+        opcoes.Add("[0] - SAIR                    ");
         PrepararTela("MENU");
         MostrarSubMenu(59, 2, 88, 10, "AGENDAMENTOS", dadosAgendamentos);
-        MostrarSubMenu(59, 12, 88, 17, "ACONTECENDO AGORA", acontecendoAgora);
-        while (true)
-        {
-            opcao = MostrarMenu(opcoes, 2, 2, "[NAVEGAR]");
-            switch (opcao)
-            {
-                case "1":
-                    CadastrarUsuario();
-                    break;
-                case "2":
-                    CadastrarAula();
-                    break;
-                case "3":
-                    VerificarAgendas();
-                    break;
-                case "4":
-                    VerificarClientes();
-                    break;
-                case "5":
-                    VerificarFuncionarios();
-                    break;
-                case "0":
-                    VerificarFuncionarios();
-                    break;
-                default:
-                    MostrarMensagem(10, 10, "Escolha inválida, digite 1 (Entrar) ou 2 (Cadastrar-se)");
-                    break;
-            }
-            if (opcao == "0")
-            {
-                Console.Clear();
-                return;
-            }
-        }
+        MostrarSubMenu(59, 12, 88, 15, "ACONTECENDO AGORA", acontecendoAgora);
+        return opcao = MostrarMenu(opcoes, 2, 2, "[NAVEGAR]");
     }
 
     public void MostrarSubMenu(int ci, int li, int cf, int lf, string nomeMenu, List<string> dados)
     {
         MontarMoldura(ci, li, cf, lf);
-        this.MostrarMensagem(ci+1, li, $"[{nomeMenu}]");
+        this.MostrarMensagem(ci + 1, li, $"[{nomeMenu}]");
     }
 
-    public void CadastrarUsuario()
+    public string CadastrarUsuario()
     {
         string opcao;
         List<string> opcoes = new List<string>();
@@ -300,26 +268,11 @@ public class Tela
         opcoes.Add("[6] - Instrutor     ");
         opcoes.Add("[0] - Voltar        ");
 
-        while (true)
-        {
-            PrepararTela("CADASTRO DE USUARIOS");
-            MostrarMensagem(2, 2, "Selecione a categoria do novo usuario:");
-            opcao = MostrarMenu(opcoes, 2, 4);
+        PrepararTela("CADASTRO DE USUARIOS");
+        MostrarMensagem(2, 2, "Selecione a categoria do novo usuario:");
+        opcao = MostrarMenu(opcoes, 2, 4);
 
-
-            if (opcao == "0")
-            {
-                Console.Clear();
-                return;
-            }
-            else
-            {
-                Tela tela = new Tela(46, 20);
-                tela.PrepararTela("CADASTRO DE USUARIO");
-                Usuario.Cadastrar(opcao);
-                
-            }
-        }
+        return opcao;
     }
     public void CadastrarAula()
     {
@@ -328,9 +281,18 @@ public class Tela
     {
 
     }
-    public void VerificarClientes()
+    public string VerificarClientes()
     {
+        string opcao;
+        List<string> opcoes = new List<string>();
+        opcoes.Add("[1] - Listar");
+        opcoes.Add("[0] - Voltar");
 
+        PrepararTela("VERIFICAR CLIENTES");
+        MostrarMensagem(2, 2, "Selecione a operacao:");
+        opcao = MostrarMenu(opcoes, 2, 4);
+
+        return opcao;
     }
     public void VerificarFuncionarios()
     {
