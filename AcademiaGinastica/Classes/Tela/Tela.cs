@@ -285,8 +285,11 @@ public class Tela
     {
         string opcao;
         List<string> opcoes = new List<string>();
-        opcoes.Add("[1] - Listar");
-        opcoes.Add("[0] - Voltar");
+        opcoes.Add("[1] - Listar    ");
+        opcoes.Add("[1] - Apagar    ");
+        opcoes.Add("[1] - Ver       ");
+        opcoes.Add("[1] - Alterar   ");
+        opcoes.Add("[0] - Voltar    ");
 
         PrepararTela("VERIFICAR CLIENTES");
         MostrarMensagem(2, 2, "Selecione a operacao:");
@@ -294,9 +297,20 @@ public class Tela
 
         return opcao;
     }
-    public void VerificarFuncionarios()
+    public string VerificarFuncionarios()
     {
+        string opcao;
+        List<string> opcoes = new List<string>();
+        opcoes.Add("[1] - Listar    ");
+        opcoes.Add("[1] - Apagar    ");
+        opcoes.Add("[1] - Ver       ");
+        opcoes.Add("[1] - Alterar   ");
+        opcoes.Add("[0] - Voltar    ");
 
+        PrepararTela("VERIFICAR FUNCIONARIOS");
+        MostrarMensagem(2, 2, "Selecione a operacao:");
+        opcao = MostrarMenu(opcoes, 2, 4);
+
+        return opcao;
     }
-
 }
