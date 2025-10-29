@@ -1,34 +1,31 @@
 public class Cliente : Usuario
 {
-    private string? metodoPagamento;
-    private Modalidade? modalidadeFavorita;
-    private string? status;
-    private string enderecoCompleto;
+    public string? metodoPagamento { get; set; }
+    public Modalidade? modalidadeFavorita { get; set; }
+    public string? status { get; set; }
+
+    public Cliente() { }
     public Cliente(
-        string nomeCompleto,
-        string cpf,
-        string email,
-        string senha,
-        string telefone,
-        string enderecoCompleto
-    )
-        : base(nomeCompleto, cpf, email, senha, telefone)
+           string nomeCompleto,
+           string cpf,
+           string email,
+           string senha,
+           string telefone,
+           string enderecoCompleto
+       )
+           : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto)
     {
-        this.enderecoCompleto = enderecoCompleto;
     }
 
     public void RegistrarPresenca()
     {
-
     }
 
     public void AgendarAula(Aula aulaDesejada)
     {
-
     }
 
     public void DesmarcarAula(Aula aula)
     {
-
     }
 }
