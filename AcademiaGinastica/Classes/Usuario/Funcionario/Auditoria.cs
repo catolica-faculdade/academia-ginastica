@@ -1,5 +1,6 @@
 public class Auditoria : Funcionario
 {
+    public Auditoria(){}
     public Auditoria(
         string nomeCompleto,
         string cpf,
@@ -7,7 +8,8 @@ public class Auditoria : Funcionario
         string senha,
         string telefone,
         string enderecoCompleto,
-        decimal salario) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto, salario) 
+        decimal cargo,
+        decimal salario) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto, salario, cargo) 
     {
 
     }

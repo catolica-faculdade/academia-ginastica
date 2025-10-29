@@ -1,5 +1,6 @@
 public class Administrador : Funcionario
 {
+    public Administrador() { }
     public Administrador(
         string nomeCompleto,
         string cpf,
@@ -7,7 +8,8 @@ public class Administrador : Funcionario
         string senha,
         string telefone,
         string enderecoCompleto,
-        decimal salario) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto, salario)
+        decimal cargo,
+        decimal salario) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto, salario, cargo)
     {
     }
 

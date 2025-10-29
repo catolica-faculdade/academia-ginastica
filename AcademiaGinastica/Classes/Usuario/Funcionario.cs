@@ -1,7 +1,10 @@
 public class Funcionario : Usuario
 {
-    private decimal salario;
-    private Cargo cargo;
+    public decimal salario;
+    public Cargo cargo;
+
+
+    public Funcionario() { }
     public Funcionario(
         string nomeCompleto,
         string cpf,
@@ -9,10 +12,11 @@ public class Funcionario : Usuario
         string senha,
         string telefone,
         string enderecoCompleto,
-        decimal salario
-    ) : base(nomeCompleto, cpf, email, senha, telefone)
+        decimal salario,
+        decimal cargo
+    ) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto)
     {
-        
+
     }
 
 }

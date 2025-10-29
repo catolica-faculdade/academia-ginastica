@@ -1,6 +1,7 @@
 public class Instrutor : Funcionario
 {
 
+    public Instrutor(){}
     public Instrutor(
         string nomeCompleto,
         string cpf,
@@ -8,7 +9,8 @@ public class Instrutor : Funcionario
         string senha,
         string telefone,
         string enderecoCompleto,
-        decimal salario) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto, salario) 
+        decimal cargo,
+        decimal salario) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto, salario, cargo) 
     {
 
     }
