@@ -37,85 +37,40 @@ public class FuncionarioController
             decimal.TryParse(salarioStr, out salario);
         }
 
-        Funcionario novoUsuario = null;
-
+        Cargo novoCargo = Cargo.admin;
+        
         switch (tipoCargo)
         {
             case "2":
-                novoUsuario = new Funcionario()
-                {
-                    nomeCompleto = nomeCompleto,
-                    CPF = CPF,
-                    email = email,
-                    telefone = telefone,
-                    enderecoCompleto = enderecoCompleto,
-                    senha = senha,
-                    cargo = Cargo.admin,
-                    salario = salario
-                };
-
+                novoCargo = Cargo.admin;
                 break;
-
             case "3":
-                novoUsuario = new Funcionario()
-                {
-                    nomeCompleto = nomeCompleto,
-                    CPF = CPF,
-                    email = email,
-                    telefone = telefone,
-                    enderecoCompleto = enderecoCompleto,
-                    senha = senha,
-                    cargo = Cargo.atendente,
-                    salario = salario
-                };
+                novoCargo = Cargo.atendente;
                 break;
-
             case "4":
-                novoUsuario = new Funcionario()
-                {
-                    nomeCompleto = nomeCompleto,
-                    CPF = CPF,
-                    email = email,
-                    telefone = telefone,
-                    enderecoCompleto = enderecoCompleto,
-                    senha = senha,
-                    cargo = Cargo.auditoria,
-                    salario = salario
-                };
+                novoCargo = Cargo.auditoria;
                 break;
-
             case "5":
-                novoUsuario = new Funcionario()
-                {
-                    nomeCompleto = nomeCompleto,
-                    CPF = CPF,
-                    email = email,
-                    telefone = telefone,
-                    enderecoCompleto = enderecoCompleto,
-                    senha = senha,
-                    cargo = Cargo.gerente,
-                    salario = salario
-                };
+                novoCargo = Cargo.gerente;
                 break;
-
             case "6":
-                novoUsuario = new Funcionario()
-                {
-                    nomeCompleto = nomeCompleto,
-                    CPF = CPF,
-                    email = email,
-                    telefone = telefone,
-                    enderecoCompleto = enderecoCompleto,
-                    senha = senha,
-                    cargo = Cargo.instrutor,
-                    salario = salario
-                };
+                novoCargo = Cargo.instrutor;
                 break;
-
             default:
                 tela.MostrarMensagem(coluna, li + 14, "Tipo de cargo inválido!");
                 return false;
         }
+
+        Funcionario novoUsuario = new Funcionario(
+            nomeCompleto,
+            CPF,
+            email,
+            senha,
+            telefone,
+            enderecoCompleto,
+            salario,
+            novoCargo
+        );
 
         this.funcionarios.Add(novoUsuario);
         return true;

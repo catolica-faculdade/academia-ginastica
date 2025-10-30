@@ -13,7 +13,7 @@ public class Funcionario : Usuario
         string telefone,
         string enderecoCompleto,
         decimal salario,
-        decimal cargo
+        Cargo cargo
     ) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto)
     {
 
