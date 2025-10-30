@@ -16,7 +16,8 @@ public class Funcionario : Usuario
         Cargo cargo
     ) : base(nomeCompleto, cpf, email, senha, telefone, enderecoCompleto)
     {
-
+        this.salario = salario;
+        this.cargo = cargo;
     }
 
 }
