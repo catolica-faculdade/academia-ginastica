@@ -53,6 +53,7 @@ public class FuncionarioController
                     cargo = Cargo.admin,
                     salario = salario
                 };
+
                 break;
 
             case "3":
@@ -119,7 +120,7 @@ public class FuncionarioController
         this.funcionarios.Add(novoUsuario);
         return true;
     }
-    public void ListarFuncionarios()
+    public void ListarFuncionarios(int filtro = 0)
     {
 
         if (this.funcionarios.Count == 0)
@@ -140,6 +141,9 @@ public class FuncionarioController
             this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].cargo.ToString());
             this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].salario.ToString());
         }
+
+
+
 
         Console.ReadKey();
     }
