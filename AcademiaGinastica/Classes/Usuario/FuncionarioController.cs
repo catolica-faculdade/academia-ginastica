@@ -31,14 +31,11 @@ public class FuncionarioController
         string senha = Tela.PerguntarSenha(coluna, li + 10, "Senha : ");
 
         decimal salario = 0;
-        if (tipoCargo != "1")
-        {
-            string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
-            decimal.TryParse(salarioStr, out salario);
-        }
+        string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
+        decimal.TryParse(salarioStr, out salario);
 
         Cargo novoCargo = Cargo.admin;
-        
+
         switch (tipoCargo)
         {
             case "2":
@@ -60,6 +57,7 @@ public class FuncionarioController
                 tela.MostrarMensagem(coluna, li + 14, "Tipo de cargo inválido!");
                 return false;
         }
+
 
         Funcionario novoUsuario = new Funcionario(
             nomeCompleto,
@@ -88,17 +86,14 @@ public class FuncionarioController
 
         for (int i = 0; i < funcionarios.Count; i++)
         {
-            this.tela.MostrarMensagem(4, 5 + i * 2, $"{i + 1}. {funcionarios[i].nomeCompleto}");
-            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].CPF);
-            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].telefone);
-            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].email);
-            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].enderecoCompleto);
-            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].cargo.ToString());
-            this.tela.MostrarMensagem(4, 5 + i * 2, funcionarios[i].salario.ToString());
+            this.tela.MostrarMensagem(4, 5 * 2 + i, $"{i + 1}. {funcionarios[i].nomeCompleto}");
+            this.tela.MostrarMensagem(4, 6 * 2 + i, funcionarios[i].CPF);
+            this.tela.MostrarMensagem(4, 7 * 2 + i, funcionarios[i].telefone);
+            this.tela.MostrarMensagem(4, 8 * 2 + i, funcionarios[i].email);
+            this.tela.MostrarMensagem(4, 9 * 2 + i, funcionarios[i].enderecoCompleto);
+            this.tela.MostrarMensagem(4, 10 * 2 + i, funcionarios[i].cargo.ToString());
+            this.tela.MostrarMensagem(4, 11 * 2 + i, funcionarios[i].salario.ToString());
         }
-
-
-
 
         Console.ReadKey();
     }
