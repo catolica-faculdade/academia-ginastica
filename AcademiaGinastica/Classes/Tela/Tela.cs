@@ -69,11 +69,17 @@ public class Tela
 
 
     public void Centralizar(int ci, int cf, int lin, string msg)
-    {
-        int col = (cf - ci - msg.Length) / 2 + ci;
-        Console.SetCursorPosition(col, lin);
-        Console.Write(msg);
-    }
+{
+    int largura = cf - ci;
+    int col = (largura - msg.Length) / 2 + ci;
+
+    if (col < 0) col = 0; 
+    if (col > Console.BufferWidth - msg.Length) 
+        col = Math.Max(0, Console.BufferWidth - msg.Length - 1); 
+
+    Console.SetCursorPosition(col, lin);
+    Console.Write(msg);
+}
 
     public void ApagarArea(int ci, int li, int cf, int lf)
     {
@@ -286,9 +292,9 @@ public class Tela
         string opcao;
         List<string> opcoes = new List<string>();
         opcoes.Add("[1] - Listar    ");
-        opcoes.Add("[1] - Apagar    ");
-        opcoes.Add("[1] - Ver       ");
-        opcoes.Add("[1] - Alterar   ");
+        opcoes.Add("[2] - Apagar    ");
+        opcoes.Add("[3] - Ver       ");
+        opcoes.Add("[4] - Alterar   ");
         opcoes.Add("[0] - Voltar    ");
 
         PrepararTela("VERIFICAR CLIENTES");
