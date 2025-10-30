@@ -56,7 +56,7 @@ while (true)
                             if (int.Parse(opcaoCadastro) >= 0 && int.Parse(opcaoCadastro) <= 6)
                             {
                                 tela.PrepararTela("CADASTRO DE USUARIO");
-                                tela.MontarMoldura(2, 2, 60, 15);
+                                tela.MontarMoldura(2, 2, 60, 17);
                                 tela.MostrarMensagem(4, 2, "Dados do novo usuario");
                                 if (opcaoCadastro == "1") clienteController.Cadastrar(5, 4, opcaoCadastro);
                                 else funcionarioController.Cadastrar(5, 4, opcaoCadastro);
@@ -75,7 +75,7 @@ while (true)
                             break;
                         case "4":
                             string opcaoClientes = tela.VerificarClientes();
-                            if (int.Parse(opcaoClientes) >= 0 && int.Parse(opcaoClientes) <= 1)
+                            if (int.Parse(opcaoClientes) >= 0 && int.Parse(opcaoClientes) <= 4)
                             {
                                 if (opcaoClientes == "1")
                                 {
@@ -86,54 +86,56 @@ while (true)
                                 if (opcaoClientes == "2")
                                 {
                                     tela.PrepararTela("APAGAR CLIENTE");
-                                    tela.MontarMoldura(2, 2, 15, 25);
-                                    string id = Tela.Perguntar(2, 2, "Digite o ID do cliente");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID do cliente : ");
                                     clienteController.ApagarCliente(int.Parse(id));
                                 }
                                 if (opcaoClientes == "3")
                                 {
                                     tela.PrepararTela("VER CLIENTE");
-                                    tela.MontarMoldura(2, 2, 15, 25);
-                                    string id = Tela.Perguntar(5, 5, "Digite o ID do cliente: ");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID do cliente : ");
                                     clienteController.VerCliente(int.Parse(id));
                                 }
                                 if (opcaoClientes == "4")
                                 {
                                     tela.PrepararTela("ALTERAR CLIENTE");
-                                    tela.MontarMoldura(2, 2, 15, 25);
-                                    clienteController.AlterarCliente();
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID do cliente : ");
+                                    clienteController.AlterarCliente(int.Parse(id));
                                 }
                             }
                             break;
                         case "5":
                             string opcaoFuncionario = tela.VerificarFuncionarios();
-                            if (int.Parse(opcaoFuncionario) >= 0 && int.Parse(opcaoFuncionario) <= 1)
+                            if (int.Parse(opcaoFuncionario) >= 0 && int.Parse(opcaoFuncionario) <= 4)
                             {
                                 if (opcaoFuncionario == "1")
                                 {
-                                    tela.PrepararTela("LISTAGER FUNCIONARIOS");
+                                    tela.PrepararTela("LISTAR FUNCIONARIOS");
                                     tela.MontarMoldura(2, 2, 15, funcionarioController.funcionarios.Count * 2 + 4);
                                     funcionarioController.ListarFuncionarios();
                                 }
                                 if (opcaoFuncionario == "2")
                                 {
                                     tela.PrepararTela("APAGAR FUNCIONARIO");
-                                    tela.MontarMoldura(2, 2, 15, 25);
-                                    string id = Tela.Perguntar(2, 2, "Digite o ID do cliente");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(4, 3, "Digite o ID do funcionario");
                                     funcionarioController.ApagarFuncionario(int.Parse(id));
                                 }
                                 if (opcaoFuncionario == "3")
                                 {
                                     tela.PrepararTela("VER FUNCIONARIO");
-                                    tela.MontarMoldura(2, 2, 15, 25);
-                                    string id = Tela.Perguntar(5, 5, "Digite o ID do funcionario: ");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(4, 3, "Digite o ID do funcionario: ");
                                     funcionarioController.VerFuncionario(int.Parse(id));
                                 }
                                 if (opcaoFuncionario == "4")
                                 {
                                     tela.PrepararTela("ALTERAR FUNCIONARIO");
-                                    tela.MontarMoldura(2, 2, 15, 25);
-                                    funcionarioController.AlterarFuncionario();
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(4, 3, "Digite o ID do funcionario: ");
+                                    funcionarioController.AlterarFuncionario(int.Parse(id));
                                 }
                             }
                             break;
