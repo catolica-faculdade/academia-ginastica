@@ -42,7 +42,7 @@ public class FuncionarioController
         switch (tipoCargo)
         {
             case "2":
-                novoUsuario = new Administrador()
+                novoUsuario = new Funcionario()
                 {
                     nomeCompleto = nomeCompleto,
                     CPF = CPF,
@@ -57,7 +57,7 @@ public class FuncionarioController
                 break;
 
             case "3":
-                novoUsuario = new Atendente()
+                novoUsuario = new Funcionario()
                 {
                     nomeCompleto = nomeCompleto,
                     CPF = CPF,
@@ -71,7 +71,7 @@ public class FuncionarioController
                 break;
 
             case "4":
-                novoUsuario = new Auditoria()
+                novoUsuario = new Funcionario()
                 {
                     nomeCompleto = nomeCompleto,
                     CPF = CPF,
@@ -85,7 +85,7 @@ public class FuncionarioController
                 break;
 
             case "5":
-                novoUsuario = new Gerente()
+                novoUsuario = new Funcionario()
                 {
                     nomeCompleto = nomeCompleto,
                     CPF = CPF,
@@ -99,7 +99,7 @@ public class FuncionarioController
                 break;
 
             case "6":
-                novoUsuario = new Instrutor()
+                novoUsuario = new Funcionario()
                 {
                     nomeCompleto = nomeCompleto,
                     CPF = CPF,

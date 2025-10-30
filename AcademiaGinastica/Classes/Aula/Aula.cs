@@ -3,7 +3,7 @@ public class Aula
     private int id;
     private string nome;
     private Modalidade modalidade;
-    private Instrutor instrutor;
+    private Funcionario instrutor;
     public DateTime horarioInicio;
     public DateTime horarioFim;
     public List<Cliente> clientes;
