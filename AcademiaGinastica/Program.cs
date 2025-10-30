@@ -55,18 +55,11 @@ while (true)
                             string opcaoCadastro = tela.CadastrarUsuario();
                             if (int.Parse(opcaoCadastro) >= 0 && int.Parse(opcaoCadastro) <= 6)
                             {
-                                switch (opcaoCadastro)
-                                {
-                                    case "0":
-                                        break;
-                                    case "1":
-                                        tela.PrepararTela("CADASTRO DE USUARIO");
-                                        tela.MontarMoldura(2, 2, 60, 15);
-                                        tela.MostrarMensagem(4, 2, "Dados do novo usuario");
-                                        if (opcaoCadastro == "1") clienteController.Cadastrar(5, 4, opcaoCadastro);
-                                        else funcionarioController.Cadastrar(5, 4, opcaoCadastro);
-                                        break;
-                                }
+                                tela.PrepararTela("CADASTRO DE USUARIO");
+                                tela.MontarMoldura(2, 2, 60, 15);
+                                tela.MostrarMensagem(4, 2, "Dados do novo usuario");
+                                if (opcaoCadastro == "1") clienteController.Cadastrar(5, 4, opcaoCadastro);
+                                else funcionarioController.Cadastrar(5, 4, opcaoCadastro);
                             }
                             break;
                         case "2":
