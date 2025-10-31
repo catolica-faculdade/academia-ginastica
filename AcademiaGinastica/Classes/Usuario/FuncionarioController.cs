@@ -54,7 +54,7 @@ public class FuncionarioController
                 novoCargo = Cargo.instrutor;
                 break;
             default:
-                tela.MostrarMensagem(coluna, li + 14, "Tipo de cargo inválido!");
+                Tela.MostrarMensagem(coluna, li + 14, "Tipo de cargo inválido!");
                 return false;
         }
 
@@ -79,7 +79,7 @@ public class FuncionarioController
         {
             tela.PrepararTela("LISTA DE FUNCIONÁRIOS");
             tela.MontarMoldura(2, 2, 80, 10);
-            tela.MostrarMensagem(5, 5, "Não há funcionários cadastrados.");
+            Tela.MostrarMensagem(5, 5, "Não há funcionários cadastrados.");
             Console.ReadKey();
             return;
         }
@@ -100,23 +100,23 @@ public class FuncionarioController
 
         string titulo = "LISTA DE FUNCIONÁRIOS";
         int colTitulo = ci + (larguraMoldura - titulo.Length) / 2;
-        tela.MostrarMensagem(colTitulo, li + 1, titulo);
+        Tela.MostrarMensagem(colTitulo, li + 1, titulo);
 
         int linhaAtual = li + 3; 
         for (int i = 0; i < funcionarios.Count; i++)
         {
             var f = funcionarios[i];
-            tela.MostrarMensagem(ci + 2, linhaAtual, $"{i + 1}. {f.nomeCompleto}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 1, $"CPF: {f.CPF}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 2, $"Telefone: {f.telefone}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 3, $"Email: {f.email}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Cargo: {f.cargo}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 5, $"Salário: R$ {f.salario:F2}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual, $"{i + 1}. {f.nomeCompleto}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 1, $"CPF: {f.CPF}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 2, $"Telefone: {f.telefone}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 3, $"Email: {f.email}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Cargo: {f.cargo}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 5, $"Salário: R$ {f.salario:F2}");
 
             linhaAtual += alturaPorFuncionario + espacamento;
         }
 
-        tela.MostrarMensagem(ci + 2, lf, "[Pressione qualquer tecla para voltar]");
+        Tela.MostrarMensagem(ci + 2, lf, "[Pressione qualquer tecla para voltar]");
         Console.ReadKey();
         Console.Clear();
 
@@ -126,7 +126,7 @@ public class FuncionarioController
     {
         if (indice < 0 || indice >= funcionarios.Count)
         {
-            tela.MostrarMensagem(4, 4, "Funcionário inválido!");
+            Tela.MostrarMensagem(4, 4, "Funcionário inválido!");
             Console.ReadKey();
             return;
         }
@@ -139,15 +139,15 @@ public class FuncionarioController
         int col = 5;
         int lin = 5;
 
-        tela.MostrarMensagem(col, lin, $"Nome completo  : {f.nomeCompleto}");
-        tela.MostrarMensagem(col, lin + 2, $"CPF             : {f.CPF}");
-        tela.MostrarMensagem(col, lin + 4, $"Telefone        : {f.telefone}");
-        tela.MostrarMensagem(col, lin + 6, $"E-mail          : {f.email}");
-        tela.MostrarMensagem(col, lin + 8, $"Endereço        : {f.enderecoCompleto}");
-        tela.MostrarMensagem(col, lin + 10, $"Cargo           : {f.cargo}");
-        tela.MostrarMensagem(col, lin + 12, $"Salário         : R$ {f.salario:F2}");
+        Tela.MostrarMensagem(col, lin, $"Nome completo  : {f.nomeCompleto}");
+        Tela.MostrarMensagem(col, lin + 2, $"CPF             : {f.CPF}");
+        Tela.MostrarMensagem(col, lin + 4, $"Telefone        : {f.telefone}");
+        Tela.MostrarMensagem(col, lin + 6, $"E-mail          : {f.email}");
+        Tela.MostrarMensagem(col, lin + 8, $"Endereço        : {f.enderecoCompleto}");
+        Tela.MostrarMensagem(col, lin + 10, $"Cargo           : {f.cargo}");
+        Tela.MostrarMensagem(col, lin + 12, $"Salário         : R$ {f.salario:F2}");
 
-        tela.MostrarMensagem(col, lin + 15, "[Pressione qualquer tecla para voltar]");
+        Tela.MostrarMensagem(col, lin + 15, "[Pressione qualquer tecla para voltar]");
         Console.ReadKey();
     }
     public void ApagarFuncionario(int id)
@@ -159,7 +159,7 @@ public class FuncionarioController
         Console.Clear();
         if (id < 0 || id > funcionarios.Count)
         {
-            tela.MostrarMensagem(4, 4, "Cliente invalido!");
+            Tela.MostrarMensagem(4, 4, "Cliente invalido!");
             Console.ReadKey();
             return;
         }
@@ -171,13 +171,13 @@ public class FuncionarioController
         int col = 5;
         int lin = 5;
 
-        tela.MostrarMensagem(col, lin,      $"Nome completo   : {this.funcionario.nomeCompleto}");
-        tela.MostrarMensagem(col, lin + 2,  $"CPF             : {this.funcionario.CPF}");
-        tela.MostrarMensagem(col, lin + 4,  $"Telefone        : {this.funcionario.telefone}");
-        tela.MostrarMensagem(col, lin + 6,  $"E-mail          : {this.funcionario.email}");
-        tela.MostrarMensagem(col, lin + 8,  $"Endereço        : {this.funcionario.enderecoCompleto}");
-        tela.MostrarMensagem(col, lin + 10,  $"Cargo           : {this.funcionario.cargo}");
-        tela.MostrarMensagem(col, lin + 12,  $"Salario         : {this.funcionario.salario}");
+        Tela.MostrarMensagem(col, lin,      $"Nome completo   : {this.funcionario.nomeCompleto}");
+        Tela.MostrarMensagem(col, lin + 2,  $"CPF             : {this.funcionario.CPF}");
+        Tela.MostrarMensagem(col, lin + 4,  $"Telefone        : {this.funcionario.telefone}");
+        Tela.MostrarMensagem(col, lin + 6,  $"E-mail          : {this.funcionario.email}");
+        Tela.MostrarMensagem(col, lin + 8,  $"Endereço        : {this.funcionario.enderecoCompleto}");
+        Tela.MostrarMensagem(col, lin + 10,  $"Cargo           : {this.funcionario.cargo}");
+        Tela.MostrarMensagem(col, lin + 12,  $"Salario         : {this.funcionario.salario}");
 
 
         Console.SetCursorPosition(col + "Nome completo   : ".Length, lin);
@@ -193,18 +193,18 @@ public class FuncionarioController
 
 
         tela.MontarMoldura(81, 2, 107, 11);
-        tela.MostrarMensagem(82, 2, $"[SELECIONE O CARGO]");
+        Tela.MostrarMensagem(82, 2, $"[SELECIONE O CARGO]");
 
-        tela.MostrarMensagem(82, 3, "Cargo (digite o nome ou número):");
+        Tela.MostrarMensagem(82, 3, "Cargo (digite o nome ou número):");
         int cargoLinha = 3;
         int i = 1;
         foreach (var nome in Enum.GetNames(typeof(Cargo)))
         {
-            tela.MostrarMensagem(82 + 3, cargoLinha + i, $"{i-1} - {nome}");
+            Tela.MostrarMensagem(82 + 3, cargoLinha + i, $"{i-1} - {nome}");
             i++;
         }
 
-        tela.MostrarMensagem(82, cargoLinha + i + 1, "Escolha: ");
+        Tela.MostrarMensagem(82, cargoLinha + i + 1, "Escolha: ");
         Console.SetCursorPosition(82 + "Escolha: ".Length, cargoLinha + i + 1);
         string entradaCargo = Console.ReadLine();
 
@@ -221,12 +221,12 @@ public class FuncionarioController
         }
         catch
         {
-            tela.MostrarMensagem(82, cargoLinha + i + 3, "Cargo inválido! Mantido o valor anterior.");
+            Tela.MostrarMensagem(82, cargoLinha + i + 3, "Cargo inválido! Mantido o valor anterior.");
             Console.ReadKey();
         }
 
-        tela.MostrarMensagem(col, lin + 10, $"Cargo           : {this.funcionario.cargo}");
-        tela.MostrarMensagem(col, lin + 12, $"Salário         : ");
+        Tela.MostrarMensagem(col, lin + 10, $"Cargo           : {this.funcionario.cargo}");
+        Tela.MostrarMensagem(col, lin + 12, $"Salário         : ");
         Console.SetCursorPosition(col + "Salário         : ".Length, lin + 12);
         if (decimal.TryParse(Console.ReadLine(), out decimal novoSalario))
             this.funcionario.salario = novoSalario;
