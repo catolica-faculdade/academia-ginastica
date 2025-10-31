@@ -265,14 +265,11 @@ public class Tela
     public string CadastrarUsuario()
     {
         string opcao;
-        List<string> opcoes = new List<string>();
-        opcoes.Add("[1] - Cliente       ");
-        opcoes.Add("[2] - Administrador ");
-        opcoes.Add("[3] - Atendente     ");
-        opcoes.Add("[4] - Auditoria     ");
-        opcoes.Add("[5] - Gerente       ");
-        opcoes.Add("[6] - Instrutor     ");
-        opcoes.Add("[0] - Voltar        ");
+        List<string> opcoes = [
+            "[1] - Cliente       ",
+            "[2] - Funcionario   ",
+            "[0] - Voltar        "
+        ];
 
         PrepararTela("CADASTRO DE USUARIOS");
         MostrarMensagem(2, 2, "Selecione a categoria do novo usuario:");
@@ -290,12 +287,14 @@ public class Tela
     public string VerificarClientes()
     {
         string opcao;
-        List<string> opcoes = new List<string>();
-        opcoes.Add("[1] - Listar    ");
-        opcoes.Add("[2] - Apagar    ");
-        opcoes.Add("[3] - Ver       ");
-        opcoes.Add("[4] - Alterar   ");
-        opcoes.Add("[0] - Voltar    ");
+        List<string> opcoes =
+        [
+            "[1] - Listar    ",
+            "[2] - Apagar    ",
+            "[3] - Ver       ",
+            "[4] - Alterar   ",
+            "[0] - Voltar    ",
+        ];
 
         PrepararTela("VERIFICAR CLIENTES");
         MostrarMensagem(2, 2, "Selecione a operacao:");
@@ -306,12 +305,14 @@ public class Tela
     public string VerificarFuncionarios()
     {
         string opcao;
-        List<string> opcoes = new List<string>();
-        opcoes.Add("[1] - Listar    ");
-        opcoes.Add("[1] - Apagar    ");
-        opcoes.Add("[1] - Ver       ");
-        opcoes.Add("[1] - Alterar   ");
-        opcoes.Add("[0] - Voltar    ");
+        List<string> opcoes =
+        [
+            "[1] - Listar    ",
+            "[1] - Apagar    ",
+            "[1] - Ver       ",
+            "[1] - Alterar   ",
+            "[0] - Voltar    ",
+        ];
 
         PrepararTela("VERIFICAR FUNCIONARIOS");
         MostrarMensagem(2, 2, "Selecione a operacao:");
