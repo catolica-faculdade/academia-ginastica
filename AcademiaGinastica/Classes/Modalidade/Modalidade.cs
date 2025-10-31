@@ -1,6 +1,12 @@
 public class Modalidade
 {
-    private int id;
-    private string nome;   
-    private string descricao;   
+    public string nome;
+    public string descricao;
+
+    public Modalidade(string nome, string descricao)
+    {
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+
 }
