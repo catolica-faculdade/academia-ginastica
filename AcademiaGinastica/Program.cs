@@ -1,6 +1,8 @@
-﻿Tela tela = new Tela(90, 25);
+﻿Agenda agenda = new Agenda();
+ModalidadeController modalidadeController = new ModalidadeController();
 FuncionarioController funcionarioController = new FuncionarioController();
 ClienteController clienteController = new ClienteController();
+Tela tela = new Tela(90, 25, agenda, modalidadeController, funcionarioController, clienteController);
 
 string opcao;
 List<string> opcoes = new List<string>();
@@ -57,23 +59,63 @@ while (true)
                             {
                                 tela.PrepararTela("CADASTRO DE USUARIO");
                                 tela.MontarMoldura(2, 2, 60, 19);
-                                tela.MostrarMensagem(4, 2, "Dados do novo usuario");
+                                Tela.MostrarMensagem(4, 2, "Dados do novo usuario");
                                 if (opcaoCadastro == "1") clienteController.Cadastrar(5, 4, opcaoCadastro);
+                                else if (opcaoCadastro == "0") break;
                                 else funcionarioController.Cadastrar(5, 4, opcaoCadastro);
                             }
                             break;
                         case "2":
                             tela.PrepararTela("CADASTRO DE AULA");
                             tela.MontarMoldura(2, 2, 60, 15);
-                            tela.MostrarMensagem(4, 2, "Dados da nova aula");
-                            tela.CadastrarAula();
+                            Tela.MostrarMensagem(4, 2, "Dados da nova aula");
+                            tela.CadastrarAula(5, 4);
                             break;
                         case "3":
+                            string opcaoModalidade = tela.VerificarModalidades();
+                            if (int.Parse(opcaoModalidade) >= 0 && int.Parse(opcaoModalidade) <= 4)
+                            {
+                                if (opcaoModalidade == "1")
+                                {
+                                    tela.PrepararTela("CRIAR MODALIDADE");
+                                    tela.MontarMoldura(2, 2, 15, 10);
+                                    modalidadeController.CadastrarModalidade(4,4);
+                                }
+                                if (opcaoModalidade == "2")
+                                {
+                                    tela.PrepararTela("APAGAR MODALIDADE");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    modalidadeController.ApagarModalidade(int.Parse(id));
+                                }
+                                if (opcaoModalidade == "3")
+                                {
+                                    tela.PrepararTela("VER MODALIDADE");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    Tela.MostrarMensagem(3, 3, "[Digite 0 para listar todas]");
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    if(int.Parse(id) == 0)
+                                    {
+                                        tela.MontarMoldura(2, 2, 35, modalidadeController.modalidades.Count * 2 + 4);
+                                    }
+                                    modalidadeController.VerModalidade(4, 4, int.Parse(id));
+                                }
+                                if (opcaoModalidade == "4")
+                                {
+                                    tela.PrepararTela("ALTERAR MODALIDADE");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    modalidadeController.AlterarModalidade(4, 4, int.Parse(id));
+
+                                }
+                            }
+                            break;
+                        case "4":
                             tela.PrepararTela("VERIFICAR AGENDA");
                             tela.MontarMoldura(2, 2, 60, 15);
                             tela.VerificarAgendas();
                             break;
-                        case "4":
+                        case "5":
                             string opcaoClientes = tela.VerificarClientes();
                             if (int.Parse(opcaoClientes) >= 0 && int.Parse(opcaoClientes) <= 4)
                             {
@@ -106,7 +148,7 @@ while (true)
                                 }
                             }
                             break;
-                        case "5":
+                        case "6":
                             string opcaoFuncionario = tela.VerificarFuncionarios();
                             if (int.Parse(opcaoFuncionario) >= 0 && int.Parse(opcaoFuncionario) <= 4)
                             {
@@ -148,7 +190,7 @@ while (true)
             }
             break;
         default:
-            tela.MostrarMensagem(15, 25, "[Escolha inválida, pressione qualquer tecla para tentar novamente]");
+            Tela.MostrarMensagem(15, 25, "[Escolha inválida, pressione qualquer tecla para tentar novamente]");
             Console.ReadKey();
             break;
     }
