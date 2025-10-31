@@ -56,7 +56,7 @@ public class ClienteController
         {
             tela.PrepararTela("LISTA DE CLIENTES");
             tela.MontarMoldura(2, 2, 80, 10);
-            tela.MostrarMensagem(5, 5, "Não há clientes cadastrados.");
+            Tela.MostrarMensagem(5, 5, "Não há clientes cadastrados.");
             Console.ReadKey();
             return;
         }
@@ -78,23 +78,23 @@ public class ClienteController
 
         string titulo = "LISTA DE CLIENTES";
         int colTitulo = ci + 1 + (larguraMoldura - titulo.Length) / 2;
-        tela.MostrarMensagem(colTitulo, li + 1, titulo);
+        Tela.MostrarMensagem(colTitulo, li + 1, titulo);
 
         int linhaAtual = li + 3;
         for (int i = 0; i < clientes.Count; i++)
         {
             var c = clientes[i];
 
-            tela.MostrarMensagem(ci + 2, linhaAtual, $"{i + 1}. {c.nomeCompleto}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 1, $"CPF: {c.CPF}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 2, $"Telefone: {c.telefone}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 3, $"Email: {c.email}");
-            tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Endereço: {c.enderecoCompleto}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual, $"{i + 1}. {c.nomeCompleto}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 1, $"CPF: {c.CPF}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 2, $"Telefone: {c.telefone}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 3, $"Email: {c.email}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Endereço: {c.enderecoCompleto}");
 
             linhaAtual += alturaPorCliente + espacamento;
         }
 
-        tela.MostrarMensagem(ci + 2, lf, "[Pressione qualquer tecla para voltar]");
+        Tela.MostrarMensagem(ci + 2, lf, "[Pressione qualquer tecla para voltar]");
         Console.ReadKey();
         Console.Clear();
     }
@@ -103,7 +103,7 @@ public class ClienteController
     {
        if (indice < 0 || indice >= clientes.Count)
         {
-            tela.MostrarMensagem(4, 4, "Cliente invalido!");
+            Tela.MostrarMensagem(4, 4, "Cliente invalido!");
             Console.ReadKey();
             return;
         }
@@ -116,13 +116,13 @@ public class ClienteController
         int col = 5;
         int lin = 5;
 
-        tela.MostrarMensagem(col, lin, $"Nome completo  : {c.nomeCompleto}");
-        tela.MostrarMensagem(col, lin + 2, $"CPF             : {c.CPF}");
-        tela.MostrarMensagem(col, lin + 4, $"Telefone        : {c.telefone}");
-        tela.MostrarMensagem(col, lin + 6, $"E-mail          : {c.email}");
-        tela.MostrarMensagem(col, lin + 8, $"Endereço        : {c.enderecoCompleto}");
+        Tela.MostrarMensagem(col, lin, $"Nome completo  : {c.nomeCompleto}");
+        Tela.MostrarMensagem(col, lin + 2, $"CPF             : {c.CPF}");
+        Tela.MostrarMensagem(col, lin + 4, $"Telefone        : {c.telefone}");
+        Tela.MostrarMensagem(col, lin + 6, $"E-mail          : {c.email}");
+        Tela.MostrarMensagem(col, lin + 8, $"Endereço        : {c.enderecoCompleto}");
 
-        tela.MostrarMensagem(col, lin + 12, "[Pressione qualquer tecla para voltar]");
+        Tela.MostrarMensagem(col, lin + 12, "[Pressione qualquer tecla para voltar]");
         Console.ReadKey();
         Console.Clear();
     }
@@ -135,7 +135,7 @@ public class ClienteController
         Console.Clear();
         if (id < 0 || id > clientes.Count)
         {
-            tela.MostrarMensagem(4, 4, "Cliente invalido!");
+            Tela.MostrarMensagem(4, 4, "Cliente invalido!");
             Console.ReadKey();
             return;
         }
@@ -147,11 +147,11 @@ public class ClienteController
         int col = 5;
         int lin = 5;
 
-        tela.MostrarMensagem(col, lin,      $"Nome completo   : {this.cliente.nomeCompleto}");
-        tela.MostrarMensagem(col, lin + 2,  $"CPF             : {this.cliente.CPF}");
-        tela.MostrarMensagem(col, lin + 4,  $"Telefone        : {this.cliente.telefone}");
-        tela.MostrarMensagem(col, lin + 6,  $"E-mail          : {this.cliente.email}");
-        tela.MostrarMensagem(col, lin + 8,  $"Endereço        : {this.cliente.enderecoCompleto}");
+        Tela.MostrarMensagem(col, lin,      $"Nome completo   : {this.cliente.nomeCompleto}");
+        Tela.MostrarMensagem(col, lin + 2,  $"CPF             : {this.cliente.CPF}");
+        Tela.MostrarMensagem(col, lin + 4,  $"Telefone        : {this.cliente.telefone}");
+        Tela.MostrarMensagem(col, lin + 6,  $"E-mail          : {this.cliente.email}");
+        Tela.MostrarMensagem(col, lin + 8,  $"Endereço        : {this.cliente.enderecoCompleto}");
 
 
         Console.SetCursorPosition(col + "Nome completo   : ".Length, lin);
