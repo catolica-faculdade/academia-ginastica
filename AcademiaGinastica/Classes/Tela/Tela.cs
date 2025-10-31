@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 
 public class Tela
@@ -11,24 +12,31 @@ public class Tela
     private int colunaInicial;
     private int linhaInicial;
     private Usuario usuarioLogado;
+    private ClienteController clienteController;
+    private FuncionarioController funcionarioController;
+    private Agenda agenda;
+    private ModalidadeController modalidadeController;
 
     //
     // métodos
     //
     public Tela(){}
-    public Tela(int largura, int altura)
+    public Tela(int largura, int altura, int coluna, int linha)
     {
         this.largura = largura;
         this.altura = altura;
         this.colunaInicial = 0;
         this.linhaInicial = 0;
+        
     }
-    public Tela(int largura, int altura, int coluna, int linha)
+    public Tela(int largura, int altura, Agenda agenda, ModalidadeController modalidadeController, FuncionarioController funcionarioController, ClienteController clienteController)
     {
         this.largura = largura;
         this.altura = altura;
-        this.colunaInicial = coluna;
-        this.linhaInicial = linha;
+        this.agenda = agenda;
+        this.modalidadeController = modalidadeController;
+        this.clienteController = clienteController;
+        this.funcionarioController = funcionarioController;
     }
 
     public void PrepararTela(string titulo = "")
@@ -53,7 +61,7 @@ public class Tela
         cf = ci + ops[0].Length + 1;
         lf = li + ops.Count + 2;
         this.MontarMoldura(ci, li, cf, lf);
-        this.MostrarMensagem(ci + 1, li, titulo);
+        MostrarMensagem(ci + 1, li, titulo);
         linha = li + 1;
         for (int i = 0; i < ops.Count; i++)
         {
@@ -137,7 +145,7 @@ public class Tela
             lin++;
         }
     }
-    public void MostrarMensagem(int col, int lin, string msg)
+    static public void MostrarMensagem(int col, int lin, string msg)
     {
         Console.SetCursorPosition(col, lin);
         Console.Write(msg);
@@ -151,30 +159,7 @@ public class Tela
         return resp;
     }
 
-    static public string PerguntarSenha(int col, int lin, string texto)
-    {
-        Console.SetCursorPosition(col, lin);
-        Console.Write(texto);
-        string senha = "";
-
-        ConsoleKeyInfo tecla;
-
-        do
-        {
-            tecla = Console.ReadKey(true);
-            if (tecla.Key != ConsoleKey.Backspace && tecla.Key != ConsoleKey.Enter)
-            {
-                senha += tecla.KeyChar;
-                Console.Write("*");
-            }
-            else if (tecla.Key == ConsoleKey.Backspace && senha.Length > 0)
-            {
-                senha = senha.Substring(0, senha.Length - 1);
-                Console.Write("\b \b");
-            }
-        } while (tecla.Key != ConsoleKey.Enter);
-        return senha;
-    }
+    
 
     public bool Login()
     {
@@ -193,9 +178,9 @@ public class Tela
             }
             else
             {
-                this.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
-                this.MostrarMensagem(17, 20, "[1] - Sim");
-                this.MostrarMensagem(17, 21, "[2] - Nao");
+                MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
+                MostrarMensagem(17, 20, "[1] - Sim");
+                MostrarMensagem(17, 21, "[2] - Nao");
                 var novamente = Perguntar(17, 22, "");
                 if (novamente == "2")
                 {
@@ -224,9 +209,9 @@ public class Tela
             }
             else
             {
-                this.MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
-                this.MostrarMensagem(17, 20, "[1] - Sim");
-                this.MostrarMensagem(17, 21, "[2] - Nao");
+                MostrarMensagem(17, 19, "Dados incorretos, deseja tentar novamente?");
+                MostrarMensagem(17, 20, "[1] - Sim");
+                MostrarMensagem(17, 21, "[2] - Nao");
                 var novamente = Perguntar(17, 22, "");
                 if (novamente == "2")
                 {
@@ -240,26 +225,43 @@ public class Tela
 
     public string Home()
     {
+        this.agenda = agenda;
         string opcao;
         List<string> opcoes = new List<string>();
-        List<string> dadosAgendamentos = new List<string>();
-        List<string> acontecendoAgora = new List<string>();
-        opcoes.Add("[1] - Cadastrar novo Usuario  ");
-        opcoes.Add("[2] - Cadastrar nova Aula     ");
-        opcoes.Add("[3] - Verificar Agendas       ");
-        opcoes.Add("[4] - Verificar Clientes      ");
-        opcoes.Add("[5] - Verificar Funcionarios  ");
-        opcoes.Add("[0] - SAIR                    ");
+        List<string> agendamentos = agenda.Agendamentos(3);
+        List<string> acontecendoAgora = agenda.AcontecendoAgora();
+        
+        opcoes.Add("[1] - Cadastrar novo Usuario    ");
+        opcoes.Add("[2] - Cadastrar nova Aula       ");
+        opcoes.Add("[3] - Verificar Modalidades     ");
+        opcoes.Add("[4] - Verificar Agendas         ");
+        opcoes.Add("[5] - Verificar Clientes        ");
+        opcoes.Add("[6] - Verificar Funcionarios    ");
+        opcoes.Add("[0] - SAIR                      ");
         PrepararTela("MENU");
-        MostrarSubMenu(59, 2, 88, 10, "AGENDAMENTOS", dadosAgendamentos);
-        MostrarSubMenu(59, 12, 88, 15, "ACONTECENDO AGORA", acontecendoAgora);
+        MostrarSubMenu(59, 2, 88, 10, "AGENDAMENTOS", agendamentos);
+        MostrarSubMenu(59, 12, 88, 17, "ACONTECENDO AGORA", acontecendoAgora);
         return opcao = MostrarMenu(opcoes, 2, 2, "[NAVEGAR]");
     }
 
     public void MostrarSubMenu(int ci, int li, int cf, int lf, string nomeMenu, List<string> dados)
     {
         MontarMoldura(ci, li, cf, lf);
-        this.MostrarMensagem(ci + 1, li, $"[{nomeMenu}]");
+        MostrarMensagem(ci + 2, li, $"[{nomeMenu}]");
+
+        int linha = li + 2;
+        if (dados == null || dados.Count == 0)
+        {
+            MostrarMensagem(ci + 2, linha, "[Nenhum dado encontrado]");
+            return;
+        }
+
+        foreach (var item in dados)
+        {
+            if (linha >= lf - 1) break;
+            MostrarMensagem(ci + 2, linha, item);
+            linha++;
+        }
     }
 
     public string CadastrarUsuario()
@@ -281,8 +283,32 @@ public class Tela
 
         return opcao;
     }
-    public void CadastrarAula()
+    public void CadastrarAula(int coluna, int li)
     {
+        string nomeAula = Perguntar(coluna, li, "Nome da aula : ");
+        Modalidade modalidade = PerguntarModalidade(coluna, li + 2, "ID da Modalidade [0] - Cadastrar nova: ");
+        Funcionario instrutor = PerguntarFuncionario(coluna, li + 3, "ID do(a) Instrutor : ");
+        string lotacao = Perguntar(coluna, li + 4, "Lotacao da aula : ");
+
+
+        MontarMoldura(61, 2, 88, 3+int.Parse(lotacao));
+        MostrarMensagem(62, 2, "[CLIENTES]");
+        List<Cliente> clientes = PerguntarClientes(62, 3, "ID do Cliente : ");
+
+        string data = Perguntar(coluna, li + 5, "Data (DD/MM/AAAA): ");
+        string horaInicio = Perguntar(coluna, li + 6, "Horário de início (HH:MM): ");
+        string horaFim = Perguntar(coluna, li + 7, "Horário de término (HH:MM): ");
+
+
+
+        DateTime dataInicio = DateTime.Parse($"{data} {horaInicio}");
+        DateTime dataFim = DateTime.Parse($"{data} {horaFim}");
+
+
+
+        Aula novaAula = new Aula(nomeAula, modalidade, instrutor, dataInicio, dataFim, clientes, int.Parse(lotacao));
+
+        agenda.CadastrarAula(novaAula);
     }
     public void VerificarAgendas()
     {
@@ -324,4 +350,167 @@ public class Tela
 
         return opcao;
     }
+
+    public string VerificarModalidades()
+    {
+        string opcao;
+        List<string> opcoes =
+        [
+            "[1] - Criar    ",
+            "[1] - Apagar    ",
+            "[1] - Ver       ",
+            "[1] - Alterar   ",
+            "[0] - Voltar    ",
+        ];
+
+        PrepararTela("VERIFICAR FUNCIONARIOS");
+        MostrarMensagem(2, 2, "Selecione a operacao:");
+        opcao = MostrarMenu(opcoes, 2, 4);
+
+        return opcao;
+    }
+
+
+
+
+    static public string PerguntarSenha(int col, int lin, string texto)
+    {
+        Console.SetCursorPosition(col, lin);
+        Console.Write(texto);
+        string senha = "";
+
+        ConsoleKeyInfo tecla;
+
+        do
+        {
+            tecla = Console.ReadKey(true);
+            if (tecla.Key != ConsoleKey.Backspace && tecla.Key != ConsoleKey.Enter)
+            {
+                senha += tecla.KeyChar;
+                Console.Write("*");
+            }
+            else if (tecla.Key == ConsoleKey.Backspace && senha.Length > 0)
+            {
+                senha = senha.Substring(0, senha.Length - 1);
+                Console.Write("\b \b");
+            }
+        } while (tecla.Key != ConsoleKey.Enter);
+        return senha;
+    }
+
+    public Modalidade PerguntarModalidade(int col, int lin, string pergunta)
+    {
+        Console.SetCursorPosition(col, lin);
+        Console.Write(pergunta);
+
+        string idModalidade = Console.ReadLine();
+        Modalidade modalidadeRetorno = null;
+        bool retorno = false;
+
+        while (!retorno)
+        {
+            int id = int.Parse(idModalidade);
+
+            if (id <= this.modalidadeController.modalidades.Count || id > 0)
+            {
+                modalidadeRetorno = this.modalidadeController.modalidades[id - 1];
+                retorno = true;
+            }
+            else
+            {
+                Console.SetCursorPosition(col, lin + 2);
+                Console.Write("ID inválido, deseja ver todas as modalidades? [1] - Sim | [2] - Não: ");
+                string verTodas = Console.ReadLine();
+
+                if (verTodas == "1")
+                    this.modalidadeController.VerModalidade(col + 4, lin + 4, 0);
+                else
+                    break;
+            }
+        }
+
+        return modalidadeRetorno;
+    }
+
+
+    public List<Cliente> PerguntarClientes(int col, int lin, string pergunta)
+    {
+        List<Cliente> clienteRetorno = new List<Cliente>();
+        bool retorno = false;
+
+        while (!retorno)
+        {
+            Console.SetCursorPosition(col, lin);
+            Console.Write(pergunta);
+
+            string idCliente = Console.ReadLine();
+            int id = int.Parse(idCliente);
+
+            if (id <= this.clienteController.clientes.Count || id > 0)
+            {
+                clienteRetorno.Add(this.clienteController.clientes[id - 1]);
+
+                string continuar = Perguntar(15, 20, "Deseja incluir mais um cliente? [1] - Sim | [2] - Não: ");
+                if (continuar != "1")
+                    retorno = true;
+                lin++;
+            }
+            else
+            {
+                Console.SetCursorPosition(col, lin + 2);
+                Console.Write("ID inválido, deseja ver todos os clientes? [1] - Sim | [2] - Não | [3] - Cadastrar novo: ");
+                string opcao = Console.ReadLine();
+
+                if (opcao == "1")
+                    this.clienteController.ListarClientes();
+                else if (opcao == "3")
+                    this.clienteController.Cadastrar(2, 2, "0");
+                else
+                    break;
+            }
+        }
+
+        return clienteRetorno;
+    }
+
+
+    public Funcionario PerguntarFuncionario(int col, int lin, string pergunta)
+    {
+        Funcionario funcionarioRetorno = null;
+        bool retorno = false;
+
+        while (!retorno)
+        {
+            Console.SetCursorPosition(col, lin);
+            Console.Write(pergunta);
+
+            string idFuncionario = Console.ReadLine();
+            int id = int.Parse(idFuncionario);
+
+            if (id <= this.funcionarioController.funcionarios.Count || id > 0)
+            {
+                funcionarioRetorno = this.funcionarioController.funcionarios[id - 1];
+                retorno = true;
+            }
+            else
+            {
+                Console.SetCursorPosition(col, lin + 2);
+                Console.Write("ID inválido, deseja ver todos os funcionários? [1] - Sim | [2] - Não | [3] - Cadastrar novo: ");
+                string opcao = Console.ReadLine();
+
+                if (opcao == "1")
+                    this.funcionarioController.ListarFuncionarios();
+                else if (opcao == "3")
+                {
+                    string cargo = CadastrarUsuario();
+                    this.funcionarioController.Cadastrar(2, 2, cargo);
+                }
+                else
+                    break;
+            }
+        }
+
+        return funcionarioRetorno;
+    }
+
 }
