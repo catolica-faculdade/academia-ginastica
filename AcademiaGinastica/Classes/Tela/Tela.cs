@@ -136,6 +136,38 @@ public class Tela
         Console.SetCursorPosition(cf, lf);
         Console.Write("╝");
     }
+    public void ReconstruirMoldura(int ci, int li, int cf, int lf)
+    {
+        int col, lin;
+
+        for (col = ci; col < cf; col++)
+        {
+            Console.SetCursorPosition(col, li);
+            Console.Write("═");
+            Console.SetCursorPosition(col, lf);
+            Console.Write("═");
+        }
+
+        for (lin = li; lin < lf; lin++)
+        {
+            Console.SetCursorPosition(ci, lin);
+            Console.Write("║");
+            Console.SetCursorPosition(cf, lin);
+            Console.Write("║");
+        }
+
+        Console.SetCursorPosition(ci, li);
+        Console.Write("╔");
+
+        Console.SetCursorPosition(ci, lf);
+        Console.Write("╚");
+
+        Console.SetCursorPosition(cf, li);
+        Console.Write("╗");
+
+        Console.SetCursorPosition(cf, lf);
+        Console.Write("╝");
+    }
 
     public void MontarTela(List<string> dados, int col, int lin)
     {
