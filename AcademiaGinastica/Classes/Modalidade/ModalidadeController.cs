@@ -37,7 +37,7 @@ public class ModalidadeController
     }
     public void VerModalidade(int col, int lin, int id)
     {
-        if (id >= 0 && this.modalidades.Count >= id)
+        if (id >= 0 && this.modalidades.Count > id)
         {
 
             if (id == 0)

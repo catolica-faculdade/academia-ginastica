@@ -124,26 +124,28 @@ while (true)
                                 {
                                     tela.PrepararTela("APAGAR AGENDA");
                                     tela.MontarMoldura(2, 2, 35, 4);
-                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da aula : ");
                                     agenda.ApagarAula(int.Parse(id));
                                 }
                                 if (opcaoAgenda == "3")
                                 {
-                                    tela.PrepararTela("VER AGENDA");
+                                    tela.PrepararTela("VER AULA");
                                     tela.MontarMoldura(2, 2, 35, 4);
-                                    Tela.MostrarMensagem(3, 3, "[Digite 0 para listar todas]");
-                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    Tela.MostrarMensagem(3, 4, "[Digite 0 para listar todas]");
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da aula : ");
                                     if(int.Parse(id) == 0)
                                     {
-                                        tela.MontarMoldura(2, 2, 35, modalidadeController.modalidades.Count * 2 + 4);
+                                        agenda.ListarAgenda(4, 4, tela);
+                                    } else
+                                    {
+                                        agenda.VerAula(4, 4, int.Parse(id), tela);
                                     }
-                                    agenda.VerAula(4, 4, int.Parse(id), tela);
                                 }
                                 if (opcaoAgenda == "4")
                                 {
                                     tela.PrepararTela("ALTERAR AGENDA");
                                     tela.MontarMoldura(2, 2, 35, 4);
-                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da aula : ");
                                     agenda.AlterarAgenda(4, 4, int.Parse(id), tela);
 
                                 }
