@@ -339,10 +339,6 @@ public class Tela
 
         agenda.CadastrarAula(novaAula);
     }
-    public void VerificarAgendas()
-    {
-
-    }
     public string VerificarClientes()
     {
         string opcao;
@@ -361,6 +357,26 @@ public class Tela
 
         return opcao;
     }
+
+    public string VerificarAgenda()
+    {
+        string opcao;
+        List<string> opcoes =
+        [
+            "[1] - Listar    ",
+            "[2] - Apagar    ",
+            "[3] - Ver       ",
+            "[4] - Alterar   ",
+            "[0] - Voltar    ",
+        ];
+
+        PrepararTela("VERIFICAR AGENDA");
+        MostrarMensagem(2, 2, "Selecione a operacao:");
+        opcao = MostrarMenu(opcoes, 2, 4);
+
+        return opcao;
+    }
+
     public string VerificarFuncionarios()
     {
         string opcao;

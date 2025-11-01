@@ -1,7 +1,7 @@
-﻿Agenda agenda = new Agenda();
-ModalidadeController modalidadeController = new ModalidadeController();
+﻿ModalidadeController modalidadeController = new ModalidadeController();
 FuncionarioController funcionarioController = new FuncionarioController();
 ClienteController clienteController = new ClienteController();
+Agenda agenda = new Agenda(clienteController, funcionarioController, modalidadeController);
 Tela tela = new Tela(90, 25, agenda, modalidadeController, funcionarioController, clienteController);
 
 string opcao;
@@ -142,9 +142,43 @@ while (true)
                             }
                             break;
                         case "4":
-                            tela.PrepararTela("VERIFICAR AGENDA");
-                            tela.MontarMoldura(2, 2, 60, 15);
-                            tela.VerificarAgendas();
+                            string opcaoAgenda = tela.VerificarAgenda();
+                            if (int.Parse(opcaoAgenda) >= 0 && int.Parse(opcaoAgenda) <= 4)
+                            {
+                                if (opcaoAgenda == "1")
+                                {
+                                    tela.PrepararTela("LISTAR AGENDA");
+                                    tela.MontarMoldura(2, 2, 15, 10);
+                                    agenda.ListarAgenda(4,4, tela);
+                                }
+                                if (opcaoAgenda == "2")
+                                {
+                                    tela.PrepararTela("APAGAR AGENDA");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    agenda.ApagarAula(int.Parse(id));
+                                }
+                                if (opcaoAgenda == "3")
+                                {
+                                    tela.PrepararTela("VER AGENDA");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    Tela.MostrarMensagem(3, 3, "[Digite 0 para listar todas]");
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    if(int.Parse(id) == 0)
+                                    {
+                                        tela.MontarMoldura(2, 2, 35, modalidadeController.modalidades.Count * 2 + 4);
+                                    }
+                                    agenda.VerAula(4, 4, int.Parse(id), tela);
+                                }
+                                if (opcaoAgenda == "4")
+                                {
+                                    tela.PrepararTela("ALTERAR AGENDA");
+                                    tela.MontarMoldura(2, 2, 35, 4);
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    agenda.AlterarAgenda(4, 4, int.Parse(id), tela);
+
+                                }
+                            }
                             break;
                         case "5":
                             string opcaoClientes = tela.VerificarClientes();
