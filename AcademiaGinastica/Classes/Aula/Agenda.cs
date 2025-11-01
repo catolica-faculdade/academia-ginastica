@@ -128,8 +128,7 @@ public class Agenda
         int cf = ci + larguraMoldura; 
         int alturaPorAgenda = 10;
         int espacamento = 1;    
-        int margemRodape = 4;     
-        int lf = li + (this.aulas.Count * (alturaPorAgenda + espacamento)) + margemRodape; 
+        int lf = li + (this.aulas.Count * (alturaPorAgenda + espacamento)); 
 
         Console.Clear();
 
@@ -146,7 +145,7 @@ public class Agenda
             var a = this.aulas[i];
 
             Tela.MostrarMensagem(ci + 2, linhaAtual, $"{i + 1}. {a.nome}");
-            Tela.MostrarMensagem(ci + 2, linhaAtual + 1, $"CPF: {a.modalidade.descricao.ToString()}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 1, $"Modalidade: {a.modalidade.descricao.ToString()}");
             Tela.MostrarMensagem(ci + 2, linhaAtual + 2, $"Instrutor: {a.instrutor.nomeCompleto}");
             Tela.MostrarMensagem(ci + 2, linhaAtual + 3, $"Horario de Inicio: {a.horarioInicio}");
             Tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Horario de Termino: {a.horarioFim}");
@@ -188,7 +187,7 @@ public class Agenda
         Tela.MostrarMensagem(col, lin + 4, $"Horario de Termino: {a.horarioFim}");
         for (int c = 0; c < a.clientes.Count; c++)
         {
-            Tela.MostrarMensagem(62, 6+c, $"Clientes: {a.clientes[c].nomeCompleto}");
+            Tela.MostrarMensagem(62, 5+c, $"Clientes: {a.clientes[c].nomeCompleto}");
         }
         Tela.MostrarMensagem(col, lin + 4, $"Lotacao: {a.lotacao}");
 
@@ -206,65 +205,70 @@ public class Agenda
     public void AlterarAgenda(int col, int lin, int id, Tela tela)
     {
         Console.Clear();
-        if (id < 0 || id > aulas.Count)
+        if (id <= 0 || id > aulas.Count)
         {
-            Tela.MostrarMensagem(4, 4, "Cliente invalido!");
+            Tela.MostrarMensagem(4, 4, "Aula inválida!");
             Console.ReadKey();
             return;
         }
 
         Aula aula = this.aulas[id - 1];
-
         tela.MontarMoldura(3, 3, 70, 20);
 
-        Tela.MostrarMensagem(col, lin,      $"Nome              : {aula.nome}");
-        Tela.MostrarMensagem(col, lin + 2,  $"Modalidade        : {aula.modalidade}");
-        Tela.MostrarMensagem(col, lin + 4,  $"ID do Instrutor   : {aula.instrutor}");
-        Tela.MostrarMensagem(col, lin + 6,  $"Horario de Inicio : {aula.horarioInicio}");
-        Tela.MostrarMensagem(col, lin + 8,  $"Horario de Termino: {aula.horarioFim}");
-        Tela.MostrarMensagem(col, lin + 10,  $"lotacao           : {aula.lotacao}");
-
-        
+        Tela.MostrarMensagem(col, lin - 2, "[DIGITE 0 PARA MANTER O DADO]");
+        Tela.MostrarMensagem(col, lin, $"Nome              : {aula.nome}");
+        Tela.MostrarMensagem(col, lin + 2, $"ID da Modalidade  : {aula.modalidade.nome}");
+        Tela.MostrarMensagem(col, lin + 4, $"ID do Instrutor   : {aula.instrutor.nomeCompleto}");
+        Tela.MostrarMensagem(col, lin + 6, $"Data (DD/MM/AAAA) : {aula.horarioInicio:dd/MM/yyyy}");
+        Tela.MostrarMensagem(col, lin + 8, $"Horário de Início (HH:MM): {aula.horarioInicio:HH:mm}");
+        Tela.MostrarMensagem(col, lin + 10, $"Horário de Término (HH:MM): {aula.horarioFim:HH:mm}");
+        Tela.MostrarMensagem(col, lin + 12, $"Lotação           : {aula.lotacao}");
 
         Console.SetCursorPosition(col + "Nome              : ".Length, lin);
-        aula.nome = Console.ReadLine();
-        
-        Console.SetCursorPosition(col + "Modalidade        : ".Length, lin + 2);
-        int novaModalidade = int.Parse(Console.ReadLine());
-        aula.modalidade = modalidadeController.modalidades[novaModalidade-1];
+        string novoNome = Console.ReadLine();
+        if (!string.IsNullOrEmpty(novoNome) && novoNome != "0")
+            aula.nome = novoNome;
+
+        Console.SetCursorPosition(col + "ID da Modalidade  : ".Length, lin + 2);
+        if (int.TryParse(Console.ReadLine(), out int novaModalidade) && novaModalidade > 0)
+            aula.modalidade = modalidadeController.modalidades[novaModalidade - 1];
 
         Console.SetCursorPosition(col + "ID do Instrutor   : ".Length, lin + 4);
-        int novoInstrutor = int.Parse(Console.ReadLine());
-        aula.instrutor = this.funcionarioController.funcionarios[novoInstrutor-1];
+        if (int.TryParse(Console.ReadLine(), out int novoInstrutor) && novoInstrutor > 0)
+            aula.instrutor = funcionarioController.funcionarios[novoInstrutor - 1];
 
-        Console.SetCursorPosition(col + "Horario de Inicio : ".Length, lin+6);
-        aula.horarioInicio = DateTime.Parse(Console.ReadLine());
+        string data = Tela.Perguntar(col, lin + 6, "Data (DD/MM/AAAA) : ");
+        string horaInicio = Tela.Perguntar(col, lin + 8, "Horário de Início (HH:MM): ");
+        string horaFim = Tela.Perguntar(col, lin + 10, "Horário de Término (HH:MM): ");
 
-        Console.SetCursorPosition(col + "Horario de Termino: ".Length, lin+8);
-        aula.horarioFim = DateTime.Parse(Console.ReadLine());
+        if (data != "0" && horaInicio != "0")
+            aula.horarioInicio = DateTime.Parse($"{data} {horaInicio}");
+        if (data != "0" && horaFim != "0")
+            aula.horarioFim = DateTime.Parse($"{data} {horaFim}");
 
-        Console.SetCursorPosition(col + "Lotacao           : ".Length, lin+10);
-        aula.lotacao = int.Parse(Console.ReadLine());
+        Console.SetCursorPosition(col + "Lotação           : ".Length, lin + 12);
+        if (int.TryParse(Console.ReadLine(), out int novaLotacao) && novaLotacao > 0)
+            aula.lotacao = novaLotacao;
 
+        tela.MontarMoldura(62, 3, 110, 5 + aula.lotacao);
+        Tela.MostrarMensagem(63, 3, "[CLIENTES]");
+        Tela.MostrarMensagem(62, 2, "[Digite 0 para manter o cliente]");
 
-        tela.MontarMoldura(61, 3, 105, 5 + aula.lotacao);
-        Tela.MostrarMensagem(62, 3, "[CLIENTES]");
         List<Cliente> novosClientes = new List<Cliente>();
-        
-        Tela.MostrarMensagem(61, 2, "[Digite 0 para manter o cliente]");
         for (int c = 0; c < aula.clientes.Count; c++)
         {
-            Tela.MostrarMensagem(62, 6+c, $"Clientes: {aula.clientes[c].nomeCompleto} | {c + 1}");
-            var novoCliente = Tela.Perguntar(62 + $"Clientes: {aula.clientes[c].nomeCompleto} | {c + 1}".Length, 6 + c, " -> Novo ID: ");
-            if(novoCliente != "0")
+            Tela.MostrarMensagem(63, 5 + c, $"Cliente {c + 1}: {aula.clientes[c].nomeCompleto}");
+            string novoCliente = Tela.Perguntar(63 + $"Cliente {c + 1}: {aula.clientes[c].nomeCompleto}".Length, 5 + c, "| Novo ID: ");
+            if (novoCliente != "0" && int.TryParse(novoCliente, out int idCliente))
             {
-                novosClientes.Add(clienteController.clientes[int.Parse(novoCliente)-1]);
+                if (idCliente > 0 && idCliente <= clienteController.clientes.Count)
+                    novosClientes.Add(clienteController.clientes[idCliente - 1]);
             }
         }
 
+        if (novosClientes.Count > 0)
+            aula.clientes = novosClientes;
+
         aulas[id - 1] = aula;
     }
-
-
-
 }

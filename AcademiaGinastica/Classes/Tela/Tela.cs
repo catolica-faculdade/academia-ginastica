@@ -91,13 +91,14 @@ public class Tela
 
     public void ApagarArea(int ci, int li, int cf, int lf)
     {
-        for (int coluna = ci; coluna <= cf; coluna++)
+        int maxLinhas = Console.BufferHeight - 1;
+        int maxColunas = Console.BufferWidth - 1;
+
+        for (int i = li; i <= lf && i <= maxLinhas; i++)
         {
-            for (int linha = li; linha <= lf; linha++)
-            {
-                Console.SetCursorPosition(coluna, linha);
-                Console.Write(" ");
-            }
+            int coluna = Math.Min(ci, maxColunas);
+            Console.SetCursorPosition(coluna, i);
+            Console.Write(new string(' ', Math.Min(cf - ci, maxColunas - coluna)));
         }
     }
 
@@ -492,7 +493,7 @@ public class Tela
             string idCliente = Console.ReadLine();
             int id = int.Parse(idCliente);
 
-            if (id <= this.clienteController.clientes.Count || id > 0)
+            if (id <= this.clienteController.clientes.Count && id > 0)
             {
                 clienteRetorno.Add(this.clienteController.clientes[id - 1]);
 
