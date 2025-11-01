@@ -215,60 +215,189 @@ public class Agenda
         Aula aula = this.aulas[id - 1];
         tela.MontarMoldura(3, 3, 70, 20);
 
-        Tela.MostrarMensagem(col, lin - 2, "[DIGITE 0 PARA MANTER O DADO]");
+        Tela.MostrarMensagem(col, lin - 2, "[DIGITE 0 PARA MANTER O DADO] | [Aperte qualquer tecla para começar a trocar os dados]");
         Tela.MostrarMensagem(col, lin, $"Nome              : {aula.nome}");
-        Tela.MostrarMensagem(col, lin + 2, $"ID da Modalidade  : {aula.modalidade.nome}");
-        Tela.MostrarMensagem(col, lin + 4, $"ID do Instrutor   : {aula.instrutor.nomeCompleto}");
-        Tela.MostrarMensagem(col, lin + 6, $"Data (DD/MM/AAAA) : {aula.horarioInicio:dd/MM/yyyy}");
-        Tela.MostrarMensagem(col, lin + 8, $"Horário de Início (HH:MM): {aula.horarioInicio:HH:mm}");
-        Tela.MostrarMensagem(col, lin + 10, $"Horário de Término (HH:MM): {aula.horarioFim:HH:mm}");
-        Tela.MostrarMensagem(col, lin + 12, $"Lotação           : {aula.lotacao}");
+        Tela.MostrarMensagem(col, lin + 2, $"Modalidade atual  : {aula.modalidade.nome}");
+        Tela.MostrarMensagem(col, lin + 4, $"Instrutor atual   : {aula.instrutor.nomeCompleto}");
+        Tela.MostrarMensagem(col, lin + 6, $"Data atual        : {aula.horarioInicio:dd/MM/yyyy}");
+        Tela.MostrarMensagem(col, lin + 8, $"Horário Início    : {aula.horarioInicio:HH:mm}");
+        Tela.MostrarMensagem(col, lin + 10, $"Horário Término   : {aula.horarioFim:HH:mm}");
+        Tela.MostrarMensagem(col, lin + 12, $"Lotação atual     : {aula.lotacao}");
 
+        Console.ReadKey();
+        tela.ApagarArea(col + "Nome              :".Length, lin, col + $"Nome              : {aula.nome}".Length, lin);
         Console.SetCursorPosition(col + "Nome              : ".Length, lin);
         string novoNome = Console.ReadLine();
         if (!string.IsNullOrEmpty(novoNome) && novoNome != "0")
             aula.nome = novoNome;
 
-        Console.SetCursorPosition(col + "ID da Modalidade  : ".Length, lin + 2);
-        if (int.TryParse(Console.ReadLine(), out int novaModalidade) && novaModalidade > 0)
-            aula.modalidade = modalidadeController.modalidades[novaModalidade - 1];
+        bool modalidadeValida = false;
+        while (!modalidadeValida)
+        {
+            List<string> listaModalidades = new List<string>();
+            for (int i = 0; i < modalidadeController.modalidades.Count; i++)
+                listaModalidades.Add($"{i + 1} - {modalidadeController.modalidades[i].nome}");
 
-        Console.SetCursorPosition(col + "ID do Instrutor   : ".Length, lin + 4);
-        if (int.TryParse(Console.ReadLine(), out int novoInstrutor) && novoInstrutor > 0)
-            aula.instrutor = funcionarioController.funcionarios[novoInstrutor - 1];
+            tela.MostrarSubMenu(60, 2, 100, 4 + listaModalidades.Count, "Modalidades", listaModalidades);
+            
+            tela.ApagarArea(col + "Modalidade atual  :".Length, lin+2, col + $"Modalidade atual  : {aula.modalidade.nome}".Length, lin+2);
+            
+            string idModalidade = Tela.Perguntar(col, lin + 2, "Nova modalidade   : ");
 
-        string data = Tela.Perguntar(col, lin + 6, "Data (DD/MM/AAAA) : ");
-        string horaInicio = Tela.Perguntar(col, lin + 8, "Horário de Início (HH:MM): ");
-        string horaFim = Tela.Perguntar(col, lin + 10, "Horário de Término (HH:MM): ");
+            if (idModalidade == "0")
+            {
+                modalidadeValida = true;
+            }
+            else if (int.TryParse(idModalidade, out int idxMod) && idxMod > 0 && idxMod <= modalidadeController.modalidades.Count)
+            {
+                aula.modalidade = modalidadeController.modalidades[idxMod - 1];
+                modalidadeValida = true;
+            }
+            tela.ApagarArea(60, 2, 100, 4+listaModalidades.Count);
+        }
+
+        bool instrutorValido = false;
+        while (!instrutorValido)
+        {
+            List<string> listaInstrutores = new List<string>();
+            for (int i = 0; i < funcionarioController.funcionarios.Count; i++)
+                listaInstrutores.Add($"{i + 1} - {funcionarioController.funcionarios[i].nomeCompleto}");
+
+
+            tela.MostrarSubMenu(60, 2, 100, 4 + listaInstrutores.Count, "Instrutores", listaInstrutores);
+
+            tela.ApagarArea(col + "Instrutor atual   :".Length, lin+4, col + $"Instrutor atual   : {aula.instrutor.nomeCompleto}".Length, lin+4);
+            
+            string idInstrutor = Tela.Perguntar(col, lin + 4, "Novo instrutor    : ");
+
+            if (idInstrutor == "0")
+            {
+                instrutorValido = true;
+            }
+            else if (int.TryParse(idInstrutor, out int idxInst) && idxInst > 0 && idxInst <= funcionarioController.funcionarios.Count)
+            {
+                aula.instrutor = funcionarioController.funcionarios[idxInst - 1];
+                instrutorValido = true;
+            }
+            tela.ApagarArea(60, 2, 101, 4 + listaInstrutores.Count);
+            tela.ReconstruirMoldura(3, 3, 70, 20);
+        }
+
+        tela.ApagarArea(col + "Data atual        :".Length, lin+6, col + $"Data atual        : {aula.horarioInicio:dd/MM/yyyy}".Length, lin+6);
+        string data = Tela.Perguntar(col, lin + 6, "Nova Data (DD/MM/AAAA) : ");
+
+        tela.ApagarArea(col + "Horário Início    :".Length, lin+8, col + $"Horário Início    : {aula.horarioInicio:HH:mm}".Length, lin+8);
+        string horaInicio = Tela.Perguntar(col, lin + 8, "Novo Início (HH:MM) : ");
+
+        tela.ApagarArea(col + "Horário Termino   :".Length, lin+10, col + $"Horário Termino   : {aula.horarioInicio:HH:mm}".Length, lin+10);
+        string horaFim = Tela.Perguntar(col, lin + 10, "Novo Fim (HH:MM) : ");
 
         if (data != "0" && horaInicio != "0")
             aula.horarioInicio = DateTime.Parse($"{data} {horaInicio}");
         if (data != "0" && horaFim != "0")
             aula.horarioFim = DateTime.Parse($"{data} {horaFim}");
 
-        Console.SetCursorPosition(col + "Lotação           : ".Length, lin + 12);
+        tela.ApagarArea(col + "Lotação atual     :".Length, lin+12, col + $"Lotação atual     : {aula.lotacao}".Length + 1, lin+12); //.Length + 1 para caso o usuario digite uma letra
+        Console.SetCursorPosition(col + "Lotação atual     : ".Length, lin + 12);
+
         if (int.TryParse(Console.ReadLine(), out int novaLotacao) && novaLotacao > 0)
             aula.lotacao = novaLotacao;
 
-        tela.MontarMoldura(62, 3, 110, 5 + aula.lotacao);
-        Tela.MostrarMensagem(63, 3, "[CLIENTES]");
-        Tela.MostrarMensagem(62, 2, "[Digite 0 para manter o cliente]");
+        tela.MontarMoldura(60, 2, 110, 5 + aula.lotacao);
+        Tela.MostrarMensagem(63, 2, "[CLIENTES]");
 
         List<Cliente> novosClientes = new List<Cliente>();
-        for (int c = 0; c < aula.clientes.Count; c++)
+        var clienteAtual = 0;
+
+        for (int c = 0; c < aula.lotacao; c++)
         {
-            Tela.MostrarMensagem(63, 5 + c, $"Cliente {c + 1}: {aula.clientes[c].nomeCompleto}");
-            string novoCliente = Tela.Perguntar(63 + $"Cliente {c + 1}: {aula.clientes[c].nomeCompleto}".Length, 5 + c, "| Novo ID: ");
-            if (novoCliente != "0" && int.TryParse(novoCliente, out int idCliente))
+            bool clienteValido = false;
+            bool clienteVazio = false;
+
+            string nomeCliente = (aula.clientes != null && c < aula.clientes.Count)
+                ? aula.clientes[c].nomeCompleto
+                : "[VAZIO]";
+
+            while (!clienteValido)
             {
-                if (idCliente > 0 && idCliente <= clienteController.clientes.Count)
-                    novosClientes.Add(clienteController.clientes[idCliente - 1]);
+                Tela.MostrarMensagem(63, 4 + c, $"Cliente {c + 1}: {nomeCliente}");
+                Tela.MostrarMensagem(col, lin - 2, "[DIGITE 0 PARA MANTER O DADO] | [DIGITE ? PARA LISTAR OS CLIENTES] | [DIGITE @ PARA NÃO CADASTRAR CLIENTE]");
+                string novoCliente = Tela.Perguntar(63, 5 + c, "Novo ID: ");
+
+                if (novoCliente == "0")
+                {
+                    if (nomeCliente != "[VAZIO]")
+                    {
+                        novosClientes.Add(aula.clientes[c]);
+                    }
+                    clienteValido = true;
+                }
+                else if (novoCliente == "@")
+                {
+                    clienteValido = true;
+                    clienteVazio = true;
+                }
+                else if (novoCliente == "?")
+                {
+                    this.clienteController.ListarClientes();
+
+                    // redesenha a tela
+                    tela.MontarMoldura(3, 3, 70, 20);
+                    Tela.MostrarMensagem(col, lin - 2, "[DIGITE 0 PARA MANTER O DADO] | [Aperte qualquer tecla para começar a trocar os dados]");
+                    Tela.MostrarMensagem(col, lin, $"Nome              : {aula.nome}");
+                    Tela.MostrarMensagem(col, lin + 2, $"Modalidade atual  : {aula.modalidade.nome}");
+                    Tela.MostrarMensagem(col, lin + 4, $"Instrutor atual   : {aula.instrutor.nomeCompleto}");
+                    Tela.MostrarMensagem(col, lin + 6, $"Data atual        : {aula.horarioInicio:dd/MM/yyyy}");
+                    Tela.MostrarMensagem(col, lin + 8, $"Horário Início    : {aula.horarioInicio:HH:mm}");
+                    Tela.MostrarMensagem(col, lin + 10, $"Horário Término   : {aula.horarioFim:HH:mm}");
+                    Tela.MostrarMensagem(col, lin + 12, $"Lotação atual     : {aula.lotacao}");
+                    tela.MontarMoldura(60, 2, 110, 5 + aula.lotacao);
+                    Tela.MostrarMensagem(63, 2, "[CLIENTES]");
+
+                    // mostra os clientes já confirmados até agora
+                    for (int j = 0; j < novosClientes.Count; j++)
+                    {
+                        Tela.MostrarMensagem(63, 4 + j, $"Cliente {j + 1}: {novosClientes[j].nomeCompleto}");
+                    }
+
+                    continue;
+                }
+                else
+                {
+                    int idCliente;
+                    bool conversaoOk = int.TryParse(novoCliente, out idCliente);
+
+                    if (!clienteVazio)
+                    {
+                        if (conversaoOk)
+                        {
+                            if (idCliente > 0 && idCliente <= clienteController.clientes.Count)
+                            {
+                                Cliente novo = clienteController.clientes[idCliente - 1];
+                                novosClientes.Add(novo);
+                                clienteValido = true;
+
+                                Tela.MostrarMensagem(63, 4 + c, $"Cliente {c + 1}: {novo.nomeCompleto}     ");
+                            }
+                            else
+                            {
+                                Tela.MostrarMensagem(63, 7 + c, "ID inválido! Digite um número válido.");
+                            }
+                        }
+                        else
+                        {
+                            Tela.MostrarMensagem(63, 7 + c, "Entrada inválida. Digite um número ou ?.");
+                        }
+                    }
+                }
             }
         }
+
 
         if (novosClientes.Count > 0)
             aula.clientes = novosClientes;
 
         aulas[id - 1] = aula;
+        Console.Clear();
     }
 }
