@@ -102,6 +102,37 @@ while (true)
                                 }
                                 if (opcaoModalidade == "4")
                                 {
+                                    tela.PrepararTela("Lista de Modalidades");
+                                    tela.MontarMoldura(2, 2, 65, 20);
+
+                                    int qtdModalidades = modalidadeController.modalidades.Count;
+                                    if (qtdModalidades == 0)
+                                    {
+                                        string op = Tela.Perguntar(4, 4, "Nenhuma modalidade cadastrada. Deseja cadastrar? (S/N): ");
+
+                                        while (!string.Equals(op, "s") && !string.Equals(op, "n"))
+                                        {
+                                            if (string.Equals(op.ToLower(), "s"))
+                                            {
+                                                modalidadeController.CadastrarModalidade(4, 6);
+                                            }
+
+                                            if (string.Equals(op.ToLower(), "n")) return;
+
+                                            op = Tela.Perguntar(4, 6, "Opção inválida. Digite novamente (S/N)");
+                                        }
+                                        modalidadeController.CadastrarModalidade(4, 6);
+                                        tela.ApagarArea(4, 6, 64, 19);
+                                        modalidadeController.VerModalidades(4, 6);
+                                    }
+                                    else
+                                    {
+                                        modalidadeController.VerModalidades(4, 4);
+                                    }
+
+                                }
+                                if (opcaoModalidade == "5")
+                                {
                                     tela.PrepararTela("ALTERAR MODALIDADE");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");

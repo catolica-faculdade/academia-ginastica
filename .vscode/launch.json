@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/AcademiaGinastica/AcademiaGinastica.csproj",
+            "args": [],
+            "cwd": "${workspaceFolder}/AcademiaGinastica",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
+        }
+    ]
+}

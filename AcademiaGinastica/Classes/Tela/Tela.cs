@@ -315,7 +315,7 @@ public class Tela
         }
 
         ApagarArea(coluna, li+2, 64, li+2);
-        Modalidade modalidade = PerguntarModalidade(coluna, li + 2, "ID da Modalidade [0] - Cadastrar nova: ");
+        Modalidade modalidade = PerguntarModalidade(coluna, li + 2, "ID da Modalidade : ");
         Funcionario instrutor = PerguntarFuncionario(coluna, li + 3, "ID do(a) Instrutor : ");
         string lotacao = Perguntar(coluna, li + 4, "Lotacao máxima da aula : ");
 
@@ -388,7 +388,8 @@ public class Tela
             "[1] - Criar    ",
             "[2] - Apagar    ",
             "[3] - Ver       ",
-            "[4] - Alterar   ",
+            "[4] - Listar Modalidades",
+            "[5] - Alterar   ",
             "[0] - Voltar    ",
         ];
 

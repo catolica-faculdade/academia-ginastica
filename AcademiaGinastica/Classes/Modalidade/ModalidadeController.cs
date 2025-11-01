@@ -60,4 +60,18 @@ public class ModalidadeController
         }
         Console.ReadKey();
     }
+
+    public void VerModalidades(int col, int lin)
+    {
+        int qtdModalidades = this.modalidades.Count;
+        int linha = lin;
+        for (int i = 0; i < qtdModalidades; i++)
+        {
+            Tela.MostrarMensagem(col, linha, $"{i + 1} Nome : {this.modalidades[i].nome}");
+            Tela.MostrarMensagem(col, linha + 1, $"Descricao : {this.modalidades[i].descricao}");
+            linha += 3;
+        }
+        Tela.MostrarMensagem(4, linha, "Digite qualquer tecla para sair");
+        Console.ReadKey();
+    }
 }
