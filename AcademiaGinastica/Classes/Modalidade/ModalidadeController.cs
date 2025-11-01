@@ -5,9 +5,9 @@ public class ModalidadeController
     public List<Modalidade> modalidades;
     Modalidade modalidade;
 
-    public ModalidadeController()
+    public ModalidadeController(List<Modalidade> modalidades)
     {
-        this.modalidades = new List<Modalidade>();
+        this.modalidades = modalidades ?? new List<Modalidade>();
     }
 
     public void CadastrarModalidade(int coluna, int li)
@@ -58,6 +58,20 @@ public class ModalidadeController
         {
             Tela.MostrarMensagem(col, lin + 1, "Id invalido");
         }
+        Console.ReadKey();
+    }
+
+    public void VerModalidades(int col, int lin)
+    {
+        int qtdModalidades = this.modalidades.Count;
+        int linha = lin;
+        for (int i = 0; i < qtdModalidades; i++)
+        {
+            Tela.MostrarMensagem(col, linha, $"{i + 1} Nome : {this.modalidades[i].nome}");
+            Tela.MostrarMensagem(col, linha + 1, $"Descricao : {this.modalidades[i].descricao}");
+            linha += 3;
+        }
+        Tela.MostrarMensagem(4, linha, "Digite qualquer tecla para sair");
         Console.ReadKey();
     }
 }

@@ -8,9 +8,9 @@ public class Agenda
     public FuncionarioController funcionarioController;
     public ModalidadeController modalidadeController;
 
-    public Agenda(ClienteController clienteController, FuncionarioController funcionarioController, ModalidadeController modalidadeController)
+    public Agenda(List<Aula> aulas, ClienteController clienteController, FuncionarioController funcionarioController, ModalidadeController modalidadeController)
     {
-        this.aulas = new List<Aula>();
+        this.aulas = aulas ?? new List<Aula>();
         this.clienteController = clienteController;
         this.funcionarioController = funcionarioController;
         this.modalidadeController = modalidadeController;

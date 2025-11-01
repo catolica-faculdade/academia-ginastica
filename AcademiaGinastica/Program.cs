@@ -1,7 +1,9 @@
-﻿ModalidadeController modalidadeController = new ModalidadeController();
-FuncionarioController funcionarioController = new FuncionarioController();
-ClienteController clienteController = new ClienteController();
-Agenda agenda = new Agenda(clienteController, funcionarioController, modalidadeController);
+﻿GeralController geralController = new GeralController();
+
+ModalidadeController modalidadeController = new ModalidadeController(geralController.modalidades);
+FuncionarioController funcionarioController = new FuncionarioController(geralController.funcionarios);
+ClienteController clienteController = new ClienteController(geralController.clientes);
+Agenda agenda = new Agenda(geralController.aulas, clienteController, funcionarioController, modalidadeController);
 Tela tela = new Tela(90, 25, agenda, modalidadeController, funcionarioController, clienteController);
 
 string opcao;
@@ -101,6 +103,37 @@ while (true)
                                     modalidadeController.VerModalidade(4, 4, int.Parse(id));
                                 }
                                 if (opcaoModalidade == "4")
+                                {
+                                    tela.PrepararTela("Lista de Modalidades");
+                                    tela.MontarMoldura(2, 2, 65, 20);
+
+                                    int qtdModalidades = modalidadeController.modalidades.Count;
+                                    if (qtdModalidades == 0)
+                                    {
+                                        string op = Tela.Perguntar(4, 4, "Nenhuma modalidade cadastrada. Deseja cadastrar? (S/N): ");
+
+                                        while (!string.Equals(op, "s") && !string.Equals(op, "n"))
+                                        {
+                                            if (string.Equals(op.ToLower(), "s"))
+                                            {
+                                                modalidadeController.CadastrarModalidade(4, 6);
+                                            }
+
+                                            if (string.Equals(op.ToLower(), "n")) return;
+
+                                            op = Tela.Perguntar(4, 6, "Opção inválida. Digite novamente (S/N)");
+                                        }
+                                        modalidadeController.CadastrarModalidade(4, 6);
+                                        tela.ApagarArea(4, 6, 64, 19);
+                                        modalidadeController.VerModalidades(4, 6);
+                                    }
+                                    else
+                                    {
+                                        modalidadeController.VerModalidades(4, 4);
+                                    }
+
+                                }
+                                if (opcaoModalidade == "5")
                                 {
                                     tela.PrepararTela("ALTERAR MODALIDADE");
                                     tela.MontarMoldura(2, 2, 35, 4);
