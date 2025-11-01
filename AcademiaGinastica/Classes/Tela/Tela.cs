@@ -286,9 +286,38 @@ public class Tela
     public void CadastrarAula(int coluna, int li)
     {
         string nomeAula = Perguntar(coluna, li, "Nome da aula : ");
+        while (modalidadeController.modalidades.Count == 0)
+        {
+            string op = Perguntar(coluna, li + 2, "Nenhuma modalidade encontrada. Deseja cadastrar? (S/N): ");
+            if (string.Equals(op.ToLower(), "s"))
+            {
+                try
+                {
+                    modalidadeController.CadastrarModalidade(coluna, li + 4);
+                    MostrarMensagem(coluna, li + 8, "Cadastro realizado com sucesso!");
+                    Console.ReadKey();
+                    ApagarArea(coluna, li+4, 64, li+8);
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine("Alguma coisa deu errado, erro:", error.Message);
+                }
+
+            }
+
+            if (string.Equals(op.ToLower(), "n"))
+            {
+                MostrarMensagem(coluna, li + 2, "Aperte qualquer tecla para retornar ao menu...");
+                Console.ReadKey();
+
+                return;
+            }
+        }
+
+        ApagarArea(coluna, li+2, 64, li+2);
         Modalidade modalidade = PerguntarModalidade(coluna, li + 2, "ID da Modalidade [0] - Cadastrar nova: ");
         Funcionario instrutor = PerguntarFuncionario(coluna, li + 3, "ID do(a) Instrutor : ");
-        string lotacao = Perguntar(coluna, li + 4, "Lotacao da aula : ");
+        string lotacao = Perguntar(coluna, li + 4, "Lotacao máxima da aula : ");
 
 
         MontarMoldura(61, 2, 88, 3+int.Parse(lotacao));

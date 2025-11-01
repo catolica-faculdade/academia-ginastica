@@ -67,7 +67,7 @@ while (true)
                             break;
                         case "2":
                             tela.PrepararTela("CADASTRO DE AULA");
-                            tela.MontarMoldura(2, 2, 60, 15);
+                            tela.MontarMoldura(2, 2, 65, 15);
                             Tela.MostrarMensagem(4, 2, "Dados da nova aula");
                             tela.CadastrarAula(5, 4);
                             break;
