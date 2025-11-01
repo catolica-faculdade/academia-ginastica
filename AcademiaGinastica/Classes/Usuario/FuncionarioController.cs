@@ -6,9 +6,9 @@ public class FuncionarioController
     private List<string> dados = new List<string>();
     private Tela tela;
 
-    public FuncionarioController()
+    public FuncionarioController(List<Funcionario> funcionarios)
     {
-        this.funcionarios = new List<Funcionario>();
+        this.funcionarios = funcionarios ?? new List<Funcionario>();
         this.funcionario = new Funcionario();
         this.posicao = -1;
         this.dados.Add("Nome completo   :");

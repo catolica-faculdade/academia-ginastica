@@ -5,9 +5,9 @@ public class ModalidadeController
     public List<Modalidade> modalidades;
     Modalidade modalidade;
 
-    public ModalidadeController()
+    public ModalidadeController(List<Modalidade> modalidades)
     {
-        this.modalidades = new List<Modalidade>();
+        this.modalidades = modalidades ?? new List<Modalidade>();
     }
 
     public void CadastrarModalidade(int coluna, int li)

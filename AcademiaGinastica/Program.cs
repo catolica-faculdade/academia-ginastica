@@ -1,7 +1,9 @@
-﻿ModalidadeController modalidadeController = new ModalidadeController();
-FuncionarioController funcionarioController = new FuncionarioController();
-ClienteController clienteController = new ClienteController();
-Agenda agenda = new Agenda(clienteController, funcionarioController, modalidadeController);
+﻿GeralController geralController = new GeralController();
+
+ModalidadeController modalidadeController = new ModalidadeController(geralController.modalidades);
+FuncionarioController funcionarioController = new FuncionarioController(geralController.funcionarios);
+ClienteController clienteController = new ClienteController(geralController.clientes);
+Agenda agenda = new Agenda(geralController.aulas, clienteController, funcionarioController, modalidadeController);
 Tela tela = new Tela(90, 25, agenda, modalidadeController, funcionarioController, clienteController);
 
 string opcao;

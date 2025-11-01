@@ -1,14 +1,14 @@
 public class ClienteController
 {
-    public List<Cliente> clientes;
+    public List<Cliente> clientes = new GeralController().clientes;
     private Cliente cliente;
     private int posicao;
     private List<string> dados = new List<string>();
     private Tela tela;
 
-    public ClienteController()
+    public ClienteController(List<Cliente> clientes)
     {
-        this.clientes = new List<Cliente>();
+        this.clientes = clientes ?? new List<Cliente>();
         this.cliente = new Cliente();
         this.posicao = -1;
         this.dados.Add("Nome completo   :");
