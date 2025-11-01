@@ -370,7 +370,7 @@ public class Tela
             "[0] - Voltar    ",
         ];
 
-        PrepararTela("VERIFICAR CLIENTES");
+        PrepararTela("VERIFICAR AGENDA");
         MostrarMensagem(2, 2, "Selecione a operacao:");
         opcao = MostrarMenu(opcoes, 2, 4);
 
