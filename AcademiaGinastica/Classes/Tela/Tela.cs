@@ -338,9 +338,9 @@ public class Tela
         List<string> opcoes =
         [
             "[1] - Listar    ",
-            "[1] - Apagar    ",
-            "[1] - Ver       ",
-            "[1] - Alterar   ",
+            "[2] - Apagar    ",
+            "[3] - Ver       ",
+            "[4] - Alterar   ",
             "[0] - Voltar    ",
         ];
 
@@ -357,13 +357,13 @@ public class Tela
         List<string> opcoes =
         [
             "[1] - Criar    ",
-            "[1] - Apagar    ",
-            "[1] - Ver       ",
-            "[1] - Alterar   ",
+            "[2] - Apagar    ",
+            "[3] - Ver       ",
+            "[4] - Alterar   ",
             "[0] - Voltar    ",
         ];
 
-        PrepararTela("VERIFICAR FUNCIONARIOS");
+        PrepararTela("VERIFICAR MODALIDADES");
         MostrarMensagem(2, 2, "Selecione a operacao:");
         opcao = MostrarMenu(opcoes, 2, 4);
 
