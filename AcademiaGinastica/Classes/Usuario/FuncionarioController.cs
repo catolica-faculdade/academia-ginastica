@@ -167,7 +167,7 @@ public class FuncionarioController
         Console.Clear();
         if (id < 0 || id > funcionarios.Count)
         {
-            Tela.MostrarMensagem(4, 4, "Cliente invalido!");
+            Tela.MostrarMensagem(4, 4, "Funcionário invalido!");
             Console.ReadKey();
             return;
         }
@@ -189,16 +189,20 @@ public class FuncionarioController
 
 
         Console.SetCursorPosition(col + "Nome completo   : ".Length, lin);
-        this.funcionario.nomeCompleto = Console.ReadLine();
+        string nomeCompleto = Console.ReadLine();
+        if (string.Equals(nomeCompleto.ToLower(), "sair")) return;
         Console.SetCursorPosition(col + "CPF             : ".Length, lin+2);
-        this.funcionario.CPF = Console.ReadLine();
+        string CPF = Console.ReadLine();
+        if (string.Equals(CPF.ToLower(), "sair")) return;
         Console.SetCursorPosition(col + "Telefone        : ".Length, lin+4);
-        this.funcionario.telefone = Console.ReadLine();
+        string telefone = Console.ReadLine();
+        if (string.Equals(telefone.ToLower(), "sair")) return;
         Console.SetCursorPosition(col + "E-mail          : ".Length, lin+6);
-        this.funcionario.email = Console.ReadLine();
+        string email = Console.ReadLine();
+        if (string.Equals(email.ToLower(), "sair")) return;
         Console.SetCursorPosition(col + "Endereço        : ".Length, lin+8);
-        this.funcionario.enderecoCompleto = Console.ReadLine();
-
+        string enderecoCompleto = Console.ReadLine();
+        if (string.Equals(enderecoCompleto.ToLower(), "sair")) return;
 
         tela.MontarMoldura(81, 2, 107, 11);
         Tela.MostrarMensagem(82, 2, $"[SELECIONE O CARGO]");
@@ -215,6 +219,13 @@ public class FuncionarioController
         Tela.MostrarMensagem(82, cargoLinha + i + 1, "Escolha: ");
         Console.SetCursorPosition(82 + "Escolha: ".Length, cargoLinha + i + 1);
         string entradaCargo = Console.ReadLine();
+        if (string.Equals(entradaCargo.ToLower(), "sair")) return;
+
+        this.funcionario.nomeCompleto = nomeCompleto;
+        this.funcionario.CPF = CPF;
+        this.funcionario.telefone = telefone;
+        this.funcionario.email = email;
+        this.funcionario.enderecoCompleto = enderecoCompleto;
 
         try
         {

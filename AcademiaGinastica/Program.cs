@@ -249,22 +249,28 @@ while (true)
                                 if (opcaoFuncionario == "2")
                                 {
                                     tela.PrepararTela("APAGAR FUNCIONARIO");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
-                                    string id = Tela.Perguntar(4, 3, "Digite o ID do funcionario");
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID do funcionário : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     funcionarioController.ApagarFuncionario(int.Parse(id));
                                 }
                                 if (opcaoFuncionario == "3")
                                 {
                                     tela.PrepararTela("VER FUNCIONARIO");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
-                                    string id = Tela.Perguntar(4, 3, "Digite o ID do funcionario: ");
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID do funcionário : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     funcionarioController.VerFuncionario(int.Parse(id));
                                 }
                                 if (opcaoFuncionario == "4")
                                 {
                                     tela.PrepararTela("ALTERAR FUNCIONARIO");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
-                                    string id = Tela.Perguntar(4, 3, "Digite o ID do funcionario: ");
+                                    string id = Tela.Perguntar(3, 3, "Digite o ID do funcionário : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     funcionarioController.AlterarFuncionario(int.Parse(id));
                                 }
                             }
