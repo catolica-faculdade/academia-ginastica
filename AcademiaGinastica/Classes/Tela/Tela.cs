@@ -201,8 +201,11 @@ public class Tela
         {
             this.PrepararTela("LOGIN");
             this.MontarMoldura(24, 5, 64, 10);
+            MostrarMensagem(39, 12, "[0] - Sair");
             var nome = Perguntar(25, 6, "Nome de usuario: ");
+            if (nome == "0") return false;
             var senha = Perguntar(25, 8, "Senha do usuario: ");
+            if (senha == "0") return false;
 
             //provisório
             if (nome != "" && senha != "")
