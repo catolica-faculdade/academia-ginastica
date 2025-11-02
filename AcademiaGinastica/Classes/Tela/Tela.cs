@@ -408,11 +408,11 @@ public class Tela
         string opcao;
         List<string> opcoes =
         [
-            "[1] - Listar    ",
-            "[2] - Apagar    ",
-            "[3] - Ver       ",
-            "[4] - Alterar   ",
-            "Digite 'Sair' para sair...",
+            "[1] - Listar               ",
+            "[2] - Apagar               ",
+            "[3] - Ver                  ",
+            "[4] - Alterar              ",
+            "Digite 'Sair' para sair... ",
         ];
 
         PrepararTela("VERIFICAR AGENDA");
@@ -427,11 +427,11 @@ public class Tela
         string opcao;
         List<string> opcoes =
         [
-            "[1] - Listar    ",
-            "[2] - Apagar    ",
-            "[3] - Ver       ",
-            "[4] - Alterar   ",
-            "Digite 'Sair' para sair...",
+            "[1] - Listar               ",
+            "[2] - Apagar               ",
+            "[3] - Ver                  ",
+            "[4] - Alterar              ",
+            "Digite 'Sair' para sair... ",
         ];
 
         PrepararTela("VERIFICAR FUNCIONARIOS");
@@ -446,12 +446,12 @@ public class Tela
         string opcao;
         List<string> opcoes =
         [
-            "[1] - Criar    ",
-            "[2] - Apagar    ",
-            "[3] - Ver       ",
-            "[4] - Listar Modalidades",
-            "[5] - Alterar   ",
-            "Digite 'Sair' para sair...",
+            "[1] - Criar                ",
+            "[2] - Apagar               ",
+            "[3] - Ver                  ",
+            "[4] - Listar Modalidades   ",
+            "[5] - Alterar              ",
+            "Digite 'Sair' para sair... ",
         ];
 
         PrepararTela("VERIFICAR MODALIDADES");
