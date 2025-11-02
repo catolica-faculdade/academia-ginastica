@@ -162,16 +162,30 @@ public class ClienteController
 
 
         Console.SetCursorPosition(col + "Nome completo   : ".Length, lin);
-        this.cliente.nomeCompleto = Console.ReadLine();
-        Console.SetCursorPosition(col + "CPF             : ".Length, lin+2);
-        this.cliente.CPF = Console.ReadLine();
-        Console.SetCursorPosition(col + "Telefone        : ".Length, lin+4);
-        this.cliente.telefone = Console.ReadLine();
-        Console.SetCursorPosition(col + "E-mail          : ".Length, lin+6);
-        this.cliente.email = Console.ReadLine();
-        Console.SetCursorPosition(col + "Endereço        : ".Length, lin+8);
-        this.cliente.enderecoCompleto = Console.ReadLine();
+        string nomeCompleto = Console.ReadLine();
+        if (string.Equals(nomeCompleto.ToLower(), "sair")) return;
 
+        Console.SetCursorPosition(col + "CPF             : ".Length, lin+2);
+        string CPF = Console.ReadLine();
+        if (string.Equals(CPF.ToLower(), "sair")) return;
+
+        Console.SetCursorPosition(col + "Telefone        : ".Length, lin+4);
+        string telefone = Console.ReadLine();
+        if (string.Equals(telefone.ToLower(), "sair")) return;
+
+        Console.SetCursorPosition(col + "E-mail          : ".Length, lin+6);
+        string email = Console.ReadLine();
+        if (string.Equals(email.ToLower(), "sair")) return;
+
+        Console.SetCursorPosition(col + "Endereço        : ".Length, lin+8);
+        string enderecoCompleto = Console.ReadLine();
+        if (string.Equals(enderecoCompleto.ToLower(), "sair")) return;
+
+        this.cliente.nomeCompleto = nomeCompleto;
+        this.cliente.CPF = CPF;
+        this.cliente.telefone = telefone;
+        this.cliente.email = email;
+        this.cliente.enderecoCompleto = enderecoCompleto;
         this.clientes[id - 1] = this.cliente;
     }
 }

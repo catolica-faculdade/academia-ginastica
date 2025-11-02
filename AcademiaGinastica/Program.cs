@@ -224,8 +224,10 @@ while (true)
                                 if (opcaoClientes == "4")
                                 {
                                     tela.PrepararTela("ALTERAR CLIENTE");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     string id = Tela.Perguntar(3, 3, "Digite o ID do cliente : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     clienteController.AlterarCliente(int.Parse(id));
                                 }
                             }
