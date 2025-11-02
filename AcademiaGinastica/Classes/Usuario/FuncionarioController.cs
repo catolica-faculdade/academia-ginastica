@@ -23,23 +23,23 @@ public class FuncionarioController
 
     public bool Cadastrar(int li, int coluna, string tipoCargo)
     {
-        Tela.MostrarMensagem(26, 20, "[0] - Sair");
+        Tela.MostrarMensagem(20, 20, "Digite 'Sair' para voltar...");
         string nomeCompleto = Tela.Perguntar(coluna, li, "Nome Completo : ");
-        if (nomeCompleto == "0") return false;
+        if (string.Equals(nomeCompleto.ToLower(), "sair")) return false;
         string CPF = Tela.Perguntar(coluna, li + 2, "CPF : ");
-        if (CPF == "0") return false;
+        if (string.Equals(CPF.ToLower(), "sair")) return false;
         string email = Tela.Perguntar(coluna, li + 4, "Email : ");
-        if (email == "0") return false;
+        if (string.Equals(email.ToLower(), "sair")) return false;
         string telefone = Tela.Perguntar(coluna, li + 6, "Telefone : ");
-        if (telefone == "0") return false;
+        if (string.Equals(telefone.ToLower(), "sair")) return false;
         string enderecoCompleto = Tela.Perguntar(coluna, li + 8, "Endereço Completo : ");
-        if (enderecoCompleto == "0") return false;
+        if (string.Equals(enderecoCompleto.ToLower(), "sair")) return false;
         string senha = Tela.PerguntarSenha(coluna, li + 10, "Senha : ");
-        if (senha == "0") return false;
+        if (string.Equals(senha.ToLower(), "sair")) return false;
 
         decimal salario = 0;
         string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
-        if (salarioStr == "0") return false;
+        if (string.Equals(salarioStr.ToLower(), "sair")) return false;
         decimal.TryParse(salarioStr, out salario);
 
         Cargo novoCargo = Cargo.admin;

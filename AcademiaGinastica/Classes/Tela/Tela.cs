@@ -201,11 +201,11 @@ public class Tela
         {
             this.PrepararTela("LOGIN");
             this.MontarMoldura(24, 5, 64, 10);
-            MostrarMensagem(39, 12, "[0] - Sair");
+            MostrarMensagem(32, 12, "Digite 'Sair' para voltar...");
             var nome = Perguntar(25, 6, "Nome de usuario: ");
-            if (nome == "0") return false;
+            if (string.Equals(nome.ToLower(), "sair")) return false;
             var senha = Perguntar(25, 8, "Senha do usuario: ");
-            if (senha == "0") return false;
+            if (string.Equals(senha.ToLower(), "sair")) return false;
 
             //provisório
             if (nome != "" && senha != "")
@@ -352,6 +352,7 @@ public class Tela
 
         ApagarArea(coluna, li+2, 64, li+2);
         Modalidade modalidade = PerguntarModalidade(coluna, li + 2, "ID da Modalidade : ");
+        if (modalidade == null) return;
         Funcionario instrutor = PerguntarFuncionario(coluna, li + 3, "ID do(a) Instrutor : ");
         string lotacao = Perguntar(coluna, li + 4, "Lotacao máxima da aula : ");
 

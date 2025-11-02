@@ -13,7 +13,9 @@ public class ModalidadeController
     public void CadastrarModalidade(int coluna, int li)
     {
         string nome = Tela.Perguntar(coluna, li, "Nome da Modalidade: ");
+        if (string.Equals(nome.ToLower(), "sair")) return;
         string descricao = Tela.Perguntar(coluna, li + 2, "Descricao : ");
+        if (string.Equals(descricao.ToLower(), "sair")) return;
 
         Modalidade novaModalidade = new Modalidade(
             nome,
