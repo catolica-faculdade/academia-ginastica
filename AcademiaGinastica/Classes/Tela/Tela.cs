@@ -217,7 +217,7 @@ public class Tela
                 var novamente = Perguntar(17, 22, "");
                 if (novamente == "2")
                 {
-                    return true;
+                    return false;
                 }
             }
         }
