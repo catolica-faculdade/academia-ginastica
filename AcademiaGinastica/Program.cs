@@ -6,10 +6,10 @@ ClienteController clienteController = new ClienteController(geralController.clie
 Agenda agenda = new Agenda(geralController.aulas, clienteController, funcionarioController, modalidadeController);
 Tela tela = new Tela(90, 25, agenda, modalidadeController, funcionarioController, clienteController);
 
-string opcao;
+string opcaoSelecionada;
 List<string> opcoes = new List<string>();
 opcoes.Add("1 - Entrar      ");
-opcoes.Add("0 - Sair        ");
+opcoes.Add("Sair");
 
 tela.ApagarArea(0, 0, 119, 49);
 while (true)
@@ -38,11 +38,12 @@ while (true)
 ║ ╚██████╔╝██║██║ ╚████║██║  ██║███████║   ██║   ██║╚██████╗██║  ██║
 ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝
 ║");
-    opcao = tela.MostrarMenu(opcoes, 35, 10);
+    opcaoSelecionada = tela.MostrarMenu(opcoes, 35, 10);
+    string opcao = opcaoSelecionada.ToLower();
 
     switch (opcao)
     {
-        case "0":
+        case "sair":
             break;
         case "1":
             bool entrou = tela.Login();
@@ -57,18 +58,19 @@ while (true)
                     {
                         case "1":
                             string opcaoCadastro = tela.CadastrarUsuario();
+                            if (string.Equals(opcaoCadastro, "sair")) break;
                             if (int.Parse(opcaoCadastro) >= 0 && int.Parse(opcaoCadastro) <= 6)
                             {
                                 tela.PrepararTela("CADASTRO DE USUARIO");
                                 tela.MontarMoldura(2, 2, 60, 19);
                                 Tela.MostrarMensagem(4, 2, "Dados do novo usuario");
                                 if (opcaoCadastro == "1") clienteController.Cadastrar(5, 4, opcaoCadastro);
-                                else if (opcaoCadastro == "0") break;
                                 else funcionarioController.Cadastrar(5, 4, opcaoCadastro);
                             }
                             break;
                         case "2":
                             tela.PrepararTela("CADASTRO DE AULA");
+                            Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                             tela.MontarMoldura(2, 2, 65, 15);
                             Tela.MostrarMensagem(4, 2, "Dados da nova aula");
                             tela.CadastrarAula(5, 4);
@@ -276,7 +278,7 @@ while (true)
                             }
                             break;
                     }
-                    if (opcao == "0")
+                    if (opcao == "sair")
                     {
                         sair = true;
                     }
@@ -288,7 +290,7 @@ while (true)
             Console.ReadKey();
             break;
     }
-    if (opcao == "0")
+    if (opcao == "sair")
     {
         Console.Clear();
         return;

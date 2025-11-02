@@ -273,7 +273,7 @@ public class Tela
         opcoes.Add("[4] - Verificar Agendas         ");
         opcoes.Add("[5] - Verificar Clientes        ");
         opcoes.Add("[6] - Verificar Funcionarios    ");
-        opcoes.Add("[0] - SAIR                      ");
+        opcoes.Add("Digite 'Sair' para sair         ");
         PrepararTela("MENU");
         MostrarSubMenu(59, 2, 88, 10, "AGENDAMENTOS", agendamentos);
         MostrarSubMenu(59, 12, 88, 17, "ACONTECENDO AGORA", acontecendoAgora);
@@ -310,7 +310,7 @@ public class Tela
             "[4] - Auditoria     ",
             "[5] - Gerente       ",
             "[6] - Instrutor     ",
-            "[0] - Voltar        ",
+            "Digite 'Sair' para sair"
         ];
 
         PrepararTela("CADASTRO DE USUARIOS");
@@ -322,9 +322,11 @@ public class Tela
     public void CadastrarAula(int coluna, int li)
     {
         string nomeAula = Perguntar(coluna, li, "Nome da aula : ");
+        if (string.Equals(nomeAula.ToLower(), "sair")) return;
         while (modalidadeController.modalidades.Count == 0)
         {
             string op = Perguntar(coluna, li + 2, "Nenhuma modalidade encontrada. Deseja cadastrar? (S/N): ");
+            if (string.Equals(op.ToLower(), "sair")) return;
             if (string.Equals(op.ToLower(), "s"))
             {
                 try
@@ -354,17 +356,23 @@ public class Tela
         Modalidade modalidade = PerguntarModalidade(coluna, li + 2, "ID da Modalidade : ");
         if (modalidade == null) return;
         Funcionario instrutor = PerguntarFuncionario(coluna, li + 3, "ID do(a) Instrutor : ");
+        if (instrutor == null) return;
         string lotacao = Perguntar(coluna, li + 4, "Lotacao máxima da aula : ");
-
+        if(string.Equals(lotacao.ToLower(), "sair")) return;
 
         MontarMoldura(61, 2, 88, 3+int.Parse(lotacao));
         MostrarMensagem(62, 2, "[CLIENTES]");
         List<Cliente> clientes = PerguntarClientes(62, 3, "ID do Cliente : ");
+        if (clientes == null) return;
 
         string data = Perguntar(coluna, li + 5, "Data (DD/MM/AAAA): ");
-        string horaInicio = Perguntar(coluna, li + 6, "Horário de início (HH:MM): ");
-        string horaFim = Perguntar(coluna, li + 7, "Horário de término (HH:MM): ");
+        if(string.Equals(data.ToLower(), "sair")) return;
 
+        string horaInicio = Perguntar(coluna, li + 6, "Horário de início (HH:MM): ");
+        if(string.Equals(horaInicio.ToLower(), "sair")) return;
+
+        string horaFim = Perguntar(coluna, li + 7, "Horário de término (HH:MM): ");
+        if(string.Equals(horaFim.ToLower(), "sair")) return;
 
 
         DateTime dataInicio = DateTime.Parse($"{data} {horaInicio}");
@@ -385,7 +393,7 @@ public class Tela
             "[2] - Apagar    ",
             "[3] - Ver       ",
             "[4] - Alterar   ",
-            "[0] - Voltar    ",
+            "Digite 'Sair' para sair...    ",
         ];
 
         PrepararTela("VERIFICAR CLIENTES");
@@ -404,7 +412,7 @@ public class Tela
             "[2] - Apagar    ",
             "[3] - Ver       ",
             "[4] - Alterar   ",
-            "[0] - Voltar    ",
+            "Digite 'Sair' para sair...",
         ];
 
         PrepararTela("VERIFICAR AGENDA");
@@ -423,7 +431,7 @@ public class Tela
             "[2] - Apagar    ",
             "[3] - Ver       ",
             "[4] - Alterar   ",
-            "[0] - Voltar    ",
+            "Digite 'Sair' para sair...",
         ];
 
         PrepararTela("VERIFICAR FUNCIONARIOS");
@@ -443,7 +451,7 @@ public class Tela
             "[3] - Ver       ",
             "[4] - Listar Modalidades",
             "[5] - Alterar   ",
-            "[0] - Voltar    ",
+            "Digite 'Sair' para sair...",
         ];
 
         PrepararTela("VERIFICAR MODALIDADES");
@@ -487,6 +495,7 @@ public class Tela
         Console.Write(pergunta);
 
         string idModalidade = Console.ReadLine();
+        if (string.Equals(idModalidade, "sair")) return null;
         Modalidade modalidadeRetorno = null;
         bool retorno = false;
 
@@ -527,6 +536,7 @@ public class Tela
             Console.Write(pergunta);
 
             string idCliente = Console.ReadLine();
+            if (string.Equals(idCliente.ToLower(), "sair")) return null;
             int id = int.Parse(idCliente);
 
             if (id <= this.clienteController.clientes.Count && id > 0)
@@ -568,6 +578,7 @@ public class Tela
             Console.Write(pergunta);
 
             string idFuncionario = Console.ReadLine();
+            if (string.Equals(idFuncionario, "sair")) return null;
             int id = int.Parse(idFuncionario);
 
             if (id <= this.funcionarioController.funcionarios.Count || id > 0)
