@@ -39,6 +39,7 @@ public class FuncionarioController
 
         decimal salario = 0;
         string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
+        if (salarioStr == "0") return false;
         decimal.TryParse(salarioStr, out salario);
 
         Cargo novoCargo = Cargo.admin;

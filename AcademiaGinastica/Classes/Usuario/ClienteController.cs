@@ -40,6 +40,7 @@ public class ClienteController
         if (tipoCargo != "1")
         {
             string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
+            if (salarioStr == "0") return false;
             decimal.TryParse(salarioStr, out salario);
         }
 
