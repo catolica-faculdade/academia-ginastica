@@ -80,22 +80,27 @@ while (true)
                                 if (opcaoModalidade == "1")
                                 {
                                     tela.PrepararTela("CRIAR MODALIDADE");
-                                    tela.MontarMoldura(2, 2, 15, 10);
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
+                                    tela.MontarMoldura(2, 2, 15, 10);                                    
                                     modalidadeController.CadastrarModalidade(4,4);
                                 }
                                 if (opcaoModalidade == "2")
                                 {
                                     tela.PrepararTela("APAGAR MODALIDADE");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     modalidadeController.ApagarModalidade(int.Parse(id));
                                 }
                                 if (opcaoModalidade == "3")
                                 {
                                     tela.PrepararTela("VER MODALIDADE");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     Tela.MostrarMensagem(3, 3, "[Digite 0 para listar todas]");
                                     string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     if(int.Parse(id) == 0)
                                     {
                                         tela.MontarMoldura(2, 2, 35, modalidadeController.modalidades.Count * 2 + 4);
@@ -136,8 +141,10 @@ while (true)
                                 if (opcaoModalidade == "5")
                                 {
                                     tela.PrepararTela("ALTERAR MODALIDADE");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     modalidadeController.AlterarModalidade(4, 4, int.Parse(id));
 
                                 }
@@ -156,16 +163,20 @@ while (true)
                                 if (opcaoAgenda == "2")
                                 {
                                     tela.PrepararTela("APAGAR AGENDA");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     string id = Tela.Perguntar(3, 3, "Digite o ID da aula : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     agenda.ApagarAula(int.Parse(id));
                                 }
                                 if (opcaoAgenda == "3")
                                 {
                                     tela.PrepararTela("VER AULA");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     Tela.MostrarMensagem(3, 4, "[Digite 0 para listar todas]");
                                     string id = Tela.Perguntar(3, 3, "Digite o ID da aula : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     if(int.Parse(id) == 0)
                                     {
                                         agenda.ListarAgenda(4, 4, tela);
@@ -177,8 +188,10 @@ while (true)
                                 if (opcaoAgenda == "4")
                                 {
                                     tela.PrepararTela("ALTERAR AGENDA");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     string id = Tela.Perguntar(3, 3, "Digite o ID da aula : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     agenda.AlterarAgenda(4, 4, int.Parse(id), tela);
 
                                 }

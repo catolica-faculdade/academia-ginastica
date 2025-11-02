@@ -214,6 +214,7 @@ public class Agenda
 
         Aula aula = this.aulas[id - 1];
         tela.MontarMoldura(3, 3, 70, 20);
+        Tela.MostrarMensagem(22, 18, "Digite 'Sair' para voltar...");
 
         Tela.MostrarMensagem(col, lin - 2, "[DIGITE 0 PARA MANTER O DADO] | [Aperte qualquer tecla para começar a trocar os dados]");
         Tela.MostrarMensagem(col, lin, $"Nome              : {aula.nome}");
@@ -228,6 +229,7 @@ public class Agenda
         tela.ApagarArea(col + "Nome              :".Length, lin, col + $"Nome              : {aula.nome}".Length, lin);
         Console.SetCursorPosition(col + "Nome              : ".Length, lin);
         string novoNome = Console.ReadLine();
+        if (string.Equals(novoNome.ToLower(), "sair")) return;
         if (!string.IsNullOrEmpty(novoNome) && novoNome != "0")
             aula.nome = novoNome;
 
@@ -243,6 +245,7 @@ public class Agenda
             tela.ApagarArea(col + "Modalidade atual  :".Length, lin+2, col + $"Modalidade atual  : {aula.modalidade.nome}".Length, lin+2);
             
             string idModalidade = Tela.Perguntar(col, lin + 2, "Nova modalidade   : ");
+            if (string.Equals(idModalidade.ToLower(), "sair")) return;
 
             if (idModalidade == "0")
             {
@@ -269,6 +272,7 @@ public class Agenda
             tela.ApagarArea(col + "Instrutor atual   :".Length, lin+4, col + $"Instrutor atual   : {aula.instrutor.nomeCompleto}".Length, lin+4);
             
             string idInstrutor = Tela.Perguntar(col, lin + 4, "Novo instrutor    : ");
+            if (string.Equals(idInstrutor.ToLower(), "sair")) return;
 
             if (idInstrutor == "0")
             {
@@ -285,12 +289,15 @@ public class Agenda
 
         tela.ApagarArea(col + "Data atual        :".Length, lin+6, col + $"Data atual        : {aula.horarioInicio:dd/MM/yyyy}".Length, lin+6);
         string data = Tela.Perguntar(col, lin + 6, "Nova Data (DD/MM/AAAA) : ");
+        if (string.Equals(data.ToLower(), "sair")) return;
 
         tela.ApagarArea(col + "Horário Início    :".Length, lin+8, col + $"Horário Início    : {aula.horarioInicio:HH:mm}".Length, lin+8);
         string horaInicio = Tela.Perguntar(col, lin + 8, "Novo Início (HH:MM) : ");
+        if (string.Equals(horaInicio.ToLower(), "sair")) return;
 
         tela.ApagarArea(col + "Horário Termino   :".Length, lin+10, col + $"Horário Termino   : {aula.horarioInicio:HH:mm}".Length, lin+10);
         string horaFim = Tela.Perguntar(col, lin + 10, "Novo Fim (HH:MM) : ");
+        if (string.Equals(horaFim.ToLower(), "sair")) return;
 
         if (data != "0" && horaInicio != "0")
             aula.horarioInicio = DateTime.Parse($"{data} {horaInicio}");
@@ -299,9 +306,15 @@ public class Agenda
 
         tela.ApagarArea(col + "Lotação atual     :".Length, lin+12, col + $"Lotação atual     : {aula.lotacao}".Length + 1, lin+12); //.Length + 1 para caso o usuario digite uma letra
         Console.SetCursorPosition(col + "Lotação atual     : ".Length, lin + 12);
+        string novaLotacao = Console.ReadLine();
+        if (string.Equals(novaLotacao?.ToLower(), "sair"))
+        {
+            Console.Clear();
+            return;
+        }
 
-        if (int.TryParse(Console.ReadLine(), out int novaLotacao) && novaLotacao > 0)
-            aula.lotacao = novaLotacao;
+        if (int.TryParse(novaLotacao, out int lotacao) && lotacao > 0)
+            aula.lotacao = lotacao;
 
         tela.MontarMoldura(60, 2, 110, 5 + aula.lotacao);
         Tela.MostrarMensagem(63, 2, "[CLIENTES]");
@@ -323,6 +336,12 @@ public class Agenda
                 Tela.MostrarMensagem(63, 4 + c, $"Cliente {c + 1}: {nomeCliente}");
                 Tela.MostrarMensagem(col, lin - 2, "[DIGITE 0 PARA MANTER O DADO] | [DIGITE ? PARA LISTAR OS CLIENTES] | [DIGITE @ PARA NÃO CADASTRAR CLIENTE]");
                 string novoCliente = Tela.Perguntar(63, 5 + c, "Novo ID: ");
+                if (string.Equals(novoCliente.ToLower(), "sair"))
+                {
+                    Console.Clear(); 
+                    return;
+                }
+                    
 
                 if (novoCliente == "0")
                 {
