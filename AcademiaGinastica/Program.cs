@@ -210,15 +210,19 @@ while (true)
                                 if (opcaoClientes == "2")
                                 {
                                     tela.PrepararTela("APAGAR CLIENTE");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     string id = Tela.Perguntar(3, 3, "Digite o ID do cliente : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     clienteController.ApagarCliente(int.Parse(id));
                                 }
                                 if (opcaoClientes == "3")
                                 {
                                     tela.PrepararTela("VER CLIENTE");
+                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
                                     tela.MontarMoldura(2, 2, 35, 4);
                                     string id = Tela.Perguntar(3, 3, "Digite o ID do cliente : ");
+                                    if (string.Equals(id.ToLower(), "sair")) break;
                                     clienteController.VerCliente(int.Parse(id));
                                 }
                                 if (opcaoClientes == "4")
