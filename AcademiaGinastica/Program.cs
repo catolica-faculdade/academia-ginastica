@@ -77,6 +77,7 @@ while (true)
                             break;
                         case "3":
                             string opcaoModalidade = tela.VerificarModalidades();
+                            if (string.Equals(opcaoModalidade.ToLower(), "sair")) break;
                             if (int.Parse(opcaoModalidade) >= 0 && int.Parse(opcaoModalidade) <= 4)
                             {
                                 if (opcaoModalidade == "1")
@@ -154,6 +155,7 @@ while (true)
                             break;
                         case "4":
                             string opcaoAgenda = tela.VerificarAgenda();
+                            if (string.Equals(opcaoAgenda.ToLower(), "sair")) break;
                             if (int.Parse(opcaoAgenda) >= 0 && int.Parse(opcaoAgenda) <= 4)
                             {
                                 if (opcaoAgenda == "1")
@@ -201,6 +203,7 @@ while (true)
                             break;
                         case "5":
                             string opcaoClientes = tela.VerificarClientes();
+                            if (string.Equals(opcaoClientes.ToLower(), "sair")) break;
                             if (int.Parse(opcaoClientes) >= 0 && int.Parse(opcaoClientes) <= 4)
                             {
                                 if (opcaoClientes == "1")
@@ -240,6 +243,7 @@ while (true)
                             break;
                         case "6":
                             string opcaoFuncionario = tela.VerificarFuncionarios();
+                            if (string.Equals(opcaoFuncionario.ToLower(), "sair")) break;
                             if (int.Parse(opcaoFuncionario) >= 0 && int.Parse(opcaoFuncionario) <= 4)
                             {
                                 if (opcaoFuncionario == "1")
