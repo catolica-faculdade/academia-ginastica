@@ -150,12 +150,9 @@ public class Agenda
             Tela.MostrarMensagem(ci + 2, linhaAtual + 3, $"Horario de Inicio: {a.horarioInicio}");
             Tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Horario de Termino: {a.horarioFim}");
 
-            for(int c = 0; c < a.clientes.Count; c++)
-            {
-                Tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Clientes: {a.clientes[c].nomeCompleto}");
-            }
+            Tela.MostrarMensagem(ci+2, linhaAtual + 5, $"Total clientes: {a.clientes.Count}");
 
-            Tela.MostrarMensagem(ci + 2, linhaAtual + 5, $"Lotacao: {a.lotacao}");
+            Tela.MostrarMensagem(ci + 2, linhaAtual + 6, $"Lotacao: {a.lotacao}");
 
             linhaAtual += alturaPorAgenda + espacamento;
         }
@@ -185,11 +182,15 @@ public class Agenda
         Tela.MostrarMensagem(col, lin + 2, $"Instrutor: {a.instrutor.nomeCompleto}");
         Tela.MostrarMensagem(col, lin + 3, $"Horario de Inicio: {a.horarioInicio}");
         Tela.MostrarMensagem(col, lin + 4, $"Horario de Termino: {a.horarioFim}");
+
+        tela.MontarMoldura(62, 3, 90, a.clientes.Count+5);
+        Tela.MostrarMensagem(63, 3, $"[Total: {a.clientes.Count} | Listagem :]");
         for (int c = 0; c < a.clientes.Count; c++)
         {
-            Tela.MostrarMensagem(62, 5+c, $"Clientes: {a.clientes[c].nomeCompleto}");
+            Tela.MostrarMensagem(63, 5 + c, $"{c+1} - {a.clientes[c].nomeCompleto}");
         }
-        Tela.MostrarMensagem(col, lin + 4, $"Lotacao: {a.lotacao}");
+        
+        Tela.MostrarMensagem(col, lin + 5, $"Lotacao: {a.lotacao}");
 
 
 
@@ -212,7 +213,7 @@ public class Agenda
             return;
         }
 
-        Aula aula = this.aulas[id - 1];
+        Aula aula = aulas[id - 1];
         tela.MontarMoldura(3, 3, 70, 20);
         Tela.MostrarMensagem(22, 18, "Digite 'Sair' para voltar...");
 
@@ -232,6 +233,8 @@ public class Agenda
         if (string.Equals(novoNome.ToLower(), "sair")) return;
         if (!string.IsNullOrEmpty(novoNome) && novoNome != "0")
             aula.nome = novoNome;
+        if(novoNome == "0")
+            Tela.MostrarMensagem(col, lin, $"Nome              : {aula.nome}");
 
         bool modalidadeValida = false;
         while (!modalidadeValida)
@@ -249,6 +252,7 @@ public class Agenda
 
             if (idModalidade == "0")
             {
+                Tela.MostrarMensagem(col, lin + 2, $"Modalidade atual  : {aula.modalidade.nome}");
                 modalidadeValida = true;
             }
             else if (int.TryParse(idModalidade, out int idxMod) && idxMod > 0 && idxMod <= modalidadeController.modalidades.Count)
@@ -276,6 +280,7 @@ public class Agenda
 
             if (idInstrutor == "0")
             {
+                Tela.MostrarMensagem(col, lin + 4, $"Instrutor atual   : {aula.instrutor.nomeCompleto}");
                 instrutorValido = true;
             }
             else if (int.TryParse(idInstrutor, out int idxInst) && idxInst > 0 && idxInst <= funcionarioController.funcionarios.Count)
@@ -287,24 +292,66 @@ public class Agenda
             tela.ReconstruirMoldura(3, 3, 70, 20);
         }
 
-        tela.ApagarArea(col + "Data atual        :".Length, lin+6, col + $"Data atual        : {aula.horarioInicio:dd/MM/yyyy}".Length, lin+6);
+        tela.ApagarArea(col + "Data atual        : ".Length, lin+6, col + $"Data atual        : {aula.horarioInicio:dd/MM/yyyy}".Length, lin+6);
         string data = Tela.Perguntar(col, lin + 6, "Nova Data (DD/MM/AAAA) : ");
         if (string.Equals(data.ToLower(), "sair")) return;
 
-        tela.ApagarArea(col + "Horário Início    :".Length, lin+8, col + $"Horário Início    : {aula.horarioInicio:HH:mm}".Length, lin+8);
+        if (data == "0")
+        {
+            Tela.MostrarMensagem(col, lin + 6, $"Data atual        : {aula.horarioInicio:dd/MM/yyyy}");
+        }
+        
+        tela.ApagarArea(col + "Horário Início    : ".Length, lin+8, col + $"Horário Início    : {aula.horarioInicio:HH:mm}".Length, lin+8);
         string horaInicio = Tela.Perguntar(col, lin + 8, "Novo Início (HH:MM) : ");
         if (string.Equals(horaInicio.ToLower(), "sair")) return;
 
-        tela.ApagarArea(col + "Horário Termino   :".Length, lin+10, col + $"Horário Termino   : {aula.horarioInicio:HH:mm}".Length, lin+10);
+        if (data != "0" && horaInicio != "0")
+        {
+            aula.horarioInicio = DateTime.Parse($"{data} {horaInicio}");
+        }
+        else
+        {
+            if (data == "0" && horaInicio != "0")
+            {
+                aula.horarioInicio = DateTime.Parse($"{aula.horarioInicio.Date:dd/MM/yyyy} {horaInicio}");
+            }
+            tela.ApagarArea(col + "Horário Início    : ".Length, lin+8, col + $"Horário Início    : {aula.horarioInicio:HH:mm}".Length, lin+8);
+            Tela.MostrarMensagem(col, lin + 8, $"Novo Início (HH:MM) : {aula.horarioInicio:HH:mm}");
+        }
+
+
+
+
+        tela.ApagarArea(col + "Horário Término   : ".Length, lin+10, col + $"Horário Término   : {aula.horarioInicio:HH:mm}".Length, lin+10);
         string horaFim = Tela.Perguntar(col, lin + 10, "Novo Fim (HH:MM) : ");
         if (string.Equals(horaFim.ToLower(), "sair")) return;
 
-        if (data != "0" && horaInicio != "0")
-            aula.horarioInicio = DateTime.Parse($"{data} {horaInicio}");
         if (data != "0" && horaFim != "0")
+        {
             aula.horarioFim = DateTime.Parse($"{data} {horaFim}");
+        }
+        else
+        {
+            if(data == "0" && horaFim != "0")
+            {
+                aula.horarioFim = DateTime.Parse($"{aula.horarioFim.Date:dd/MM/yyyy} {horaFim}");
+            }
+            tela.ApagarArea(col + "Horário Término   : ".Length, lin+10, col + $"Horário Término   : {aula.horarioInicio:HH:mm}".Length, lin+10);
+            Tela.MostrarMensagem(col, lin + 10, $"Novo Fim (HH:MM) : {aula.horarioFim:HH:mm}");
+        }
+            
 
-        tela.ApagarArea(col + "Lotação atual     :".Length, lin+12, col + $"Lotação atual     : {aula.lotacao}".Length + 1, lin+12); //.Length + 1 para caso o usuario digite uma letra
+        if (data == "0" && horaInicio == "0" && horaFim == "0")
+        {
+            Tela.MostrarMensagem(col, lin + 6, $"Data atual        : {aula.horarioInicio:dd/MM/yyyy}");
+        }
+            
+        
+
+
+
+
+        tela.ApagarArea(col + "Lotação atual     :".Length, lin + 12, col + $"Lotação atual     : {aula.lotacao}".Length + 1, lin + 12); //.Length + 1 para caso o usuario digite uma letra
         Console.SetCursorPosition(col + "Lotação atual     : ".Length, lin + 12);
         string novaLotacao = Console.ReadLine();
         if (string.Equals(novaLotacao?.ToLower(), "sair"))
@@ -315,6 +362,11 @@ public class Agenda
 
         if (int.TryParse(novaLotacao, out int lotacao) && lotacao > 0)
             aula.lotacao = lotacao;
+
+        if(novaLotacao == "0")
+        {
+            Tela.MostrarMensagem(col, lin + 12, $"Lotação atual     : {aula.lotacao}");
+        }
 
         tela.MontarMoldura(60, 2, 110, 5 + aula.lotacao);
         Tela.MostrarMensagem(63, 2, "[CLIENTES]");
@@ -415,8 +467,8 @@ public class Agenda
 
         if (novosClientes.Count > 0)
             aula.clientes = novosClientes;
-
         aulas[id - 1] = aula;
+
         Console.Clear();
     }
 }
