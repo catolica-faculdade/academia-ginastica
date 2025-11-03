@@ -304,13 +304,13 @@ public class Tela
     {
         string opcao;
         List<string> opcoes = [
-            "[1] - Cliente       ",
-            "[2] - Administrador ",
-            "[3] - Atendente     ",
-            "[4] - Auditoria     ",
-            "[5] - Gerente       ",
-            "[6] - Instrutor     ",
-            "Digite 'Sair' para sair"
+            "[1] - Cliente           ",
+            "[2] - Administrador     ",
+            "[3] - Atendente         ",
+            "[4] - Auditoria         ",
+            "[5] - Gerente           ",
+            "[6] - Instrutor         ",
+            "Digite 'Sair' para sair "
         ];
 
         PrepararTela("CADASTRO DE USUARIOS");
