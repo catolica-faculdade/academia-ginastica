@@ -36,14 +36,6 @@ public class ClienteController
         string senha = Tela.PerguntarSenha(coluna, li + 10, "Senha : ");
         if (string.Equals(senha, "sair")) return false;
 
-        decimal salario = 0;
-        if (tipoCargo != "1")
-        {
-            string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
-            if (string.Equals(salarioStr, "sair")) return false;
-            decimal.TryParse(salarioStr, out salario);
-        }
-
         Cliente novoUsuario = new Cliente()
         {
             nomeCompleto = nomeCompleto,
