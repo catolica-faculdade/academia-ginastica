@@ -389,11 +389,11 @@ public class Tela
         string opcao;
         List<string> opcoes =
         [
-            "[1] - Listar    ",
-            "[2] - Apagar    ",
-            "[3] - Ver       ",
-            "[4] - Alterar   ",
-            "Digite 'Sair' para sair...    ",
+            "[1] - Listar              ",
+            "[2] - Apagar              ",
+            "[3] - Ver                 ",
+            "[4] - Alterar             ",
+            "Digite 'Sair' para sair...",
         ];
 
         PrepararTela("VERIFICAR CLIENTES");

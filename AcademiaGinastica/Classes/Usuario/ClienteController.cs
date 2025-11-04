@@ -100,17 +100,16 @@ public class ClienteController
 
     public void VerCliente(int indice)
     {
-       if (indice < 0 || indice >= clientes.Count)
+       if (indice <= 0 || indice >= clientes.Count)
         {
-            Tela.MostrarMensagem(4, 4, "Cliente invalido!");
+            Tela.MostrarMensagem(4, 4, "[Cliente invalido!] PRESSIONE QUALQUER TECLA PARA VOLTAR");
             Console.ReadKey();
             return;
         }
 
-        Cliente c = clientes[indice];
+        Cliente c = clientes[indice-1];
 
-        tela.PrepararTela("DETALHES DO CLIENTE");
-        tela.MontarMoldura(3, 3, 70, 20);
+        tela.MontarMoldura(2, 2, 80, 20);
 
         int col = 5;
         int lin = 5;
