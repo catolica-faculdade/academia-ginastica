@@ -37,10 +37,22 @@ public class FuncionarioController
         string senha = Tela.PerguntarSenha(coluna, li + 10, "Senha : ");
         if (string.Equals(senha.ToLower(), "sair")) return false;
 
+        bool salarioValido = false;
         decimal salario = 0;
-        string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
-        if (string.Equals(salarioStr.ToLower(), "sair")) return false;
-        decimal.TryParse(salarioStr, out salario);
+        while (!salarioValido) {
+            string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
+            if (string.Equals(salarioStr.ToLower(), "sair")) return false;
+            try
+            {
+                decimal.Parse(salarioStr);
+                salarioValido = true;
+            }
+            catch
+            {
+                Tela.MostrarMensagem(coluna, li+18, "[Salário Inválido, Digite Novamente.]");
+                tela.ApagarArea(coluna + "Salário : ".Length, li+12, coluna + "Salário : ".Length + salarioStr.Length,  li+12);
+            }
+        }
 
         Cargo novoCargo = Cargo.admin;
 
