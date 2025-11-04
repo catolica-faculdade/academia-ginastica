@@ -92,13 +92,13 @@ while (true)
                                 try
                                 {
 
-                                    if (int.Parse(opcaoModalidade) >= 0 && int.Parse(opcaoModalidade) <= 4)
+                                    if (int.Parse(opcaoModalidade) >= 0 && int.Parse(opcaoModalidade) <= 5)
                                     {
                                         if (opcaoModalidade == "1")
                                         {
                                             tela.PrepararTela("CRIAR MODALIDADE");
                                             Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
-                                            tela.MontarMoldura(2, 2, 15, 10);
+                                            tela.MontarMoldura(2, 2, 35, 10);
                                             modalidadeController.CadastrarModalidade(4, 4);
                                         }
                                         if (opcaoModalidade == "2")
@@ -159,11 +159,10 @@ while (true)
                                         {
                                             tela.PrepararTela("ALTERAR MODALIDADE");
                                             Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
-                                            tela.MontarMoldura(2, 2, 35, 4);
+                                            tela.MontarMoldura(2, 2, 50, 10);
                                             string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
-                                            if (string.Equals(id.ToLower(), "sair")) break;
+                                            //if (string.Equals(id.ToLower(), "sair")) break;
                                             modalidadeController.AlterarModalidade(4, 4, int.Parse(id));
-
                                         }
                                         opcaoValida = true;
                                     }
