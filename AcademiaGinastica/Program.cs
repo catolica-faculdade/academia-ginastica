@@ -114,20 +114,19 @@ while (true)
                                         {
                                             tela.PrepararTela("VER MODALIDADE");
                                             Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
-                                            tela.MontarMoldura(2, 2, 35, 4);
+                                            tela.MontarMoldura(2, 2, 80, 10);
                                             Tela.MostrarMensagem(3, 3, "[Digite 0 para listar todas]");
                                             string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
                                             if (string.Equals(id.ToLower(), "sair")) break;
                                             if (int.Parse(id) == 0)
                                             {
-                                                tela.MontarMoldura(2, 2, 35, modalidadeController.modalidades.Count * 2 + 4);
+                                                tela.MontarMoldura(2, 2, 80, modalidadeController.modalidades.Count * 2 + 4);
                                             }
                                             modalidadeController.VerModalidade(4, 4, int.Parse(id));
                                         }
                                         if (opcaoModalidade == "4")
                                         {
                                             tela.PrepararTela("Lista de Modalidades");
-                                            tela.MontarMoldura(2, 2, 65, 20);
 
                                             int qtdModalidades = modalidadeController.modalidades.Count;
                                             if (qtdModalidades == 0)

@@ -109,26 +109,14 @@ public class ModalidadeController
     }
     public void VerModalidade(int col, int lin, int id)
     {
-        if (id >= 0 && this.modalidades.Count > id)
+        if (id > 0 && this.modalidades.Count > id)
         {
-            if (id == 0)
-            {
-                tela.MontarMoldura(60, 2, 120, 60 + this.modalidades.Count);
-                for (int i = 0; i < this.modalidades.Count; i++)
-                {
-                    Tela.MostrarMensagem(61, 2 + i, $"{i + 1} Nome : {this.modalidades[i].nome}");
-                    Tela.MostrarMensagem(61, 2 + 2 + i, $"Descricao : {this.modalidades[i].descricao}");
-                }
-            }
-            else
-            {
-                Tela.MostrarMensagem(col, lin, $"Nome : {this.modalidades[id - 1].nome}");
-                Tela.MostrarMensagem(col, lin + 1, $"Descricao : {this.modalidades[id - 1].descricao}");
-            }
+            Tela.MostrarMensagem(col-1, lin+1, $"Nome : {this.modalidades[id - 1].nome}");
+                Tela.MostrarMensagem(col-1, lin + 3, $"Descricao : {this.modalidades[id - 1].descricao}");
         }
         else
         {
-            Tela.MostrarMensagem(col, lin + 1, "Id invalido");
+            Tela.MostrarMensagem(col, lin + 1, "Id invalido, aperte qualquer tecla para voltar.");
         }
         Console.ReadKey();
     }
@@ -137,7 +125,7 @@ public class ModalidadeController
     {
         int qtdModalidades = this.modalidades.Count;
         int linha = lin;
-        tela.MontarMoldura(col - 1, lin - 1, col + 40, lin + (qtdModalidades + 2) * 2);
+        tela.MontarMoldura(col - 1, lin - 1, col + 81, lin + (qtdModalidades + 2) * 2);
         for (int i = 0; i < qtdModalidades; i++)
         {
             Tela.MostrarMensagem(col, linha, $"{i + 1} Nome : {this.modalidades[i].nome}");
