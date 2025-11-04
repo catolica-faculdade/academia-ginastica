@@ -118,10 +118,6 @@ while (true)
                                             Tela.MostrarMensagem(3, 3, "[Digite 0 para listar todas]");
                                             string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
                                             if (string.Equals(id.ToLower(), "sair")) break;
-                                            if (int.Parse(id) == 0)
-                                            {
-                                                tela.MontarMoldura(2, 2, 80, modalidadeController.modalidades.Count * 2 + 4);
-                                            }
                                             modalidadeController.VerModalidade(4, 4, int.Parse(id));
                                         }
                                         if (opcaoModalidade == "4")
