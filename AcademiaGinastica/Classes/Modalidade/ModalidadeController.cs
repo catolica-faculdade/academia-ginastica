@@ -112,7 +112,7 @@ public class ModalidadeController
         if (id > 0 && this.modalidades.Count > id)
         {
             Tela.MostrarMensagem(col-1, lin+1, $"Nome : {this.modalidades[id - 1].nome}");
-                Tela.MostrarMensagem(col-1, lin + 3, $"Descricao : {this.modalidades[id - 1].descricao}");
+            Tela.MostrarMensagem(col-1, lin + 3, $"Descricao : {this.modalidades[id - 1].descricao}");
         }
         else
         {
