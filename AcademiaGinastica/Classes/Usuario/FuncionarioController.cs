@@ -144,17 +144,16 @@ public class FuncionarioController
 
     public void VerFuncionario(int indice)
     {
-        if (indice < 0 || indice >= funcionarios.Count)
+        if (indice <= 0 || indice >= funcionarios.Count)
         {
             Tela.MostrarMensagem(4, 4, "Funcionário inválido!");
             Console.ReadKey();
             return;
         }
 
-        Funcionario f = funcionarios[indice];
+        Funcionario f = funcionarios[indice-1];
 
-        tela.PrepararTela("DETALHES DO FUNCIONÁRIO");
-        tela.MontarMoldura(3, 3, 70, 20);
+        tela.MontarMoldura(2, 2, 80, 20);
 
         int col = 5;
         int lin = 5;
