@@ -4,10 +4,12 @@ public class ModalidadeController
 {
     public List<Modalidade> modalidades;
     Modalidade modalidade;
+    Tela tela;
 
     public ModalidadeController(List<Modalidade> modalidades)
     {
         this.modalidades = modalidades ?? new List<Modalidade>();
+        this.tela = new Tela();
     }
 
     public void CadastrarModalidade(int coluna, int li)
@@ -41,13 +43,13 @@ public class ModalidadeController
     {
         if (id >= 0 && this.modalidades.Count > id)
         {
-
             if (id == 0)
             {
+                tela.MontarMoldura(60, 2, 120, 60 + this.modalidades.Count);
                 for (int i = 0; i < this.modalidades.Count; i++)
                 {
-                    Tela.MostrarMensagem(col, lin, $"{i + 1} Nome : {this.modalidades[i].nome}");
-                    Tela.MostrarMensagem(col, lin + 1, $"Descricao : {this.modalidades[i].descricao}");
+                    Tela.MostrarMensagem(61, 2 + i, $"{i + 1} Nome : {this.modalidades[i].nome}");
+                    Tela.MostrarMensagem(61, 2 + 2 + i, $"Descricao : {this.modalidades[i].descricao}");
                 }
             }
             else
@@ -67,6 +69,7 @@ public class ModalidadeController
     {
         int qtdModalidades = this.modalidades.Count;
         int linha = lin;
+        tela.MontarMoldura(col - 1, lin - 1, col + 40, lin + ( qtdModalidades + 2)* 2);
         for (int i = 0; i < qtdModalidades; i++)
         {
             Tela.MostrarMensagem(col, linha, $"{i + 1} Nome : {this.modalidades[i].nome}");

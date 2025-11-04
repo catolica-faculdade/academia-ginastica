@@ -204,7 +204,7 @@ public class Tela
             MostrarMensagem(32, 12, "Digite 'Sair' para voltar...");
             var nome = Perguntar(25, 6, "Nome de usuario: ");
             if (string.Equals(nome.ToLower(), "sair")) return false;
-            var senha = Perguntar(25, 8, "Senha do usuario: ");
+            var senha = PerguntarSenha(25, 8, "Senha do usuario: ");
             if (string.Equals(senha.ToLower(), "sair")) return false;
 
             //provisório
@@ -491,33 +491,38 @@ public class Tela
 
     public Modalidade PerguntarModalidade(int col, int lin, string pergunta)
     {
-        Console.SetCursorPosition(col, lin);
-        Console.Write(pergunta);
-
-        string idModalidade = Console.ReadLine();
-        if (string.Equals(idModalidade, "sair")) return null;
-        Modalidade modalidadeRetorno = null;
         bool retorno = false;
-
+        Modalidade modalidadeRetorno = null;
+        string idModalidade = "";
         while (!retorno)
         {
-            int id = int.Parse(idModalidade);
+            Console.SetCursorPosition(col, lin);
+            Console.Write(pergunta);
+            
+            try
+            {
+                idModalidade = Console.ReadLine();
+                if (string.Equals(idModalidade, "sair")) return null;
 
-            if (id <= this.modalidadeController.modalidades.Count || id > 0)
-            {
-                modalidadeRetorno = this.modalidadeController.modalidades[id - 1];
-                retorno = true;
+                int id = int.Parse(idModalidade);
+
+                if (id <= this.modalidadeController.modalidades.Count || id > 0)
+                {
+                    modalidadeRetorno = this.modalidadeController.modalidades[id - 1];
+                    retorno = true;
+                }
             }
-            else
+            catch
             {
-                Console.SetCursorPosition(col, lin + 2);
-                Console.Write("ID inválido, deseja ver todas as modalidades? [1] - Sim | [2] - Não: ");
+                Console.SetCursorPosition(col, lin + 10);
+                Console.Write("ID inválido, deseja ver todas as modalidades? [1] - Sim | [2] - Não : ");
                 string verTodas = Console.ReadLine();
 
                 if (verTodas == "1")
-                    this.modalidadeController.VerModalidade(col + 4, lin + 4, 0);
-                else
-                    break;
+                    this.modalidadeController.VerModalidades(60, 4);
+
+                this.ApagarArea(col, lin + 10, col + "ID inválido, deseja ver todas as modalidades? [1] - Sim | [2] - Não : ".Length + verTodas.Length, lin + 10);
+                this.ApagarArea(col + pergunta.Length, lin, col + pergunta.Length + idModalidade.Length, lin);
             }
         }
 
