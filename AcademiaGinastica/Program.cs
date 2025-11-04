@@ -58,7 +58,8 @@ while (true)
                     switch (opcao)
                     {
                         case "1":
-                            while (!opcaoValida) {
+                            while (!opcaoValida)
+                            {
                                 string opcaoCadastro = tela.CadastrarUsuario();
                                 if (string.Equals(opcaoCadastro, "sair")) break;
                                 try
@@ -112,13 +113,33 @@ while (true)
                                         }
                                         if (opcaoModalidade == "3")
                                         {
-                                            tela.PrepararTela("VER MODALIDADE");
-                                            Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
-                                            tela.MontarMoldura(2, 2, 80, 10);
-                                            Tela.MostrarMensagem(3, 3, "[Digite 0 para listar todas]");
-                                            string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
-                                            if (string.Equals(id.ToLower(), "sair")) break;
-                                            modalidadeController.VerModalidade(4, 4, int.Parse(id));
+                                            bool idModalidadeValido = false;
+                                            while (!idModalidadeValido)
+                                            {
+                                                try
+                                                {
+                                                    tela.PrepararTela("VER MODALIDADE");
+                                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
+                                                    tela.MontarMoldura(2, 2, 80, 10);
+                                                    Tela.MostrarMensagem(3, 3, "[Digite 0 para listar todas]");
+                                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                                    if (string.Equals(id.ToLower(), "sair")) break;
+                                                    if (int.Parse(id) > 0)
+                                                    {
+                                                        modalidadeController.VerModalidade(4, 4, int.Parse(id));
+                                                        idModalidadeValido = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        Tela.MostrarMensagem(3, 5, "ID INVÁLIDO");
+                                                        Console.ReadKey();
+                                                    }
+                                                }
+                                                catch
+                                                {
+                                                    Tela.MostrarMensagem(3, 5, "ID INVÁLIDO, DIGITE NOVAMENTE : ");
+                                                }
+                                            }
                                         }
                                         if (opcaoModalidade == "4")
                                         {
@@ -152,21 +173,43 @@ while (true)
                                         }
                                         if (opcaoModalidade == "5")
                                         {
-                                            tela.PrepararTela("ALTERAR MODALIDADE");
-                                            Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
-                                            tela.MontarMoldura(2, 2, 50, 10);
-                                            string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
-                                            //if (string.Equals(id.ToLower(), "sair")) break;
-                                            modalidadeController.AlterarModalidade(4, 4, int.Parse(id));
+                                            bool idModalidadeValido = false;
+                                            while (!idModalidadeValido)
+                                            {
+                                                try
+                                                {
+                                                    tela.PrepararTela("ALTERAR MODALIDADE");
+                                                    Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
+                                                    tela.MontarMoldura(2, 2, 50, 10);
+                                                    string id = Tela.Perguntar(3, 3, "Digite o ID da modalidade : ");
+                                                    if (string.Equals(id.ToLower(), "sair")) break;
+                                                    if (int.Parse(id) > 0)
+                                                    {
+                                                        modalidadeController.AlterarModalidade(4, 4, int.Parse(id));
+                                                        idModalidadeValido = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        Tela.MostrarMensagem(3, 5, "ID INVÁLIDO");
+                                                        Console.ReadKey();
+                                                    }
+                                                }
+                                                catch
+                                                {
+                                                    Tela.MostrarMensagem(3, 5, "ID INVÁLIDO, DIGITE NOVAMENTE : ");
+                                                }
+                                            }
                                         }
                                         opcaoValida = true;
                                     }
-                                } catch{}
+                                }
+                                catch { }
                             }
                             opcaoValida = false;
                             break;
                         case "4":
-                            while (!opcaoValida) {
+                            while (!opcaoValida)
+                            {
                                 try
                                 {
 
@@ -218,7 +261,8 @@ while (true)
                                         }
                                         opcaoValida = true;
                                     }
-                                } catch {}
+                                }
+                                catch { }
                             }
                             opcaoValida = false;
                             break;
@@ -266,8 +310,9 @@ while (true)
                                         }
                                         opcaoValida = true;
                                     }
-                                } catch {}
-                                
+                                }
+                                catch { }
+
                             }
                             opcaoValida = false;
                             break;
@@ -316,11 +361,12 @@ while (true)
                                         }
                                         opcaoValida = true;
                                     }
-                                } catch{}
+                                }
+                                catch { }
                             }
                             opcaoValida = false;
                             break;
-                        }
+                    }
                     if (opcao == "sair")
                     {
                         sair = true;
