@@ -22,31 +22,72 @@ public class ClienteController
 
     public bool Cadastrar(int li, int coluna, string tipoCargo)
     {
-        Tela.MostrarMensagem(20, 20, "Digite 'Sair' para voltar...");
-        string nomeCompleto = Tela.Perguntar(coluna, li, "Nome Completo : ");
-        if (string.Equals(nomeCompleto.ToLower(), "sair")) return false;
-        string CPF = Tela.Perguntar(coluna, li + 2, "CPF : ");
-        if (string.Equals(CPF, "sair")) return false;
-        string email = Tela.Perguntar(coluna, li + 4, "Email : ");
-        if (string.Equals(email, "sair")) return false;
-        string telefone = Tela.Perguntar(coluna, li + 6, "Telefone : ");
-        if (string.Equals(telefone, "sair")) return false;
-        string enderecoCompleto = Tela.Perguntar(coluna, li + 8, "Endereço Completo : ");
-        if (string.Equals(enderecoCompleto, "sair")) return false;
-        string senha = Tela.PerguntarSenha(coluna, li + 10, "Senha : ");
-        if (string.Equals(senha, "sair")) return false;
+        bool dadosCorretos = false;
 
-        Cliente novoUsuario = new Cliente()
+        while (!dadosCorretos)
         {
-            nomeCompleto = nomeCompleto,
-            CPF = CPF,
-            email = email,
-            telefone = telefone,
-            enderecoCompleto = enderecoCompleto,
-            senha = senha,
-        };
+            Tela.MostrarMensagem(18, 23, "Digite 'Sair' para voltar...");
+            string nomeCompleto = Tela.Perguntar(coluna, li, "Nome Completo : ");
+            if (string.Equals(nomeCompleto, "sair")) return false;
 
-        this.clientes.Add(novoUsuario);
+            string CPF = Tela.Perguntar(coluna, li + 2, "CPF : ");
+            if (string.Equals(CPF, "sair")) return false;
+
+            string email = Tela.Perguntar(coluna, li + 4, "Email : ");
+            if (string.Equals(email, "sair")) return false;
+
+            string telefone = Tela.Perguntar(coluna, li + 6, "Telefone : ");
+            if (string.Equals(telefone, "sair")) return false;
+
+            string enderecoCompleto = Tela.Perguntar(coluna, li + 8, "Endereço Completo : ");
+            if (string.Equals(enderecoCompleto, "sair")) return false;
+
+            string senha = Tela.PerguntarSenha(coluna, li + 10, "Senha : ");
+            if (string.Equals(senha, "sair")) return false;
+
+            if (!string.IsNullOrWhiteSpace(nomeCompleto)
+                && !string.IsNullOrWhiteSpace(CPF)
+                && !string.IsNullOrWhiteSpace(email)
+                && !string.IsNullOrWhiteSpace(telefone)
+                && !string.IsNullOrWhiteSpace(enderecoCompleto)
+                && !string.IsNullOrWhiteSpace(senha))
+            {
+                var novoUsuario = new Cliente()
+                {
+                    nomeCompleto = nomeCompleto,
+                    CPF = CPF,
+                    email = email,
+                    telefone = telefone,
+                    enderecoCompleto = enderecoCompleto,
+                    senha = senha,
+                };
+
+                this.clientes.Add(novoUsuario);
+                dadosCorretos = true;
+            }
+
+            Tela tela = new Tela();
+            Tela.MostrarMensagem(5, 18, "Algum dos dados é inválido. Deseja tentar novamente?");
+            Tela.MostrarMensagem(5, 19, "[1] - Sim");
+            Tela.MostrarMensagem(5, 20, "[2] - Não");
+            string novamente = Tela.Perguntar(5, 21, "");
+            tela.ApagarArea(5, 18, 59, 18);
+            while (!string.Equals(novamente, "2") && !string.Equals(novamente, "1") && !string.Equals(novamente.ToLower(), "sair"))
+            {
+                tela.ApagarArea(5, 21, 59, 21);
+                Tela.MostrarMensagem(5, 18, "Opção inválida. Digite novamente:              ");
+                Tela.MostrarMensagem(5, 19, "[1] - Sim");
+                Tela.MostrarMensagem(5, 20, "[2] - Não");
+                novamente = Tela.Perguntar(5, 21, "");
+            }
+            if (string.Equals(novamente, "2") || string.Equals(novamente.ToLower(), "sair"))
+            {
+                return false;
+            }
+            tela.ApagarArea(5, 18, 59, 21);
+            
+        }
+
         return true;
     }
     public void ListarClientes()

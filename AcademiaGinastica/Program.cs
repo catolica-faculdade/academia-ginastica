@@ -67,7 +67,7 @@ while (true)
                                     if (int.Parse(opcaoCadastro) >= 0 && int.Parse(opcaoCadastro) <= 6)
                                     {
                                         tela.PrepararTela("CADASTRO DE USUARIO");
-                                        tela.MontarMoldura(2, 2, 60, 19);
+                                        tela.MontarMoldura(2, 2, 60, 24);
                                         Tela.MostrarMensagem(4, 2, "Dados do novo usuario");
                                         if (opcaoCadastro == "1") clienteController.Cadastrar(5, 4, opcaoCadastro);
                                         else funcionarioController.Cadastrar(5, 4, opcaoCadastro);
