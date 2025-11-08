@@ -222,6 +222,19 @@ public class Tela
                 {
                     return false;
                 }
+                while(novamente != "1")
+                {
+                    ApagarArea(17, 19, 59, 19);
+                    MostrarMensagem(17, 19, "Opção inválida. Digite novamente: ");
+                    MostrarMensagem(17, 20, "[1] - Sim");
+                    MostrarMensagem(17, 21, "[2] - Nao");
+                    novamente = Perguntar(17, 22, "");
+                    if(novamente == "2")
+                    {
+                        return false;
+                    }
+                    ApagarArea(17, 22, 59, 22);
+                }
             }
         }
         return entrou;
