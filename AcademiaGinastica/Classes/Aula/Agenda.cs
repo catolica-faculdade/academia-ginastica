@@ -82,7 +82,7 @@ public class Agenda
             var momentoI = aulasAtuais[i].horarioInicio;
             var momentoF = aulasAtuais[i].horarioFim;
             retorno.Add($"Aula : {aulasAtuais[i].nome}");
-            retorno.Add($"[ {momentoI.Hour}:{momentoI.Minute} | {momentoF.Hour}:{momentoF.Minute} ]");
+            retorno.Add($"[ {momentoI:HH}:{momentoI:mm} | {momentoF:HH}:{momentoF:mm} ]");
         }
         
         return retorno;
@@ -105,7 +105,7 @@ public class Agenda
             var momentoI = aulasAtuais[i].horarioInicio;
             var momentoF = aulasAtuais[i].horarioFim;
             retorno.Add($"Aula : {aulasAtuais[i].nome}");
-            retorno.Add($"[ {momentoI.Hour}:{momentoI.Minute} | {momentoF.Hour}:{momentoF.Minute} ]");
+            retorno.Add($"[ {momentoI:HH}:{momentoI:mm} | {momentoF:HH}:{momentoF:mm} ]");
         }
 
         return retorno;
