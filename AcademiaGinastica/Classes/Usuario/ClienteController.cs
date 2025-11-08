@@ -64,27 +64,29 @@ public class ClienteController
 
                 this.clientes.Add(novoUsuario);
                 dadosCorretos = true;
-            }
-
-            Tela tela = new Tela();
-            Tela.MostrarMensagem(5, 18, "Algum dos dados é inválido. Deseja tentar novamente?");
-            Tela.MostrarMensagem(5, 19, "[1] - Sim");
-            Tela.MostrarMensagem(5, 20, "[2] - Não");
-            string novamente = Tela.Perguntar(5, 21, "");
-            tela.ApagarArea(5, 18, 59, 18);
-            while (!string.Equals(novamente, "2") && !string.Equals(novamente, "1") && !string.Equals(novamente.ToLower(), "sair"))
+                return dadosCorretos;
+            } else
             {
-                tela.ApagarArea(5, 21, 59, 21);
-                Tela.MostrarMensagem(5, 18, "Opção inválida. Digite novamente: ");
+                Tela tela = new Tela();
+                Tela.MostrarMensagem(5, 18, "Algum dos dados é inválido. Deseja tentar novamente?");
                 Tela.MostrarMensagem(5, 19, "[1] - Sim");
                 Tela.MostrarMensagem(5, 20, "[2] - Não");
-                novamente = Tela.Perguntar(5, 21, "");
+                string novamente = Tela.Perguntar(5, 21, "");
+                tela.ApagarArea(5, 18, 59, 18);
+                while (!string.Equals(novamente, "2") && !string.Equals(novamente, "1") && !string.Equals(novamente.ToLower(), "sair"))
+                {
+                    tela.ApagarArea(5, 21, 59, 21);
+                    Tela.MostrarMensagem(5, 18, "Opção inválida. Digite novamente: ");
+                    Tela.MostrarMensagem(5, 19, "[1] - Sim");
+                    Tela.MostrarMensagem(5, 20, "[2] - Não");
+                    novamente = Tela.Perguntar(5, 21, "");
+                }
+                if (string.Equals(novamente, "2") || string.Equals(novamente.ToLower(), "sair"))
+                {
+                    return false;
+                }
+                tela.ApagarArea(coluna, li, 59, 22);
             }
-            if (string.Equals(novamente, "2") || string.Equals(novamente.ToLower(), "sair"))
-            {
-                return false;
-            }
-            tela.ApagarArea(5, 18, 59, 21);
             
         }
 

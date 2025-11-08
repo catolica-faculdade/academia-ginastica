@@ -23,23 +23,26 @@ public class FuncionarioController
 
     public bool Cadastrar(int li, int coluna, string tipoCargo)
     {
-        Tela.MostrarMensagem(20, 20, "Digite 'Sair' para voltar...");
-        string nomeCompleto = Tela.Perguntar(coluna, li, "Nome Completo : ");
-        if (string.Equals(nomeCompleto.ToLower(), "sair")) return false;
-        string CPF = Tela.Perguntar(coluna, li + 2, "CPF : ");
-        if (string.Equals(CPF.ToLower(), "sair")) return false;
-        string email = Tela.Perguntar(coluna, li + 4, "Email : ");
-        if (string.Equals(email.ToLower(), "sair")) return false;
-        string telefone = Tela.Perguntar(coluna, li + 6, "Telefone : ");
-        if (string.Equals(telefone.ToLower(), "sair")) return false;
-        string enderecoCompleto = Tela.Perguntar(coluna, li + 8, "Endereço Completo : ");
-        if (string.Equals(enderecoCompleto.ToLower(), "sair")) return false;
-        string senha = Tela.PerguntarSenha(coluna, li + 10, "Senha : ");
-        if (string.Equals(senha.ToLower(), "sair")) return false;
+        bool dadosCorretos = false;
 
-        bool salarioValido = false;
-        decimal salario = 0;
-        while (!salarioValido) {
+        while (!dadosCorretos)
+        {
+            Tela.MostrarMensagem(18, 23, "Digite 'Sair' para voltar...");
+            string nomeCompleto = Tela.Perguntar(coluna, li, "Nome Completo : ");
+            if (string.Equals(nomeCompleto.ToLower(), "sair")) return false;
+            string CPF = Tela.Perguntar(coluna, li + 2, "CPF : ");
+            if (string.Equals(CPF.ToLower(), "sair")) return false;
+            string email = Tela.Perguntar(coluna, li + 4, "Email : ");
+            if (string.Equals(email.ToLower(), "sair")) return false;
+            string telefone = Tela.Perguntar(coluna, li + 6, "Telefone : ");
+            if (string.Equals(telefone.ToLower(), "sair")) return false;
+            string enderecoCompleto = Tela.Perguntar(coluna, li + 8, "Endereço Completo : ");
+            if (string.Equals(enderecoCompleto.ToLower(), "sair")) return false;
+            string senha = Tela.PerguntarSenha(coluna, li + 10, "Senha : ");
+            if (string.Equals(senha.ToLower(), "sair")) return false;
+
+            bool salarioValido = false;
+            decimal salario = 0;
             string salarioStr = Tela.Perguntar(coluna, li + 12, "Salário : ");
             if (string.Equals(salarioStr.ToLower(), "sair")) return false;
             try
@@ -47,50 +50,75 @@ public class FuncionarioController
                 decimal.Parse(salarioStr);
                 salarioValido = true;
             }
-            catch
+            catch{}
+
+            Cargo novoCargo = Cargo.admin;
+
+            switch (tipoCargo)
             {
-                Tela.MostrarMensagem(coluna, li+18, "[Salário Inválido, Digite Novamente.]");
-                tela.ApagarArea(coluna + "Salário : ".Length, li+12, coluna + "Salário : ".Length + salarioStr.Length,  li+12);
+                case "2":
+                    novoCargo = Cargo.admin;
+                    break;
+                case "3":
+                    novoCargo = Cargo.atendente;
+                    break;
+                case "4":
+                    novoCargo = Cargo.auditoria;
+                    break;
+                case "5":
+                    novoCargo = Cargo.gerente;
+                    break;
+                case "6":
+                    novoCargo = Cargo.instrutor;
+                    break;
+                default:
+                    Tela.MostrarMensagem(coluna, li + 14, "Tipo de cargo inválido!");
+                    return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(nomeCompleto)
+                && !string.IsNullOrWhiteSpace(CPF)
+                && !string.IsNullOrWhiteSpace(email)
+                && !string.IsNullOrWhiteSpace(telefone)
+                && !string.IsNullOrWhiteSpace(enderecoCompleto)
+                && !string.IsNullOrWhiteSpace(senha)
+                && !string.IsNullOrWhiteSpace(salarioStr))
+            {
+                Funcionario novoUsuario = new Funcionario(
+                    nomeCompleto,
+                    CPF,
+                    email,
+                    senha,
+                    telefone,
+                    enderecoCompleto,
+                    salario,
+                    novoCargo
+                );
+
+                this.funcionarios.Add(novoUsuario);
+            } else
+            {
+                Tela tela = new Tela();
+                Tela.MostrarMensagem(5, 19, "Algum dos dados é inválido. Deseja tentar novamente?");
+                Tela.MostrarMensagem(5, 20, "[1] - Sim");
+                Tela.MostrarMensagem(5, 21, "[2] - Não");
+                string novamente = Tela.Perguntar(5, 22, "");
+                tela.ApagarArea(5, 19, 59, 19);
+                while (!string.Equals(novamente, "2") && !string.Equals(novamente, "1") && !string.Equals(novamente.ToLower(), "sair"))
+                {
+                    tela.ApagarArea(5, 22, 59, 22);
+                    Tela.MostrarMensagem(5, 19, "Opção inválida. Digite novamente: ");
+                    Tela.MostrarMensagem(5, 20, "[1] - Sim");
+                    Tela.MostrarMensagem(5, 21, "[2] - Não");
+                    novamente = Tela.Perguntar(5, 22, "");
+                }
+                if (string.Equals(novamente, "2") || string.Equals(novamente.ToLower(), "sair"))
+                {
+                    return false;
+                }
+                tela.ApagarArea(coluna, li, 59, 22);
             }
         }
-
-        Cargo novoCargo = Cargo.admin;
-
-        switch (tipoCargo)
-        {
-            case "2":
-                novoCargo = Cargo.admin;
-                break;
-            case "3":
-                novoCargo = Cargo.atendente;
-                break;
-            case "4":
-                novoCargo = Cargo.auditoria;
-                break;
-            case "5":
-                novoCargo = Cargo.gerente;
-                break;
-            case "6":
-                novoCargo = Cargo.instrutor;
-                break;
-            default:
-                Tela.MostrarMensagem(coluna, li + 14, "Tipo de cargo inválido!");
-                return false;
-        }
-
-
-        Funcionario novoUsuario = new Funcionario(
-            nomeCompleto,
-            CPF,
-            email,
-            senha,
-            telefone,
-            enderecoCompleto,
-            salario,
-            novoCargo
-        );
-
-        this.funcionarios.Add(novoUsuario);
         return true;
     }
     public void ListarFuncionarios()
