@@ -131,7 +131,7 @@ while (true)
                                                     }
                                                     else
                                                     {
-                                                        Tela.MostrarMensagem(3, 5, "ID INVÁLIDO");
+                                                        Tela.MostrarMensagem(3, 5, "I INVÁLIDOD");
                                                         Console.ReadKey();
                                                     }
                                                 }
@@ -158,8 +158,6 @@ while (true)
                                                     }
 
                                                     if (string.Equals(op.ToLower(), "n")) return;
-
-                                                    op = Tela.Perguntar(4, 6, "Opção inválida. Digite novamente (S/N)");
                                                 }
                                                 modalidadeController.CadastrarModalidade(4, 6);
                                                 tela.ApagarArea(4, 6, 64, 19);
