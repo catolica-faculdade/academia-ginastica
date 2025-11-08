@@ -81,9 +81,8 @@ while (true)
                         case "2":
                             tela.PrepararTela("CADASTRO DE AULA");
                             Tela.MostrarMensagem(32, 20, "Digite 'Sair' para voltar...");
-                            tela.MontarMoldura(2, 2, 65, 15);
-                            Tela.MostrarMensagem(4, 2, "Dados da nova aula");
-                            tela.CadastrarAula(5, 4);
+                            agenda.CadastrarAula(5, 4, tela);
+                            opcaoValida = false;
                             break;
                         case "3":
                             while (!opcaoValida)
