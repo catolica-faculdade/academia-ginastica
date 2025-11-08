@@ -9,4 +9,8 @@ public class Modalidade
         this.descricao = descricao;
     }
 
+    public Modalidade()
+    {
+    }
+
 }

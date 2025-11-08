@@ -15,8 +15,16 @@ public class Aula
         this.instrutor = instrutor;
         this.horarioInicio = horarioInicio;
         this.horarioFim = horarioFim;
-        this.clientes = clientes ?? new List<Cliente>(); 
+        this.clientes = clientes ?? new List<Cliente>();
         this.lotacao = lotacao;
 
+    }
+    public Aula()
+    { 
+    modalidade = new Modalidade();
+    instrutor = new Funcionario();
+    clientes = new List<Cliente>();
+
+        
     }
 }
