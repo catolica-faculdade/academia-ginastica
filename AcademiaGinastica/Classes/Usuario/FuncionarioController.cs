@@ -50,7 +50,10 @@ public class FuncionarioController
                 decimal.Parse(salarioStr);
                 salarioValido = true;
             }
-            catch{}
+            catch
+            {
+                salarioStr = "";
+            }
 
             Cargo novoCargo = Cargo.admin;
 
@@ -96,6 +99,7 @@ public class FuncionarioController
                 );
 
                 this.funcionarios.Add(novoUsuario);
+                dadosCorretos = true;
             } else
             {
                 Tela tela = new Tela();
