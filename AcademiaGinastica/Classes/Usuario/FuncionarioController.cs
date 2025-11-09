@@ -143,8 +143,8 @@ public class FuncionarioController
 
         int alturaPorFuncionario = 6; 
         int espacamento = 1;         
-        int margemRodape = 4;         
-        int lf = li + (funcionarios.Count * (alturaPorFuncionario + espacamento)) + margemRodape; 
+        int margemRodape = 8;         
+        int lf = li + (3 * (alturaPorFuncionario + espacamento)) + margemRodape; 
 
         Console.Clear();
 
@@ -154,7 +154,9 @@ public class FuncionarioController
         int colTitulo = ci + (larguraMoldura - titulo.Length) / 2;
         Tela.MostrarMensagem(colTitulo, li + 1, titulo);
 
-        int linhaAtual = li + 3; 
+        int linhaAtual = li + 3;
+        int maxNumFuncionario = 3;
+        int numAtualFuncionario = 0;
         for (int i = 0; i < funcionarios.Count; i++)
         {
             var f = funcionarios[i];
@@ -166,6 +168,24 @@ public class FuncionarioController
             Tela.MostrarMensagem(ci + 2, linhaAtual + 5, $"Salário: R$ {f.salario:F2}");
 
             linhaAtual += alturaPorFuncionario + espacamento;
+            numAtualFuncionario++;
+            if (numAtualFuncionario == maxNumFuncionario)
+            {
+                Tela.MostrarMensagem(ci + 4, linhaAtual, "Deseja visualizar mais aulas?");
+                Tela.MostrarMensagem(ci + 4, linhaAtual + 1, "[1] - Sim");
+                Tela.MostrarMensagem(ci + 4, linhaAtual + 2, "[2] - Não");
+                string resposta = Tela.Perguntar(ci + 4, linhaAtual + 3, "");
+                if (string.Equals(resposta, "2") || string.Equals(resposta.ToLower(), "sair"))
+                {
+                    Console.Clear();
+                    return;
+                }
+
+                numAtualFuncionario = 0;
+                linhaAtual = li + 3;
+                Console.Clear();
+                tela.MontarMoldura(ci, li, cf, lf);      
+            }      
         }
 
         Tela.MostrarMensagem(ci + 2, lf, "[Pressione qualquer tecla para voltar]");

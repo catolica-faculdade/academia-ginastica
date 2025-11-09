@@ -130,7 +130,7 @@ public class Agenda
         int cf = ci + larguraMoldura; 
         int alturaPorAgenda = 8;
         int espacamento = 1;    
-        int lf = li + (3 * (alturaPorAgenda + espacamento)); 
+        int lf = li + (3 * (alturaPorAgenda + espacamento+2)); 
 
         Console.Clear();
 
