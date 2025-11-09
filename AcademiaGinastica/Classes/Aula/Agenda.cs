@@ -223,7 +223,26 @@ public class Agenda
     }
     public void ApagarAula(int id)
     {
-        this.aulas.RemoveAt(id - 1);
+        bool apagarValido = false;
+        while (!apagarValido)
+        {
+            Tela.MostrarMensagem(4, 8, "Deseja realmente apagar?");
+            Tela.MostrarMensagem(4, 9, "[1] - Sim");
+            Tela.MostrarMensagem(4, 10, "[2] - Não");
+            string opcao = Tela.Perguntar(4, 11, "");
+            if(opcao == "2" || string.Equals(opcao.ToLower(), "sair"))
+            {
+                return;
+            }
+            if (opcao == "1")
+            {        
+                this.aulas.RemoveAt(id - 1);
+                apagarValido = true;
+            } else
+            {
+                Tela.MostrarMensagem(4, 12, "Opção inválida.");
+            }
+        }
     }
     public void AlterarAgenda(int col, int lin, int id, Tela tela)
     {
