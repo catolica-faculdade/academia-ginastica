@@ -125,14 +125,37 @@ public class ModalidadeController
     {
         int qtdModalidades = this.modalidades.Count;
         int linha = lin;
-        tela.MontarMoldura(col - 1, lin - 1, col + 81, lin + (qtdModalidades + 2) * 2);
+        tela.MontarMoldura(col - 1, lin - 1, col + 81, lin + (3 + 2) * 2 + 3);
+
+        int maxNumModalidade = 3;
+        int numAtualModalidade = 0;
+
         for (int i = 0; i < qtdModalidades; i++)
         {
             Tela.MostrarMensagem(col, linha, $"{i + 1} Nome : {this.modalidades[i].nome}");
             Tela.MostrarMensagem(col, linha + 1, $"Descricao : {this.modalidades[i].descricao}");
             linha += 3;
+            numAtualModalidade++;
+            if (numAtualModalidade == maxNumModalidade)
+            {
+                Tela.MostrarMensagem(col, linha, "Deseja visualizar mais modalidades?");
+                Tela.MostrarMensagem(col, linha + 1, "[1] - Sim");
+                Tela.MostrarMensagem(col, linha + 2, "[2] - Não");
+                string resposta = Tela.Perguntar(col + 4, linha + 3, "");
+                if (string.Equals(resposta, "2") || string.Equals(resposta.ToLower(), "sair"))
+                {
+                    Console.Clear();
+                    return;
+                }
+
+                numAtualModalidade = 0;
+                linha = lin;
+                Console.Clear();
+                tela.MontarMoldura(col - 1, lin - 1, col + 81, lin + (3 + 2) * 2);
+      
+            }                   
         }
-        Tela.MostrarMensagem(4, linha, "Digite qualquer tecla para sair");
+        Tela.MostrarMensagem(4, linha+4, "[Digite qualquer tecla para sair]");
         Console.ReadKey();
     }
 }
