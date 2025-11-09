@@ -1,0 +1,21 @@
+Identificador: UC-016
+
+Nome: Gerenciar Clientes
+
+Ator Principal: Atendente
+
+Descrição: Apresenta ao atendente o submenu de opções para gerenciamento dos alunos (clientes) da academia.
+
+Pré-condições: Atendente logado e no Menu Principal.
+
+Pós-condições: Sistema exibe as opções de operação para clientes.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Verificar Clientes" no Menu Principal [644, 1350].
+
+    [OUT] Sistema apresenta o submenu com as opções: [1] Listar, [2] Apagar, [3] Ver, [4] Alterar, [Sair] Voltar [1397, 1398].
+
+    [IN] Atendente seleciona uma das opções disponíveis.
+
+    [SYSTEM] Sistema redireciona para o caso de uso correspondente à opção escolhida.

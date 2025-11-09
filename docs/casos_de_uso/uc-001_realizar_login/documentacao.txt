@@ -1,0 +1,33 @@
+Identificador: UC-001
+
+Nome: Realizar Login
+
+Ator Principal: Atendente
+
+Descrição: Permite que o atendente se identifique para acessar as funcionalidades restritas do sistema.
+
+Pré-condições: O sistema deve estar iniciado e exibindo a tela de boas-vindas.
+
+Pós-condições: O atendente está autenticado e é redirecionado ao menu principal.
+
+Fluxo Principal (Cenário de Sucesso):
+
+    [IN] O Atendente seleciona a opção "Entrar" na tela inicial.
+
+    [OUT] O Sistema solicita o identificador (usuário) e a senha.
+
+    [IN] O Atendente insere as credenciais solicitadas.
+
+    [SYSTEM] O Sistema executa o caso de uso (Validar Credenciais).
+
+    [OUT] O Sistema informa que o login foi realizado com sucesso.
+
+    [OUT] O Sistema apresenta o Menu Principal.
+
+Fluxo Alternativo 4a: Credenciais Inválidas
+
+    No passo 4, o sistema detecta que o usuário ou senha estão incorretos.
+
+    [OUT] O Sistema exibe a mensagem de erro: "Usuário ou senha inválidos".
+
+    [OUT] O Sistema retorna ao passo 2 do fluxo principal, permitindo nova tentativa.

@@ -1,0 +1,45 @@
+Identificador: UC-004
+
+Nome: Agendar Aula
+
+Ator Principal: Atendente
+
+Descrição: Permite criar uma nova sessão de aula na agenda da academia, definindo horário, capacidade e responsável.
+
+Pré-condições: Devem existir ao menos uma modalidade e um instrutor cadastrados no sistema.
+
+Pós-condições: Nova aula disponível na agenda para matrículas.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona "Cadastrar nova Aula" no menu.
+
+[SYSTEM] Sistema executa (Consultar Modalidade) e exibe a lista disponível.
+
+[IN] Atendente seleciona a modalidade desejada.
+
+[SYSTEM] Sistema executa (Consultar Instrutor) e exibe a lista de instrutores.
+
+[IN] Atendente seleciona o instrutor responsável.
+
+[OUT] Sistema solicita: Data, Hora de Início, Hora de Fim e Capacidade Máxima de alunos.
+
+    [IN] Atendente insere os dados da agenda.
+
+    [SYSTEM] Sistema valida se o instrutor está livre nesse horário e se a data é válida (futura).
+
+    [OUT] Sistema confirma o agendamento da aula.
+
+Fluxo Alternativo 2a: Nenhuma Modalidade Cadastrada
+
+    No passo 2, sistema detecta que não há modalidades.
+
+    [OUT] Sistema informa o erro e sugere cadastrar uma modalidade primeiro.
+
+    [IN] Atendente aceita e é redirecionado para o UC-006 (Criar Modalidade).
+
+Fluxo Alternativo 8a: Conflito de Horário do Instrutor
+
+    No passo 8, sistema detecta que o instrutor já tem outra aula no mesmo período.
+
+    [OUT] Sistema exibe alerta de conflito de agenda e solicita novo horário ou outro instrutor.

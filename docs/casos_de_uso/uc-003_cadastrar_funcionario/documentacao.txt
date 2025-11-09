@@ -1,0 +1,35 @@
+Identificador: UC-003
+
+Nome: Cadastrar Funcionário
+
+Ator Principal: Atendente
+
+Descrição: Permite o registro de novos colaboradores na academia, definindo suas funções (ex: instrutor, recepção).
+
+Pré-condições: Atendente deve estar logado no sistema.
+
+Pós-condições: Novo funcionário cadastrado e disponível para vinculação em atividades (como aulas, se for instrutor).
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção de gerenciar funcionários e escolhe "Cadastrar".
+
+    [OUT] Sistema solicita os dados: Nome, CPF e Função (Cargo).
+
+[IN] Atendente insere os dados e seleciona o cargo desejado.
+
+[SYSTEM] Sistema valida se todos os campos obrigatórios foram preenchidos.
+
+[OUT] Sistema exibe mensagem de sucesso e retorna ao menu anterior.
+
+Fluxo Alternativo 4a: Dados Inválidos ou Incompletos
+
+    No passo 4, o sistema detecta campos vazios obrigatórios.
+
+    [OUT] Sistema exibe mensagem de erro informando quais dados faltam.
+
+    [OUT] Sistema retorna ao passo 2.
+
+Fluxo Alternativo: Cancelamento
+
+    O atendente pode cancelar o processo a qualquer momento antes da confirmação final, retornando ao menu principal.

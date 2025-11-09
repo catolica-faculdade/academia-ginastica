@@ -1,0 +1,39 @@
+Identificador: UC-014
+
+Nome: Alterar Agenda
+
+Ator Principal: Atendente
+
+Descrição: Permite modificar os dados de uma aula agendada, como horário, instrutor responsável ou capacidade máxima.
+
+Pré-condições: Atendente logado. A agenda deve existir.
+
+Pós-condições: Dados da agenda atualizados no sistema.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Alterar" no menu de agendas.
+
+[OUT] Sistema solicita o identificador da agenda a ser modificada.
+
+[IN] Atendente insere o identificador.
+
+[SYSTEM] Sistema exibe os dados atuais da agenda.
+
+[OUT] Sistema solicita os novos dados (permitindo manter os atuais).
+
+[IN] Atendente insere as novas informações.
+
+[SYSTEM] Sistema valida os novos dados (ex: conflito de horário do novo instrutor).
+
+    [OUT] Sistema solicita confirmação da alteração.
+
+    [IN] Atendente confirma.
+
+    [SYSTEM] Sistema atualiza o registro e exibe mensagem de sucesso.
+
+Fluxo Alternativo 9a: Cancelamento
+
+    [IN] Atendente decide não confirmar a alteração.
+
+[OUT] Sistema descarta mudanças e retorna ao menu anterior.

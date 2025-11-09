@@ -1,0 +1,37 @@
+Identificador: UC-006
+
+Nome: Criar Modalidade
+
+Ator Principal: Atendente
+
+Descrição: Permite o cadastro de uma nova modalidade esportiva no sistema.
+
+Pré-condições: Atendente logado e no menu de "Verificar Modalidades".
+
+Pós-condições: Nova modalidade registrada no banco de dados.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Criar" no menu de modalidades.
+
+[OUT] Sistema solicita o nome da nova modalidade.
+
+[IN] Atendente insere os dados solicitados.
+
+[SYSTEM] Sistema valida se o nome da modalidade já existe.
+
+[OUT] Sistema exibe mensagem de sucesso e retorna ao menu de modalidades.
+
+Fluxo Alternativo 3a: Cancelamento
+
+    [IN] Atendente opta por cancelar a operação a qualquer momento.
+
+[OUT] Sistema retorna ao menu de modalidades sem salvar.
+
+Fluxo de Exceção 4a: Modalidade Duplicada
+
+    [SYSTEM] Sistema identifica que já existe uma modalidade com o mesmo nome.
+
+    [OUT] Sistema exibe mensagem de erro informando a duplicidade.
+
+[OUT] Sistema retorna ao passo 2 para nova entrada de dados.

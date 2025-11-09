@@ -1,0 +1,29 @@
+Identificador: UC-023
+
+Nome: Excluir Funcionário
+
+Ator Principal: Atendente
+
+Descrição: Permite a remoção de um colaborador da base de dados do sistema.
+
+Pré-condições: Atendente logado e no menu de funcionários. O funcionário deve existir.
+
+Pós-condições: O registro do funcionário é removido.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Apagar" no menu de funcionários [1409].
+
+    [OUT] Sistema solicita o identificador (ID) do funcionário a ser removido [1410].
+
+    [IN] Atendente insere o ID.
+
+    [SYSTEM] Sistema valida o ID e remove o funcionário da lista [1778].
+
+    [OUT] Sistema retorna ao menu de funcionários.
+
+Fluxo Alternativo 3a: Cancelamento
+
+    [IN] Atendente digita "Sair" [1411].
+
+    [OUT] Sistema cancela a operação e retorna ao menu anterior.

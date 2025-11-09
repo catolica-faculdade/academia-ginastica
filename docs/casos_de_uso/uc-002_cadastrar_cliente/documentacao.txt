@@ -1,0 +1,43 @@
+Identificador: UC-002
+
+Nome: Cadastrar Cliente
+
+Ator Principal: Atendente
+
+Descrição: Permite o registro de novos alunos no sistema, coletando dados pessoais essenciais.
+
+Pré-condições: Atendente deve estar logado e no menu principal.
+
+Pós-condições: Novo cliente registrado com status "Ativo" e um ID único gerado [425, 428].
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona "Cadastrar novo Usuário" no menu [637].
+
+    [OUT] Sistema apresenta formulário solicitando: Nome, CPF, Endereço, Telefone e E-mail [345, 346, 347, 348].
+
+    [IN] Atendente insere os dados do aluno.
+
+    [SYSTEM] Sistema executa o caso de uso (Validar CPF) para garantir que não há duplicidade [430].
+
+    [OUT] Sistema solicita confirmação dos dados (S/N) [352].
+
+    [IN] Atendente confirma o cadastro.
+
+    [SYSTEM] Sistema gera um ID único para o cliente automaticamente [425].
+
+    [OUT] Sistema exibe mensagem de "Cadastro realizado com sucesso" e retorna ao menu principal [495].
+
+Fluxo Alternativo 4a: CPF Já Cadastrado
+
+    No passo 4, o sistema detecta que o CPF já existe na base de dados.
+
+    [OUT] Sistema exibe erro: "CPF já cadastrado no sistema" [494].
+
+    [OUT] Sistema retorna ao passo 2 para correção.
+
+Fluxo Alternativo 6a: Cancelamento
+
+    No passo 6, o Atendente opta por não confirmar (Seleciona 'N').
+
+    [OUT] Sistema cancela a operação e retorna ao menu principal sem salvar dados [495].

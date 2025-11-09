@@ -1,0 +1,35 @@
+Identificador: UC-024
+
+Nome: Visualizar Funcionário
+
+Ator Principal: Atendente
+
+Descrição: Exibe todos os detalhes cadastrais de um funcionário específico.
+
+Pré-condições: Atendente logado e funcionário existente.
+
+Pós-condições: Nenhuma alteração de dados.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Ver" no menu de funcionários [1412].
+
+    [OUT] Sistema solicita o ID do funcionário [1414].
+
+    [IN] Atendente insere o ID.
+
+    [SYSTEM] Sistema busca os dados do funcionário.
+
+    [OUT] Sistema apresenta: Nome, CPF, Telefone, E-mail, Endereço, Cargo e Salário [1769-1775].
+
+    [OUT] Sistema exibe mensagem "[Pressione qualquer tecla para voltar]" [1777].
+
+    [IN] Atendente pressiona uma tecla.
+
+    [OUT] Sistema retorna ao menu anterior.
+
+Fluxo de Exceção 4a: ID Inválido
+
+    [SYSTEM] Sistema detecta ID inexistente [1764].
+
+    [OUT] Sistema exibe mensagem de erro e retorna ao menu.

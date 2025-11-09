@@ -1,0 +1,35 @@
+Identificador: UC-013
+
+Nome: Visualizar Agenda
+
+Ator Principal: Atendente
+
+Descrição: Permite consultar os detalhes completos de uma aula agendada específica (modalidade, horário, instrutor, inscritos).
+
+Pré-condições: Atendente logado no menu de agendas.
+
+Pós-condições: Nenhuma alteração nos dados.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Ver" no menu de agendas.
+
+    [OUT] Sistema solicita o identificador da agenda.
+
+    [IN] Atendente insere o identificador.
+
+    [SYSTEM] Sistema busca os dados detalhados da agenda.
+
+    [OUT] Sistema exibe as informações na tela (Modalidade, Instrutor, Horário, Nº de inscritos).
+
+    [OUT] Sistema exibe mensagem para pressionar qualquer tecla para voltar [224].
+
+    [IN] Atendente pressiona uma tecla.
+
+    [OUT] Sistema retorna ao menu de agendas.
+
+Fluxo de Exceção 4a: Agenda Inexistente
+
+    [SYSTEM] Sistema não encontra o identificador informado.
+
+    [OUT] Sistema informa "Agenda não encontrada" e solicita novo ID ou retorno ao menu.

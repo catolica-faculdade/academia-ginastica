@@ -1,0 +1,49 @@
+Identificador: UC-020
+
+Nome: Alterar Cliente
+
+Ator Principal: Atendente
+
+Descrição: Permite atualizar as informações cadastrais de um aluno.
+
+Pré-condições: Atendente logado e o cliente alvo deve existir no sistema.
+
+Pós-condições: Dados do cliente atualizados no banco de dados.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Alterar" no menu de clientes [1399].
+
+    [OUT] Sistema solicita o ID do cliente a ser modificado [1399].
+
+    [IN] Atendente insere o ID.
+
+    [SYSTEM] Sistema busca e exibe os dados atuais (Nome, CPF, Telefone, E-mail, Endereço) [1571].
+
+    [OUT] Sistema solicita novo valor para "Nome completo" (ou enter para manter).
+
+    [IN] Atendente insere o novo nome [1581].
+
+    [OUT] Sistema solicita novo valor para "CPF".
+
+    [IN] Atendente insere o novo CPF [1585].
+
+    ... (Sistema repete para Telefone, E-mail e Endereço) [1589, 1593, 1597].
+
+    [SYSTEM] Sistema atualiza o registro do cliente com os novos dados [1600-1606].
+
+    [OUT] Sistema retorna ao menu anterior.
+
+Fluxo Alternativo 6a: Cancelamento durante a edição
+
+    [IN] Atendente digita "Sair" em qualquer um dos campos solicitados [1582, 1586, 1590, 1594, 1598].
+
+    [OUT] Sistema cancela a operação imediatamente e retorna ao menu anterior sem salvar alterações.
+
+Fluxo de Exceção 4a: Cliente Inválido
+
+    [SYSTEM] Sistema detecta que o ID informado não existe [1562].
+
+    [OUT] Sistema exibe mensagem "Cliente invalido!" e aguarda confirmação [1564].
+
+    [OUT] Sistema retorna ao menu anterior.

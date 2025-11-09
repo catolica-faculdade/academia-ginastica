@@ -1,0 +1,21 @@
+Identificador: UC-015
+
+Nome: Gerenciar Agendas
+
+Ator Principal: Atendente
+
+Descrição: Apresenta ao atendente o submenu de opções para gerenciamento das aulas agendadas.
+
+Pré-condições: Atendente logado e no Menu Principal.
+
+Pós-condições: Sistema exibe as opções de operação para agendas.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Verificar Agendas" no Menu Principal.
+
+[OUT] Sistema apresenta o submenu: [1] Listar, [2] Apagar, [3] Ver, [4] Alterar, [Sair] Voltar.
+
+[IN] Atendente seleciona uma das opções.
+
+[SYSTEM] Sistema redireciona para o caso de uso correspondente.

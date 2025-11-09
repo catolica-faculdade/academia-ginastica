@@ -1,0 +1,45 @@
+Identificador: UC-007
+
+Nome: Excluir Modalidade
+
+Ator Principal: Atendente
+
+Descrição: Permite a remoção de uma modalidade esportiva do cadastro do sistema.
+
+Pré-condições: Atendente logado no menu de modalidades. A modalidade a ser excluída não deve ter aulas futuras agendadas (regra de integridade comum, embora não explicitada no texto base, é bom pensar nela).
+
+Pós-condições: A modalidade deixa de existir no sistema.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Apagar" no menu de modalidades.
+
+[OUT] Sistema solicita o identificador (ID ou nome) da modalidade a ser excluída.
+
+[IN] Atendente insere o identificador.
+
+[SYSTEM] Sistema busca a modalidade e apresenta seus dados para conferência.
+
+[OUT] Sistema solicita confirmação expressa da exclusão (S/N).
+
+    [IN] Atendente confirma a exclusão.
+
+    [SYSTEM] Sistema remove o registro da base de dados.
+
+    [OUT] Sistema exibe mensagem de sucesso e retorna ao menu anterior.
+
+Fluxo Alternativo 6a: Cancelamento pelo Usuário
+
+    [IN] No passo 6, o atendente nega a confirmação (seleciona 'N').
+
+    [OUT] Sistema cancela a operação e exibe mensagem "Exclusão cancelada".
+
+    [OUT] Sistema retorna ao menu de modalidades.
+
+Fluxo de Exceção 4a: Modalidade Não Encontrada
+
+    [SYSTEM] Sistema não encontra nenhuma modalidade com o identificador fornecido.
+
+    [OUT] Sistema exibe mensagem de erro "Modalidade não encontrada".
+
+    [OUT] Sistema retorna ao passo 2.

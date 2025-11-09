@@ -1,0 +1,41 @@
+Identificador: UC-008
+
+Nome: Visualizar Modalidade
+
+Ator Principal: Atendente
+
+Descrição: Permite ao atendente consultar os detalhes completos de uma modalidade específica cadastrada no sistema.
+
+Pré-condições: Atendente logado no menu de modalidades.
+
+Pós-condições: Nenhuma alteração nos dados; o sistema retorna ao estado anterior após a visualização.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Ver" (Visualizar) no menu de modalidades.
+
+    [OUT] Sistema solicita o identificador da modalidade a ser consultada.
+
+    [IN] Atendente insere o identificador.
+
+    [SYSTEM] Sistema busca os dados da modalidade no banco de dados.
+
+    [OUT] Sistema apresenta todos os detalhes da modalidade na tela (Nome, horários vinculados, etc.).
+
+    [IN] Atendente pressiona qualquer tecla para voltar.
+
+    [OUT] Sistema retorna ao menu de modalidades.
+
+Fluxo Alternativo 3a: Cancelamento
+
+    [IN] Atendente decide não prosseguir e seleciona opção de voltar/cancelar.
+
+    [OUT] Sistema retorna ao menu de modalidades.
+
+Fluxo de Exceção 4a: Modalidade Inexistente
+
+    [SYSTEM] Sistema não encontra o identificador informado.
+
+    [OUT] Sistema exibe mensagem "Modalidade não encontrada".
+
+    [OUT] Sistema retorna ao passo 2 para nova tentativa.

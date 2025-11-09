@@ -1,0 +1,41 @@
+Identificador: UC-009
+
+Nome: Alterar Modalidade
+
+Ator Principal: Atendente
+
+Descrição: Permite modificar os dados cadastrais de uma modalidade esportiva existente.
+
+Pré-condições: Atendente logado e a modalidade alvo deve existir no sistema.
+
+Pós-condições: Os dados da modalidade são atualizados no banco de dados.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Alterar" no menu de modalidades.
+
+[OUT] Sistema solicita o identificador da modalidade a ser alterada.
+
+    [IN] Atendente insere o identificador.
+
+    [SYSTEM] Sistema busca e exibe os dados atuais da modalidade.
+
+    [OUT] Sistema solicita os novos dados (permitindo manter os atuais se desejar).
+
+    [IN] Atendente insere as novas informações.
+
+    [SYSTEM] Sistema valida os novos dados (ex: verifica se o novo nome não está duplicado).
+
+    [OUT] Sistema solicita confirmação da alteração.
+
+    [IN] Atendente confirma.
+
+    [SYSTEM] Sistema atualiza o registro e exibe mensagem de sucesso.
+
+Fluxo Alternativo 9a: Cancelamento da Alteração
+
+    [IN] No passo 9, o atendente decide não confirmar a alteração.
+
+    [OUT] Sistema descarta as mudanças e informa "Operação cancelada".
+
+    [OUT] Sistema retorna ao menu de modalidades.

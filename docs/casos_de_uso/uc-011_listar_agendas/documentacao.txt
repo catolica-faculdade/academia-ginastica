@@ -1,0 +1,33 @@
+Identificador: UC-011
+
+Nome: Listar Agendas
+
+Ator Principal: Atendente
+
+Descrição: Apresenta uma lista de todas as aulas (agendas) cadastradas no sistema, permitindo visualizar horários e modalidades ocupadas.
+
+Pré-condições: Atendente logado no sistema.
+
+Pós-condições: Nenhuma alteração nos dados.
+
+Fluxo Principal:
+
+    [IN] O Atendente seleciona a opção "Verificar Agendas" > "Listar" no menu.
+
+    [SYSTEM] O Sistema busca todas as agendas de aulas cadastradas.
+
+    [OUT] O Sistema exibe a lista de aulas (ex: Modalidade, Dia, Horário Início/Fim, Instrutor).
+
+    [OUT] O Sistema exibe a mensagem "Pressione qualquer tecla para voltar...".
+
+    [IN] O Atendente pressiona uma tecla.
+
+    [OUT] O Sistema retorna ao menu de agendas.
+
+Fluxo Alternativo 2a: Nenhuma Agenda Encontrada
+
+    [SYSTEM] O Sistema não encontra nenhuma aula agendada.
+
+    [OUT] O Sistema informa "Não há agendas disponíveis".
+
+[OUT] O Sistema retorna ao passo 4.

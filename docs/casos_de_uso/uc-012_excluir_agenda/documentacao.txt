@@ -1,0 +1,41 @@
+Identificador: UC-012
+
+Nome: Excluir Agenda
+
+Ator Principal: Atendente
+
+Descrição: Permite a remoção de uma aula agendada do sistema.
+
+Pré-condições: Atendente logado. A agenda a ser apagada não deve ter alunos matriculados (ou o sistema deve avisar que eles serão desmatriculados - regra importante a considerar).
+
+Pós-condições: A aula é removida e o horário do instrutor/sala fica livre novamente.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Apagar" no menu de agendas.
+
+    [OUT] Sistema solicita o identificador da agenda a ser removida.
+
+    [IN] Atendente insere o identificador.
+
+    [SYSTEM] Sistema busca a agenda e exibe seus detalhes para confirmação.
+
+    [OUT] Sistema solicita confirmação da exclusão (S/N).
+
+    [IN] Atendente confirma.
+
+    [SYSTEM] Sistema remove o registro da agenda.
+
+    [OUT] Sistema exibe mensagem de sucesso e retorna ao menu anterior.
+
+Fluxo Alternativo 6a: Cancelamento
+
+    [IN] Atendente não confirma a exclusão.
+
+    [OUT] Sistema informa "Operação cancelada" e retorna ao menu.
+
+Fluxo de Exceção 4a: Agenda Não Encontrada
+
+    [SYSTEM] Identificador informado não corresponde a nenhuma agenda.
+
+    [OUT] Sistema exibe mensagem de erro e permite nova tentativa ou retorno.

@@ -1,0 +1,35 @@
+Identificador: UC-017
+
+Nome: Listar Clientes
+
+Ator Principal: Atendente
+
+Descrição: Exibe uma relação completa de todos os alunos cadastrados na academia, incluindo seus dados principais.
+
+Pré-condições: Atendente logado no menu de verificação de clientes.
+
+Pós-condições: Nenhuma alteração de dados; sistema aguarda comando para retornar.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Listar" no menu de clientes [1408].
+
+    [SYSTEM] Sistema consulta a lista de clientes ativos no banco de dados [1527].
+
+    [OUT] Sistema exibe a lista formatada na tela (Nome, CPF, Telefone, Email, Endereço) [1547, 1548, 1549].
+
+    [OUT] Sistema exibe mensagem "[Pressione qualquer tecla para voltar]" [1554].
+
+    [IN] Atendente pressiona uma tecla.
+
+    [OUT] Sistema retorna ao menu de verificação de clientes.
+
+Fluxo Alternativo 2a: Lista Vazia
+
+    [SYSTEM] Sistema detecta que não há clientes cadastrados (contagem zero) [1529].
+
+    [OUT] Sistema exibe mensagem "Não há clientes cadastrados." [1533].
+
+    [IN] Atendente pressiona qualquer tecla.
+
+    [OUT] Sistema retorna ao menu anterior.

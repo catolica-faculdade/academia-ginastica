@@ -1,0 +1,39 @@
+Identificador: UC-019
+
+Nome: Visualizar Cliente
+
+Ator Principal: Atendente
+
+Descrição: Permite ao atendente consultar os dados detalhados de um aluno específico cadastrado no sistema.
+
+Pré-condições: Atendente logado e no menu de clientes. O cliente deve existir na base de dados.
+
+Pós-condições: Nenhuma alteração nos dados.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Ver" no menu de clientes [1398].
+
+    [OUT] Sistema solicita o identificador (ID) do cliente [1303].
+
+    [IN] Atendente insere o ID.
+
+    [SYSTEM] Sistema busca os dados do cliente.
+
+    [OUT] Sistema apresenta na tela: Nome completo, CPF, Telefone, E-mail e Endereço [1566-1572].
+
+    [OUT] Sistema exibe mensagem "[Pressione qualquer tecla para voltar]" [1574].
+
+    [IN] Atendente pressiona uma tecla.
+
+    [OUT] Sistema retorna ao menu anterior.
+
+Fluxo Alternativo 4a: Cliente Inválido
+
+    [SYSTEM] Sistema detecta que o ID inserido não corresponde a um cliente válido [1560].
+
+    [OUT] Sistema exibe mensagem "[Cliente invalido!] PRESSIONE QUALQUER TECLA PARA VOLTAR" [1562].
+
+    [IN] Atendente pressiona uma tecla.
+
+    [OUT] Sistema retorna ao menu anterior.

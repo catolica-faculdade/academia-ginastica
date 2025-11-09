@@ -1,0 +1,31 @@
+Identificador: UC-018
+
+Nome: Apagar Cliente
+
+Ator Principal: Atendente
+
+Descrição: Permite a remoção do cadastro de um aluno do sistema.
+
+Pré-condições: Atendente logado. O cliente deve existir na base de dados. (Nota de Regra de Negócio: Idealmente, não deveria permitir apagar clientes com matrículas ativas ou débitos, mas seu código atual permite exclusão direta).
+
+Pós-condições: O registro do cliente é permanentemente removido do sistema.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Apagar" no menu de clientes.
+
+    [OUT] Sistema solicita o identificador (ID) do cliente a ser removido.
+
+    [IN] Atendente insere o ID.
+
+    [SYSTEM] Sistema valida se o ID existe.
+
+    [SYSTEM] Sistema remove o cliente da lista.
+
+    [OUT] Sistema retorna imediatamente ao menu anterior (conforme implementação atual).
+
+Fluxo Alternativo 4a: Cliente Não Encontrado
+
+    [SYSTEM] Sistema detecta que o ID fornecido é inválido.
+
+    [OUT] Sistema exibe mensagem de erro ou simplesmente não realiza a ação (dependendo da implementação exata de tratamento de erro).

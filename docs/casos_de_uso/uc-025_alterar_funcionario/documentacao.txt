@@ -1,0 +1,35 @@
+Identificador: UC-025
+
+Nome: Alterar Funcionário
+
+Ator Principal: Atendente
+
+Descrição: Permite atualizar os dados cadastrais, incluindo cargo e salário, de um funcionário.
+
+Pré-condições: Atendente logado e funcionário existente.
+
+Pós-condições: Dados atualizados no sistema.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona "Alterar" no menu [1415].
+
+    [OUT] Sistema solicita o ID do funcionário [1417].
+
+    [IN] Atendente insere o ID.
+
+    [SYSTEM] Sistema exibe os dados atuais [1795-1801].
+
+    [OUT] Sistema solicita novos dados sequencialmente: Nome, CPF, Telefone, E-mail, Endereço [1805-1817].
+
+    [IN] Atendente insere os novos dados (ou repete os antigos).
+
+    [OUT] Sistema exibe lista de Cargos disponíveis e solicita seleção [1820-1827].
+
+    [IN] Atendente seleciona o novo Cargo.
+
+    [OUT] Sistema solicita o novo Salário [1846].
+
+    [IN] Atendente insere o salário.
+
+    [SYSTEM] Sistema atualiza o registro e retorna ao menu [1850].

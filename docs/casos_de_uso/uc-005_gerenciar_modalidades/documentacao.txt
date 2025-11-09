@@ -1,0 +1,27 @@
+Identificador: UC-005
+
+Nome: Gerenciar Modalidades
+
+Ator Principal: Atendente
+
+Descrição: Apresenta ao atendente as opções de gerenciamento das modalidades esportivas da academia.
+
+Pré-condições: Atendente logado e no menu principal.
+
+Pós-condições: O sistema exibe o submenu de operações de modalidade.
+
+Fluxo Principal:
+
+    [IN] O Atendente seleciona a opção "Gerenciar Modalidades" no Menu Principal.
+
+[OUT] O Sistema apresenta um submenu com as opções: [1] Criar, [2] Apagar, [3] Ver, [4] Listar, [5] Alterar, [0] Voltar.
+
+    [IN] O Atendente seleciona uma das opções disponíveis.
+
+    [SYSTEM] O Sistema redireciona para o caso de uso correspondente à opção escolhida.
+
+Fluxo Alternativo 3a: Voltar
+
+    [IN] O Atendente seleciona a opção "[0] Voltar" ou digita "Sair".
+
+[OUT] O Sistema retorna ao Menu Principal.

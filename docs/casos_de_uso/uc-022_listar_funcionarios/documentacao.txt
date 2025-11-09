@@ -1,0 +1,33 @@
+Identificador: UC-022
+
+Nome: Listar Funcionários
+
+Ator Principal: Atendente
+
+Descrição: Exibe uma relação completa de todos os funcionários cadastrados, incluindo seus cargos e salários.
+
+Pré-condições: Atendente logado no menu de verificação de funcionários.
+
+Pós-condições: Nenhuma alteração de dados.
+
+Fluxo Principal:
+
+    [IN] Atendente seleciona a opção "Listar" no menu de funcionários.
+
+    [SYSTEM] Sistema consulta a lista de funcionários ativos.
+
+    [OUT] Sistema exibe a lista formatada com: Nome, CPF, Telefone, Email, Cargo e Salário.
+
+    [OUT] Sistema exibe mensagem "[Pressione qualquer tecla para voltar]".
+
+    [IN] Atendente pressiona uma tecla.
+
+    [OUT] Sistema retorna ao menu anterior.
+
+Fluxo Alternativo 2a: Lista Vazia
+
+    [SYSTEM] Sistema detecta que não há funcionários cadastrados.
+
+    [OUT] Sistema exibe mensagem "Não há funcionários cadastrados.".
+
+    [OUT] Sistema retorna ao passo 4 do fluxo principal.
