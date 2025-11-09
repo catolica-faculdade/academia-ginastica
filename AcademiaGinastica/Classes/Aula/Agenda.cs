@@ -128,9 +128,9 @@ public class Agenda
         int larguraMoldura = 90;
         
         int cf = ci + larguraMoldura; 
-        int alturaPorAgenda = 10;
+        int alturaPorAgenda = 8;
         int espacamento = 1;    
-        int lf = li + (this.aulas.Count * (alturaPorAgenda + espacamento)); 
+        int lf = li + (3 * (alturaPorAgenda + espacamento)); 
 
         Console.Clear();
 
