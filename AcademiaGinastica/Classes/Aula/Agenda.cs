@@ -142,8 +142,11 @@ public class Agenda
         Tela.MostrarMensagem(colTitulo, li + 1, titulo);
 
         int linhaAtual = li + 3;
+        int maxNumAulas = 3;
+        int numAtualAulas = 0;
         for (int i = 0; i < this.aulas.Count; i++)
-        {
+        {  
+
             var a = this.aulas[i];
 
             Tela.MostrarMensagem(ci + 2, linhaAtual, $"{i + 1}. {a.nome}");
@@ -151,12 +154,28 @@ public class Agenda
             Tela.MostrarMensagem(ci + 2, linhaAtual + 2, $"Instrutor: {a.instrutor.nomeCompleto}");
             Tela.MostrarMensagem(ci + 2, linhaAtual + 3, $"Horario de Inicio: {a.horarioInicio}");
             Tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Horario de Termino: {a.horarioFim}");
-
             Tela.MostrarMensagem(ci+2, linhaAtual + 5, $"Total clientes: {a.clientes.Count}");
-
             Tela.MostrarMensagem(ci + 2, linhaAtual + 6, $"Lotacao: {a.lotacao}");
 
             linhaAtual += alturaPorAgenda + espacamento;
+            numAtualAulas++;
+            if (numAtualAulas == maxNumAulas)
+            {
+                Tela.MostrarMensagem(ci + 4, linhaAtual, "Deseja visualizar mais aulas?");
+                Tela.MostrarMensagem(ci + 4, linhaAtual + 1, "[1] - Sim");
+                Tela.MostrarMensagem(ci + 4, linhaAtual + 2, "[2] - Não");
+                string resposta = Tela.Perguntar(ci + 4, linhaAtual + 3, "");
+                if (string.Equals(resposta, "2") || string.Equals(resposta.ToLower(), "sair"))
+                {
+                    Console.Clear();
+                    return;
+                }
+
+                numAtualAulas = 0;
+                linhaAtual = li + 3;
+                Console.Clear();
+                tela.MontarMoldura(ci, li, cf, lf);      
+            }                   
         }
 
         Tela.MostrarMensagem(ci + 2, lf, "[Pressione qualquer tecla para voltar]");
