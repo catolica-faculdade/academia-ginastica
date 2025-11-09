@@ -110,8 +110,8 @@ public class ClienteController
         int cf = ci + larguraMoldura; 
         int alturaPorCliente = 5;
         int espacamento = 1;    
-        int margemRodape = 4;     
-        int lf = li + (clientes.Count * (alturaPorCliente + espacamento)) + margemRodape; 
+        int margemRodape = 7;     
+        int lf = li + (3 * (alturaPorCliente + espacamento)) + margemRodape; 
 
         Console.Clear();
 
@@ -123,6 +123,8 @@ public class ClienteController
         Tela.MostrarMensagem(colTitulo, li + 1, titulo);
 
         int linhaAtual = li + 3;
+        int maxNumClientes = 3;
+        int numAtualClientes = 0;
         for (int i = 0; i < clientes.Count; i++)
         {
             var c = clientes[i];
@@ -134,6 +136,24 @@ public class ClienteController
             Tela.MostrarMensagem(ci + 2, linhaAtual + 4, $"Endereço: {c.enderecoCompleto}");
 
             linhaAtual += alturaPorCliente + espacamento;
+            numAtualClientes++;
+            if (numAtualClientes == maxNumClientes)
+            {
+                Tela.MostrarMensagem(ci + 4, linhaAtual, "Deseja visualizar mais clientes?");
+                Tela.MostrarMensagem(ci + 4, linhaAtual + 1, "[1] - Sim");
+                Tela.MostrarMensagem(ci + 4, linhaAtual + 2, "[2] - Não");
+                string resposta = Tela.Perguntar(ci + 4, linhaAtual + 3, "");
+                if (string.Equals(resposta, "2") || string.Equals(resposta.ToLower(), "sair"))
+                {
+                    Console.Clear();
+                    return;
+                }
+
+                numAtualClientes = 0;
+                linhaAtual = li + 3;
+                Console.Clear();
+                tela.MontarMoldura(ci, li, cf, lf);      
+            }          
         }
 
         Tela.MostrarMensagem(ci + 2, lf, "[Pressione qualquer tecla para voltar]");
