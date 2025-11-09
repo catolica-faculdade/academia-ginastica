@@ -454,7 +454,7 @@ public class Tela
 
                 int id = int.Parse(idModalidade);
 
-                if (id <= this.modalidadeController.modalidades.Count || id > 0)
+                if (id <= this.modalidadeController.modalidades.Count && id > 0)
                 {
                     modalidadeRetorno = this.modalidadeController.modalidades[id - 1];
                     retorno = true;
